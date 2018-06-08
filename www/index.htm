@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>RpiAmp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta http-equiv="CACHE-CONTROL" CONTENT="NO-CACHE">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+    <link href="rpitv.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="rpitv.js"></script>
+	<link rel="image_src" href="img/raspberry-pi.png" />
+    <meta property="og:image" content="img/raspberry-pi.png"/>
+	<link rel="icon" type="image/ico"  href="img/favicon.ico">
+</head>
+
+<body class="body" id="body">
+	<div class="desktop" id="desktop">
+		<div class="statC">
+			<div class="stat" id="stat"></div>
+		</div>
+		
+		
+		<table class="tsrc">
+			<tr>
+				<th><div class="button" ID="tv">TV</div></th>
+				<th><div class="button" ID="kodi">KODI</div></th>
+				<th><div class="button" ID="cast">CAST</div></th>
+			</tr>
+		</table>
+			
+		<table class="tradio">
+			<tr>
+				<th><div class="cs" id="s1" ><img src="img/srf3.jpg" width="60" alt=""/></div></th>
+				<th><div class="cs" id="s2" ><img src="img/virus.jpg" width="60" alt=""/></div></th>
+				<th><div class="cs" id="s3" ><img src="img/sr.png" width="60" alt=""/> </div></th>
+				<th><div class="cs" id="s4" ><img src="img/proton.png" width="60" alt=""/> </div></th>
+			</tr>
+		</table>
+		
+		<div class="titvol">Speakers</div>
+		<table class="tvol">
+			<tr>			
+				<th><div class="cv" id="sminus" ><img src="img/speaker_minus.png" width="60" alt=""/></div></th>
+				<th><div class="cv" id="smute" ><img id="ismute" src="img/speaker_off.png" width="60" alt=""/> </div></th>
+				<th><div class="cv" id="splus" ><img src="img/speaker_plus.png" width="60" alt=""/> </div></th>
+			</tr>
+		</table>
+		
+		<div class="titvol">Headphones</div>
+		<table class="tvol">
+			<tr>			
+				<th><div class="cv" id="hminus" ><img src="img/speaker_minus.png" width="60" alt=""/></div></th>
+				<th><div class="cv" id="hmute" ><img id="ihmute" src="img/speaker_off.png" width="60" alt=""/> </div></th>
+				<th><div class="cv" id="hplus" ><img src="img/speaker_plus.png" width="60" alt=""/> </div></th>
+			</tr>
+		</table>
+		<div class="titeq" id="titeq">Equalizer</div>
+		<table class="teq" id="teq">
+			<tr>
+				<th><div class="button" ID="eq_nb">noBass</div></th>
+				<th><div class="button" ID="eq_off">OFF</div></th>
+			</tr>
+		</table>
+	</div>
+	<span class="measTextTTitle" id="measCurrent"></span>
+</body>
