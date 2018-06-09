@@ -7,16 +7,16 @@ cd ..
 if [ "$1" == "-h" ];then
 	echo
 	echo "Options:"
-	echo "   <player number>	entry number in etc/players.conf"
+	echo "   <media number>		entry number in conf/media.conf"
 	echo "   -h			Help"
 	echo
 	exit 0
 fi
 
-# kill running players
+# kill running players defined in conf/alsa_clients.conf
 while read p; do
   pkill $p
-done <etc/alsa_clients.conf
+done <conf/alsa_clients.conf
 
 # check for ALSA restore
 cat www/status|grep a_ >/dev/null
@@ -30,7 +30,7 @@ echo "a_$1" >www/status
 
 # start client if any
 [[ $1 == ?(-)+([0-9]) ]] &&
-cat etc/media.conf |grep -v "#" > etc/.media &&
-s=`sed "${1}q;d" etc/.media` &&
+cat conf/media.conf |grep -v "#" > conf/.media &&
+s=`sed "${1}q;d" conf/.media` &&
 $s 2>&1 &
 
