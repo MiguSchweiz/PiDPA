@@ -1,46 +1,50 @@
 <?php
+$dir="/home/pi/PiDPA/bin/";
 $cmd=$_REQUEST["cmd"];
-if ($cmd=="tv"){
-	exec("echo p |sudo /home/pi/tv.sh");
-	print shell_exec("echo p |sudo /home/pi/printvlevels");
-}else if ($cmd=="kodi"){
-	exec("echo p |sudo /home/pi/k.sh");
-	print shell_exec("echo p |sudo /home/pi/printvlevels");
-}else if ($cmd=="cast"){
-	exec("echo p |sudo /home/pi/cast.sh");
-	print shell_exec("echo p |sudo /home/pi/printvlevels");
-}else if ($cmd=="srf3"){
-	exec("sudo -u pi /home/pi/r srf3 >/var/www/title");
-	print shell_exec("echo p |sudo /home/pi/printvlevels");
-}else if ($cmd=="virus"){
-	exec("sudo -u pi /home/pi/r vir >/var/www/title");
-	print shell_exec("echo p |sudo /home/pi/printvlevels");
-}else if ($cmd=="sr"){
-	exec("sudo -u pi /home/pi/r sr >/var/www/title");
-	print shell_exec("echo p |sudo /home/pi/printvlevels");
-}else if ($cmd=="proton"){
-	exec("sudo -u pi /home/pi/r p >/var/www/title");
-	print shell_exec("echo p |sudo /home/pi/printvlevels");
+if ($cmd=="s1"){
+	exec("sudo -u pi ".$dir."spdif-src.sh 1");
+	#print shell_exec("echo p |sudo "+$dir+"spdif-src.sh 1");
+}else if ($cmd=="s2"){
+	exec("echo p |sudo ".$dir."spdif-src.sh 2");
+	#print shell_exec("echo p |sudo ".$dir."spdif-src.sh 1");
+}else if ($cmd=="s3"){
+	exec("echo p |sudo ".$dir."spdif-src.sh 3");
+	#print shell_exec("echo p |sudo ".$dir."spdif-src.sh 1");
+}else if ($cmd=="s4"){
+	exec("echo p |sudo ".$dir."spdif-src.sh 4");
+	#print shell_exec("echo p |sudo ".$dir."spdif-src.sh 1");
+}else if ($cmd=="a1"){
+	exec("sudo -u pi ".$dir."alsa-src.sh 1 >title");
+	#print shell_exec("echo p |sudo /home/pi/printvlevels.sh");
+}else if ($cmd=="a2"){
+	exec("sudo -u pi ".$dir."alsa-src.sh 2 >title");
+	#print shell_exec("echo p |sudo /home/pi/printvlevels.sh");
+}else if ($cmd=="a3"){
+	exec("sudo -u pi ".$dir."alsa-src.sh 3  >title");
+	#print shell_exec("echo p |sudo /home/pi/printvlevels.sh");
+}else if ($cmd=="a4"){
+	exec("sudo -u pi ".$dir."alsa-src.sh 4  >title");
+	#print shell_exec("echo p |sudo /home/pi/printvlevels.sh");
 }else if ($cmd=="splus"){
-	exec("echo p |sudo /home/pi/svplus");
+	exec("sudo -u pi ".$dir."setvol.sh s +");
 }else if ($cmd=="sminus"){
-	exec("echo p |sudo /home/pi/svminus");
+	exec("sudo -u pi ".$dir."setvol.sh s -");
 }else if ($cmd=="smute"){
-	exec("echo p |sudo /home/pi/svmute on");
+	exec("sudo -u pi ".$dir."setvol.sh s m");
 }else if ($cmd=="sunmute"){
-	exec("echo p |sudo /home/pi/svmute off");
+	exec("sudo -u pi ".$dir."setvol.sh s m");
 }else if ($cmd=="hplus"){
-	exec("echo p |sudo /home/pi/hvplus");
+	exec("sudo -u pi ".$dir."setvol.sh h +");
 }else if ($cmd=="hminus"){
-	exec("echo p |sudo /home/pi/hvminus");
+	exec("sudo -u pi ".$dir."setvol.sh h -");
 }else if ($cmd=="hmute"){
-	exec("echo p |sudo /home/pi/hvmute on");
+	exec("sudo -u pi ".$dir."setvol.sh h m");
 }else if ($cmd=="hunmute"){
-	exec("echo p |sudo /home/pi/hvmute off");
+	exec("sudo -u pi ".$dir."setvol.sh h m");
 }else if ($cmd=="eq_off"){
-	exec("echo p |sudo /home/pi/eq off");
+	exec("sudo -u pi ".$dir."eq.sh off");
 }else if ($cmd=="eq_nb"){
-	exec("echo p |sudo /home/pi/eq on");
+	exec("sudo -u pi ".$dir."eq.sh on");
 }
 
 ?>

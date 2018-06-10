@@ -16,52 +16,37 @@ function stat(){
 	}
 	sync=true;
 	rstime=2000;
-	jQuery.get('/status.htm', function(d) {
+	jQuery.get('status.htm', function(d) {
 		//console.log(d);
 		stats=d.toString().split(";");
 		s=stats[0];
-		
-		if (s=="tv"){
-			selectButton("#tv");
-			showEQ(true);
-		}else if (s=="kodi"){
-			selectButton("#kodi");
-			showEQ(false);
-		}else if (s=="cast"){
-			selectButton("#cast");
-			showEQ(false);
-		}else if (s=="r_srf3"){
-			selectStation("#s1");
-			showEQ(false);
-		}else if (s=="r_vir"){
-			selectStation("#s2");
-			showEQ(false);
-		}else if (s=="r_sr"){
-			selectStation("#s3");
-			showEQ(false);
-		}else if (s=="r_p"){
-			selectStation("#s4");
-			showEQ(false);
+		h="#";
+		if ( s.match(/s/g)){
+			selectButton(h.concat(s));
+		}else{
+			selectStation(h.concat(s));
 		}
-		sv=stats[1];
-		if (sv==0){
+		console.log();
+		showEQ(true);
+		sm=stats[2];
+		if (sm==0){
 			$("#ismute").attr("src","img/speaker_on.png");
 			smute=true;
 		}else{
 			$("#ismute").attr("src","img/speaker_off.png");
 			smute=false;
 		}
-		hv=stats[2];
-		if (hv==0){
+		hm=stats[3];
+		if (hm==0){
 			$("#ihmute").attr("src","img/speaker_on.png");
 			hmute=true;
 		}else{
 			$("#ihmute").attr("src","img/speaker_off.png");
 			hmute=false;
 		}
-		eq=stats[4];
-		console.log("eq:"+eq)
-		if (eq==1){
+		eq=stats[1];
+		//console.log("eq:"+eq)
+		if (eq==0){
 			selectEQButton("#eq_nb");
 		}else{
 			selectEQButton("#eq_off");
@@ -73,10 +58,10 @@ function stat(){
 }
 
 function getTitle(){
-	jQuery.get('/status.htm', function(dat) {
+	jQuery.get('status.htm', function(dat) {
 		//console.log("gettitle");
 		s=dat.toString().split(";");
-		t=s[3];
+		t=s[4];
 		if ( t != lastTitle){
 			//console.log("new title");
 			lastTitle=t;
@@ -95,6 +80,8 @@ function getTitle(){
 
 function setSource(src){
 	jQuery.get(src, function(data) {
+		//console.log(data);
+		return;
 		vols=data.toString().split(";");
 		if (vols[0]==0){
 			$("#ismute").attr("src","img/speaker_on.png");
@@ -128,93 +115,95 @@ function setTitleLines(){
 
 
 function mouseListeners(){
-	$( "#tv" ).mousedown(function() {
-		showEQ(true);
-		selectButton("#tv");
-		setSource( "/rpitv.php?cmd=tv" );
+	$( "#s_1" ).mousedown(function() {
+		selectButton("#s_1");
+		setSource( "pidpa.php?cmd=s1" );
 	});
-	$( "#kodi" ).mousedown(function() {
-		showEQ(false);
-		selectButton("#kodi");
-		setSource( "/rpitv.php?cmd=kodi" );
+	$( "#s_2" ).mousedown(function() {
+		selectButton("#s_2");
+		setSource( "pidpa.php?cmd=s2" );
 	});
-	$( "#cast" ).mousedown(function() {
-		showEQ(false)
-		selectButton("#cast");
-		setSource( "/rpitv.php?cmd=cast" );
+	$( "#s_3" ).mousedown(function() {
+		selectButton("#s_3");
+		setSource( "pidpa.php?cmd=s3" );
 	});
-	$( "#s1" ).mousedown(function() {
-		showEQ(true);
-		selectStation("#s1")
-		setSource( "/rpitv.php?cmd=srf3" );
+	$( "#s_4" ).mousedown(function() {
+		selectButton("#s_4");
+		setSource( "pidpa.php?cmd=s4" );
 	});
-	$( "#s2" ).mousedown(function() {
-		showEQ(true);
-		selectStation("#s2")
-		setSource( "/rpitv.php?cmd=virus" );		
+	$( "#a_1" ).mousedown(function() {
+		selectStation("#a_1")
+		setSource( "pidpa.php?cmd=a1" );
 	});
-	$( "#s3" ).mousedown(function() {
-		showEQ(true);
-		selectStation("#s3")	
-		setSource( "/rpitv.php?cmd=sr" );		
+	$( "#a_2" ).mousedown(function() {
+		selectStation("#a_2")
+		setSource( "pidpa.php?cmd=a2" );		
 	});
-	$( "#s4" ).mousedown(function() {
-		showEQ(true);
-		selectStation("#s4")	
-		setSource( "/rpitv.php?cmd=proton" );	
+	$( "#a_3" ).mousedown(function() {
+		selectStation("#a_3")	
+		setSource( "pidpa.php?cmd=a3" );		
 	});
+	$( "#a_4" ).mousedown(function() {
+		selectStation("#a_4")	
+		setSource( "pidpa.php?cmd=a4" );	
+	});
+	$( "#a_5" ).mousedown(function() {
+		selectStation("#a_5")	
+		setSource( "pidpa.php?cmd=a5" );	
+	});
+
 	// speaker buttons
 	$( "#splus" ).mousedown(function() {
 		clickVol("#splus");
-		$.post( "/rpitv.php?cmd=splus" );
+		$.post( "pidpa.php?cmd=splus" );
 		$("#ismute").attr("src","img/speaker_off.png");
 	});
 	$( "#smute" ).mousedown(function() {
 		clickVol("#smute");
 		if (smute==false){
-			$.post( "/rpitv.php?cmd=smute" );
+			$.post( "pidpa.php?cmd=smute" );
 			$("#ismute").attr("src","img/speaker_on.png");
 			smute=true;
 		}else{
-			$.post( "/rpitv.php?cmd=sunmute" );
+			$.post( "pidpa.php?cmd=sunmute" );
 			$("#ismute").attr("src","img/speaker_off.png");
 			smute=false;
 		}
 	});	
 	$( "#sminus" ).mousedown(function() {
 		clickVol("#sminus");
-		$.post( "/rpitv.php?cmd=sminus" );
+		$.post( "pidpa.php?cmd=sminus" );
 	});
 	// headphone buttons
 	$( "#hplus" ).mousedown(function() {
 		clickVol("#hplus");
-		$.post( "/rpitv.php?cmd=hplus" );
+		$.post( "pidpa.php?cmd=hplus" );
 		$("#ihmute").attr("src","img/speaker_off.png");
 	});
 	$( "#hmute" ).mousedown(function() {
 		clickVol("#hmute")
 		if (hmute==false){
-			$.post( "/rpitv.php?cmd=hmute" );
+			$.post( "pidpa.php?cmd=hmute" );
 			$("#ihmute").attr("src","img/speaker_on.png");
 			hmute=true;
 		}else{
-			$.post( "/rpitv.php?cmd=hunmute" );
+			$.post( "pidpa.php?cmd=hunmute" );
 			$("#ihmute").attr("src","img/speaker_off.png");
 			hmute=false;	
 		}
 	});	
 	$( "#hminus" ).mousedown(function() {
 		clickVol("#hminus");
-		$.post( "/rpitv.php?cmd=hminus" );
+		$.post( "pidpa.php?cmd=hminus" );
 	});
 	// EQ
 	$( "#eq_nb" ).mousedown(function() {
 		selectEQButton("#eq_nb");
-		$.post( "/rpitv.php?cmd=eq_nb" );
+		$.post( "pidpa.php?cmd=eq_nb" );
 	});
 	$( "#eq_off" ).mousedown(function() {
 		selectEQButton("#eq_off");
-		$.post( "/rpitv.php?cmd=eq_off" );
+		$.post( "pidpa.php?cmd=eq_off" );
 	});
 }
 
@@ -251,13 +240,14 @@ function showEQ(enable){
 }
 
 function resetButtons(){
-	$( "#tv" ).css("border-color","#FA9127");
-	$( "#kodi" ).css("border-color","#FA9127");
-	$( "#cast" ).css("border-color","#FA9127");
-	$( "#s1" ).css("border-bottom-color","#ffffff");
-	$( "#s2" ).css("border-bottom-color","#ffffff");
-	$( "#s3" ).css("border-bottom-color","#ffffff");
-	$( "#s4" ).css("border-bottom-color","#ffffff");
+	$( "#s_1" ).css("border-color","#FA9127");
+	$( "#s_2" ).css("border-color","#FA9127");
+	$( "#s_3" ).css("border-color","#FA9127");
+	$( "#s_4" ).css("border-color","#FA9127");
+	$( "#a_1" ).css("border-bottom-color","#ffffff");
+	$( "#a_2" ).css("border-bottom-color","#ffffff");
+	$( "#a_3" ).css("border-bottom-color","#ffffff");
+	$( "#a_4" ).css("border-bottom-color","#ffffff");
 }
 
 function selectStation(id){

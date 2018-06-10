@@ -1,183 +1,187 @@
-[0x5e30c8] main libvlc debug: VLC media player - 2.0.3 Twoflower
-[0x5e30c8] main libvlc debug: Copyright © 1996-2012 VLC authors and VideoLAN
-[0x5e30c8] main libvlc debug: revision 2.0.2-93-g77aa89e
-[0x5e30c8] main libvlc debug: configured with ./configure  '--enable-static' '--build=arm-linux-gnueabihf' 'CFLAGS=-g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security' 'CPPFLAGS=-D_FORTIFY_SOURCE=2' 'CXXFLAGS=-g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security' 'LDFLAGS=-Wl,-z,relro' '--config-cache' '--disable-maintainer-mode' '--disable-silent-rules' '--disable-update-check' '--enable-fast-install' '--prefix=/usr' '--docdir=/usr/share/doc/vlc-nox' '--sysconfdir=/etc' '--with-binary-version=5+deb7u2' '--enable-a52' '--enable-aa' '--enable-bluray' '--enable-bonjour' '--enable-caca' '--enable-dbus' '--enable-dca' '--enable-dirac' '--enable-directfb' '--enable-dvbpsi' '--enable-dvdnav' '--enable-faad' '--enable-flac' '--enable-fluidsynth' '--enable-freetype' '--enable-fribidi' '--enable-gnutls' '--enable-jack' '--enable-kate' '--enable-libass' '--enable-libmpeg2' '--enable-libproxy' '--enable-libxml2' '--enable-lirc' '--enable-live555' '--enable-mad' '--enable-mkv' '--enable-mod' '--enable-mpc' '--enable-mtp' '--enable-mux_ogg' '--enable-ncurses' '--enable-notify' '--enable-ogg' '--enable-oss' '--enable-pulse' '--enable-qt4' '--enable-realrtsp' '--enable-samplerate' '--enable-schroedinger' '--enable-sdl' '--enable-shout' '--enable-skins2' '--enable-smb' '--enable-speex' '--enable-svg' '--enable-taglib' '--enable-theora' '--enable-twolame' '--enable-upnp' '--enable-vcd' '--enable-vcdx' '--enable-vorbis' '--enable-x264' '--enable-zvbi' '--with-kde-solid=/usr/share/kde4/apps/solid/actions/' '--disable-dxva2' '--disable-gnomevfs' '--disable-goom' '--disable-portaudio' '--disable-projectm' '--disable-sqlite' '--disable-telx' '--enable-alsa' '--enable-atmo' '--enable-dc1394' '--enable-dv' '--enable-fbosd' '--enable-libva' '--enable-linsys' '--enable-omxil' '--enable-pvr' '--enable-udev' '--enable-v4l2' '--disable-crystalhd' '--disable-mmx' '--disable-sse' '--disable-neon' '--disable-altivec' 'build_alias=arm-linux-gnueabihf'
-[0x5e30c8] main libvlc debug: searching plug-in modules
-[0x5e30c8] main libvlc debug: loading plugins cache file /usr/lib/vlc/plugins/plugins.dat
-[0x5e30c8] main libvlc debug: recursively browsing `/usr/lib/vlc/plugins'
-[0x5e30c8] main libvlc debug: saving plugins cache /usr/lib/vlc/plugins/plugins.dat
-[0x5e30c8] main libvlc debug: plug-ins loaded: 410 modules
-[0x5e30c8] main libvlc debug: opening config file (/home/pi/.config/vlc/vlcrc)
-[0x5e30c8] main libvlc debug: translation test: code is "C"
-[0x5e30c8] main libvlc debug: CPU has capabilities FPU 
-[0x5e30c8] main libvlc debug: looking for memcpy module: 1 candidate
-[0x5e30c8] main libvlc debug: using memcpy module "memcpy"
-[0x755df0] main input debug: Creating an input for 'Media Library'
-[0x755df0] main input debug: Input is a meta file: disabling unneeded options
-[0x755df0] main input debug: using timeshift granularity of 50 MiB, in path '/tmp'
-[0x755df0] main input debug: `file/xspf-open:///home/pi/.local/share/vlc/ml.xspf' gives access `file' demux `xspf-open' path `/home/pi/.local/share/vlc/ml.xspf'
-[0x755df0] main input debug: creating demux: access='file' demux='xspf-open' location='/home/pi/.local/share/vlc/ml.xspf' file='/home/pi/.local/share/vlc/ml.xspf'
-[0x5f61f0] main demux debug: looking for access_demux module: 3 candidates
-[0x5f61f0] main demux debug: no access_demux module matching "file" could be loaded
-[0x5f61f0] main demux debug: TIMER module_need() : 4.034 ms - Total 4.034 ms / 1 intvls (Avg 4.034 ms)
-[0x755df0] main input debug: creating access 'file' location='/home/pi/.local/share/vlc/ml.xspf', path='/home/pi/.local/share/vlc/ml.xspf'
-[0x67bad8] main access debug: looking for access module: 2 candidates
-[0x67bad8] filesystem access debug: opening file `/home/pi/.local/share/vlc/ml.xspf'
-[0x67bad8] main access debug: using access module "filesystem"
-[0x67bad8] main access debug: TIMER module_need() : 1.577 ms - Total 1.577 ms / 1 intvls (Avg 1.577 ms)
-[0x67ca20] main stream debug: Using stream method for AStream*
-[0x67ca20] main stream debug: starting pre-buffering
-[0x67ca20] main stream debug: received first data after 0 ms
-[0x67ca20] main stream debug: pre-buffering done 296 bytes in 0s - 3659 KiB/s
-[0x67c8f0] main stream debug: looking for stream_filter module: 7 candidates
-[0x67c8f0] main stream debug: no stream_filter module matching "any" could be loaded
-[0x67c8f0] main stream debug: TIMER module_need() : 3.206 ms - Total 3.206 ms / 1 intvls (Avg 3.206 ms)
-[0x67c8f0] main stream debug: looking for stream_filter module: 1 candidate
-[0x67c8f0] main stream debug: using stream_filter module "stream_filter_record"
-[0x67c8f0] main stream debug: TIMER module_need() : 0.873 ms - Total 0.873 ms / 1 intvls (Avg 0.873 ms)
-[0x755df0] main input debug: creating demux: access='file' demux='xspf-open' location='/home/pi/.local/share/vlc/ml.xspf' file='/home/pi/.local/share/vlc/ml.xspf'
-[0x67ace0] main demux debug: looking for demux module: 1 candidate
-[0x67ace0] playlist demux debug: using XSPF playlist reader
-[0x67ace0] main demux debug: using demux module "playlist"
-[0x67ace0] main demux debug: TIMER module_need() : 1.202 ms - Total 1.202 ms / 1 intvls (Avg 1.202 ms)
-[0x67f248] main demux meta debug: looking for meta reader module: 2 candidates
-[0x67f248] lua demux meta debug: Trying Lua scripts in /home/pi/.local/share/vlc/lua/meta/reader
-[0x67f248] lua demux meta debug: Trying Lua scripts in /usr/lib/vlc/lua/meta/reader
-[0x67f248] lua demux meta debug: Trying Lua playlist script /usr/lib/vlc/lua/meta/reader/filename.luac
-[0x67f248] lua demux meta debug: Trying Lua scripts in /usr/share/vlc/lua/meta/reader
-[0x67f248] main demux meta debug: no meta reader module matching "any" could be loaded
-[0x67f248] main demux meta debug: TIMER module_need() : 12.415 ms - Total 12.415 ms / 1 intvls (Avg 12.415 ms)
-[0x755df0] main input debug: `file/xspf-open:///home/pi/.local/share/vlc/ml.xspf' successfully opened
-[0x671530] main xml reader debug: looking for xml reader module: 1 candidate
-[0x671530] main xml reader debug: using xml reader module "xml"
-[0x671530] main xml reader debug: TIMER module_need() : 3.567 ms - Total 3.567 ms / 1 intvls (Avg 3.567 ms)
-[0x67ace0] playlist demux debug: parsed 0 tracks successfully
-[0x755df0] main input debug: EOF reached
-[0x67ace0] main demux debug: removing module "playlist"
-[0x67c8f0] main stream debug: removing module "stream_filter_record"
-[0x67bad8] main access debug: removing module "filesystem"
-[0x755df0] main input debug: TIMER input launching for 'Media Library' : 25.926 ms - Total 25.926 ms / 1 intvls (Avg 25.926 ms)
-[0x67ca20] main interface debug: looking for interface module: 1 candidate
-[0x67ca20] main interface debug: using interface module "hotkeys"
-[0x67ca20] main interface debug: TIMER module_need() : 1.237 ms - Total 1.237 ms / 1 intvls (Avg 1.237 ms)
-[0x67ace0] main interface debug: looking for interface module: 1 candidate
-[0x67ace0] inhibit interface error: Failed to connect to the D-Bus session daemon: Unable to autolaunch a dbus-daemon without a $DISPLAY for X11
-[0x67ace0] main interface debug: no interface module matching "inhibit,none" could be loaded
-[0x67ace0] main interface debug: TIMER module_need() : 1.097 ms - Total 1.097 ms / 1 intvls (Avg 1.097 ms)
-[0x67ace0] main interface error: no suitable interface module
-[0x66ad20] main playlist debug: playlist threads correctly activated
-[0x66ad20] main playlist debug: rebuilding array of current - root Playlist
-[0x66ad20] main playlist debug: rebuild done - 0 items, index -1
-[0x66ad20] main playlist debug: adding item `http://www.tm-radio.com:8000/tribalmixes' ( http://www.tm-radio.com:8000/tribalmixes )
-[0x66ad20] main playlist debug: no fetch required for (null) (art currently (null))
-[0x756b58] main interface debug: looking for interface module: 1 candidate
-[0x756b58] main interface debug: no interface module matching "globalhotkeys,none" could be loaded
-[0x756b58] main interface debug: TIMER module_need() : 1.596 ms - Total 1.596 ms / 1 intvls (Avg 1.596 ms)
-[0x756b58] main interface error: no suitable interface module
-[0x5e30c8] main libvlc error: interface "globalhotkeys,none" initialization failed
-[0x756b58] main interface debug: looking for interface module: 1 candidate
-[0x756b58] dummy interface: using the dummy interface module...
-[0x756b58] main interface debug: using interface module "dummy"
-[0x756b58] main interface debug: TIMER module_need() : 0.876 ms - Total 0.876 ms / 1 intvls (Avg 0.876 ms)
-[0x66ad20] main playlist debug: processing request item: null, node: Playlist, skip: 0
-[0x66ad20] main playlist debug: rebuilding array of current - root Playlist
-[0x66ad20] main playlist debug: rebuild done - 1 items, index -1
-[0x66ad20] main playlist debug: starting playback of the new playlist item
-[0x66ad20] main playlist debug: resyncing on http://www.tm-radio.com:8000/tribalmixes
-[0x66ad20] main playlist debug: http://www.tm-radio.com:8000/tribalmixes is at 0
-[0x66ad20] main playlist debug: creating new input thread
-[0x5f5730] main input debug: Creating an input for 'http://www.tm-radio.com:8000/tribalmixes'
-[0x5f5730] main input debug: using timeshift granularity of 50 MiB, in path '/tmp'
-[0x5f5730] main input debug: `http://www.tm-radio.com:8000/tribalmixes' gives access `http' demux `' path `www.tm-radio.com:8000/tribalmixes'
-[0x5f5730] main input debug: creating demux: access='http' demux='' location='www.tm-radio.com:8000/tribalmixes' file='(null)'
-[0x671378] main demux debug: looking for access_demux module: 0 candidates
-[0x671378] main demux debug: no access_demux module matched "http"
-[0x671378] main demux debug: TIMER module_need() : 0.391 ms - Total 0.391 ms / 1 intvls (Avg 0.391 ms)
-[0x5f5730] main input debug: creating access 'http' location='www.tm-radio.com:8000/tribalmixes', path='(null)'
-[0x671450] main access debug: looking for access module: 2 candidates
-[0x671450] access_http access debug: asking libproxy about url 'http://www.tm-radio.com:8000/tribalmixes'
-[0x671450] access_http access debug: libproxy suggest to use 'direct://'
-[0x671450] access_http access debug: http: server='www.tm-radio.com' port=8000 file='/tribalmixes'
-[0x671450] main access debug: net: connecting to www.tm-radio.com port 8000
-[0x671450] main access debug: connection succeeded (socket = 4)
-[0x671450] access_http access debug: protocol 'HTTP' answer code 200
-[0x671450] access_http access debug: Content-Type: audio/mpeg
-[0x671450] access_http access debug: Meta-Info: icy-br: 256
-[0x671450] access_http access debug: Meta-Info: ice-audio-info: bitrate=256;channels=2;samplerate=44100
-[0x671450] access_http access debug: Meta-Info: icy-description: best of underground: techno, tech, progressive, deep house
-[0x671450] access_http access debug: Icy-Genre: techno
-[0x671450] access_http access debug: Icy-Name: TM Radio
-[0x671450] access_http access debug: Meta-Info: icy-pub: 1
-[0x671450] access_http access debug: Meta-Info: icy-url: http://www.tm-radio.com
-[0x671450] access_http access debug: Server: Icecast 2.3.3
-[0x671450] access_http access debug: Icy-MetaInt: 16000
-[0x671450] access_http access warning: ICY metaint=16000
-[0x671450] access_http access: Raw-audio server found, mp3 demuxer selected
-[0x671450] access_http access debug: auto re-connect enabled
-[0x671450] main access debug: using access module "access_http"
-[0x671450] main access debug: TIMER module_need() : 312.373 ms - Total 312.373 ms / 1 intvls (Avg 312.373 ms)
-[0x67a450] main stream debug: Using stream method for AStream*
-[0x67a450] main stream debug: starting pre-buffering
-[0x67a450] main stream debug: received first data after 152 ms
-[0x67a450] main stream debug: pre-buffering done 1024 bytes in 0s - 6 KiB/s
-[0x675d48] main stream debug: looking for stream_filter module: 7 candidates
-[0x675d48] main stream debug: no stream_filter module matching "any" could be loaded
-[0x675d48] main stream debug: TIMER module_need() : 0.684 ms - Total 0.684 ms / 1 intvls (Avg 0.684 ms)
-[0x675d48] main stream debug: looking for stream_filter module: 1 candidate
-[0x675d48] main stream debug: using stream_filter module "stream_filter_record"
-[0x675d48] main stream debug: TIMER module_need() : 0.533 ms - Total 0.533 ms / 1 intvls (Avg 0.533 ms)
-[0x5f5730] main input debug: creating demux: access='http' demux='mp3' location='www.tm-radio.com:8000/tribalmixes' file='(null)'
-[0x675e68] main demux debug: looking for demux module: 1 candidate
-[0x675e68] es demux debug: detected format mpga
-[0x676230] main demux packetizer debug: looking for packetizer module: 21 candidates
-[0x676230] main demux packetizer debug: using packetizer module "mpeg_audio"
-[0x676230] main demux packetizer debug: TIMER module_need() : 14.084 ms - Total 14.084 ms / 1 intvls (Avg 14.084 ms)
-[0x676230] mpeg_audio demux packetizer debug: MPGA channels:2 samplerate:44100 bitrate:192
-[0x5f5730] main input debug: selecting program id=0
-[0x675e68] main demux debug: using demux module "es"
-[0x675e68] main demux debug: TIMER module_need() : 16.700 ms - Total 16.700 ms / 1 intvls (Avg 16.700 ms)
-[0x671ba8] main decoder debug: looking for decoder module: 30 candidates
-[0x671ba8] main decoder debug: using decoder module "mpeg_audio"
-[0x671ba8] main decoder debug: TIMER module_need() : 9.692 ms - Total 9.692 ms / 1 intvls (Avg 9.692 ms)
-[0x60a7e8] main demux meta debug: looking for meta reader module: 2 candidates
-[0x60a7e8] lua demux meta debug: Trying Lua scripts in /home/pi/.local/share/vlc/lua/meta/reader
-[0x60a7e8] lua demux meta debug: Trying Lua scripts in /usr/lib/vlc/lua/meta/reader
-[0x60a7e8] lua demux meta debug: Trying Lua playlist script /usr/lib/vlc/lua/meta/reader/filename.luac
-[0x60a7e8] lua demux meta debug: Trying Lua scripts in /usr/share/vlc/lua/meta/reader
-[0x60a7e8] main demux meta debug: no meta reader module matching "any" could be loaded
-[0x60a7e8] main demux meta debug: TIMER module_need() : 3.776 ms - Total 3.776 ms / 1 intvls (Avg 3.776 ms)
-[0x5f5730] main input debug: `http://www.tm-radio.com:8000/tribalmixes' successfully opened
-[0x5f5730] main input debug: Buffering 0%
-[0x5f5730] main input debug: Buffering 2%
-[0x5f5730] main input debug: Buffering 5%
-[0x671ba8] mpeg_audio decoder debug: MPGA channels:2 samplerate:44100 bitrate:192
-[0x5f5730] main input debug: Buffering 7%
-[0x66ad20] main playlist debug: creating audio output
-[0x5f5730] main input debug: Buffering 10%
-[0x5f5730] main input debug: Buffering 13%
-[0x5f5730] main input debug: Buffering 15%
-[0x5f5730] main input debug: Buffering 18%
-[0x5f5730] main input debug: Buffering 20%
-[0x5f5730] main input debug: Buffering 23%
-[0x5f5730] main input debug: Buffering 26%
-[0x609ca0] main audio output debug: looking for audio output module: 3 candidates
-[0x609ca0] alsa audio output debug: keeping 2 channels
-[0x5f5730] main input debug: Buffering 28%
-[0x5f5730] main input debug: Buffering 31%
-[0x5f5730] main input debug: Buffering 33%
-[0x5f5730] main input debug: Buffering 36%
-[0x5f5730] main input debug: Buffering 39%
-[0x5f5730] main input debug: Buffering 41%
-[0x5f5730] main input debug: Buffering 44%
-[0x5f5730] main input debug: Buffering 47%
-[0x5f5730] main input debug: Buffering 49%
-[0x5f5730] main input debug: Buffering 52%
-[0x5f5730] main input debug: Buffering 54%
-[0x5f5730] main input debug: Buffering 57%
-[0x5f5730] main input debug: Buffering 60%
-[0x671450] access_http access debug: New Title=Chus & Ceballos - Stereo Productions Podcast 252 (guest mix Adrian Hour) - 08-june-2018
-[0x609ca0] alsa audio output debug: using ALSA device: dmixer
-[0x609ca0] alsa audio output debug:  Direct Stream Mixing PCM
+[0x1d6e0c8] main libvlc debug: VLC media player - 2.0.3 Twoflower
+[0x1d6e0c8] main libvlc debug: Copyright © 1996-2012 VLC authors and VideoLAN
+[0x1d6e0c8] main libvlc debug: revision 2.0.2-93-g77aa89e
+[0x1d6e0c8] main libvlc debug: configured with ./configure  '--enable-static' '--build=arm-linux-gnueabihf' 'CFLAGS=-g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security' 'CPPFLAGS=-D_FORTIFY_SOURCE=2' 'CXXFLAGS=-g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security' 'LDFLAGS=-Wl,-z,relro' '--config-cache' '--disable-maintainer-mode' '--disable-silent-rules' '--disable-update-check' '--enable-fast-install' '--prefix=/usr' '--docdir=/usr/share/doc/vlc-nox' '--sysconfdir=/etc' '--with-binary-version=5+deb7u2' '--enable-a52' '--enable-aa' '--enable-bluray' '--enable-bonjour' '--enable-caca' '--enable-dbus' '--enable-dca' '--enable-dirac' '--enable-directfb' '--enable-dvbpsi' '--enable-dvdnav' '--enable-faad' '--enable-flac' '--enable-fluidsynth' '--enable-freetype' '--enable-fribidi' '--enable-gnutls' '--enable-jack' '--enable-kate' '--enable-libass' '--enable-libmpeg2' '--enable-libproxy' '--enable-libxml2' '--enable-lirc' '--enable-live555' '--enable-mad' '--enable-mkv' '--enable-mod' '--enable-mpc' '--enable-mtp' '--enable-mux_ogg' '--enable-ncurses' '--enable-notify' '--enable-ogg' '--enable-oss' '--enable-pulse' '--enable-qt4' '--enable-realrtsp' '--enable-samplerate' '--enable-schroedinger' '--enable-sdl' '--enable-shout' '--enable-skins2' '--enable-smb' '--enable-speex' '--enable-svg' '--enable-taglib' '--enable-theora' '--enable-twolame' '--enable-upnp' '--enable-vcd' '--enable-vcdx' '--enable-vorbis' '--enable-x264' '--enable-zvbi' '--with-kde-solid=/usr/share/kde4/apps/solid/actions/' '--disable-dxva2' '--disable-gnomevfs' '--disable-goom' '--disable-portaudio' '--disable-projectm' '--disable-sqlite' '--disable-telx' '--enable-alsa' '--enable-atmo' '--enable-dc1394' '--enable-dv' '--enable-fbosd' '--enable-libva' '--enable-linsys' '--enable-omxil' '--enable-pvr' '--enable-udev' '--enable-v4l2' '--disable-crystalhd' '--disable-mmx' '--disable-sse' '--disable-neon' '--disable-altivec' 'build_alias=arm-linux-gnueabihf'
+[0x1d6e0c8] main libvlc debug: searching plug-in modules
+[0x1d6e0c8] main libvlc debug: loading plugins cache file /usr/lib/vlc/plugins/plugins.dat
+[0x1d6e0c8] main libvlc debug: recursively browsing `/usr/lib/vlc/plugins'
+[0x1d6e0c8] main libvlc debug: saving plugins cache /usr/lib/vlc/plugins/plugins.dat
+[0x1d6e0c8] main libvlc debug: plug-ins loaded: 410 modules
+[0x1d6e0c8] main libvlc debug: opening config file (/home/pi/.config/vlc/vlcrc)
+[0x1d6e0c8] main libvlc debug: translation test: code is "C"
+[0x1d6e0c8] main libvlc debug: CPU has capabilities FPU 
+[0x1d6e0c8] main libvlc debug: looking for memcpy module: 1 candidate
+[0x1d6e0c8] main libvlc debug: using memcpy module "memcpy"
+[0x1ee0b68] main input debug: Creating an input for 'Media Library'
+[0x1ee0b68] main input debug: Input is a meta file: disabling unneeded options
+[0x1ee0b68] main input debug: using timeshift granularity of 50 MiB, in path '/tmp'
+[0x1ee0b68] main input debug: `file/xspf-open:///home/pi/.local/share/vlc/ml.xspf' gives access `file' demux `xspf-open' path `/home/pi/.local/share/vlc/ml.xspf'
+[0x1ee0b68] main input debug: creating demux: access='file' demux='xspf-open' location='/home/pi/.local/share/vlc/ml.xspf' file='/home/pi/.local/share/vlc/ml.xspf'
+[0x1d810a0] main demux debug: looking for access_demux module: 3 candidates
+[0x1d810a0] main demux debug: no access_demux module matching "file" could be loaded
+[0x1d810a0] main demux debug: TIMER module_need() : 4.079 ms - Total 4.079 ms / 1 intvls (Avg 4.079 ms)
+[0x1ee0b68] main input debug: creating access 'file' location='/home/pi/.local/share/vlc/ml.xspf', path='/home/pi/.local/share/vlc/ml.xspf'
+[0x1e05c68] main access debug: looking for access module: 2 candidates
+[0x1e05c68] filesystem access debug: opening file `/home/pi/.local/share/vlc/ml.xspf'
+[0x1e05c68] main access debug: using access module "filesystem"
+[0x1e05c68] main access debug: TIMER module_need() : 1.926 ms - Total 1.926 ms / 1 intvls (Avg 1.926 ms)
+[0x1e07848] main stream debug: Using stream method for AStream*
+[0x1e07848] main stream debug: starting pre-buffering
+[0x1e07848] main stream debug: received first data after 0 ms
+[0x1e07848] main stream debug: pre-buffering done 296 bytes in 0s - 2980 KiB/s
+[0x1e07700] main stream debug: looking for stream_filter module: 7 candidates
+[0x1e07700] main stream debug: no stream_filter module matching "any" could be loaded
+[0x1e07700] main stream debug: TIMER module_need() : 3.381 ms - Total 3.381 ms / 1 intvls (Avg 3.381 ms)
+[0x1e07700] main stream debug: looking for stream_filter module: 1 candidate
+[0x1e07700] main stream debug: using stream_filter module "stream_filter_record"
+[0x1e07700] main stream debug: TIMER module_need() : 0.876 ms - Total 0.876 ms / 1 intvls (Avg 0.876 ms)
+[0x1ee0b68] main input debug: creating demux: access='file' demux='xspf-open' location='/home/pi/.local/share/vlc/ml.xspf' file='/home/pi/.local/share/vlc/ml.xspf'
+[0x1e05d50] main demux debug: looking for demux module: 1 candidate
+[0x1e05d50] playlist demux debug: using XSPF playlist reader
+[0x1e05d50] main demux debug: using demux module "playlist"
+[0x1e05d50] main demux debug: TIMER module_need() : 1.233 ms - Total 1.233 ms / 1 intvls (Avg 1.233 ms)
+[0x1e0a0c0] main demux meta debug: looking for meta reader module: 2 candidates
+[0x1e0a0c0] lua demux meta debug: Trying Lua scripts in /home/pi/.local/share/vlc/lua/meta/reader
+[0x1e0a0c0] lua demux meta debug: Trying Lua scripts in /usr/lib/vlc/lua/meta/reader
+[0x1e0a0c0] lua demux meta debug: Trying Lua playlist script /usr/lib/vlc/lua/meta/reader/filename.luac
+[0x1e0a0c0] lua demux meta debug: Trying Lua scripts in /usr/share/vlc/lua/meta/reader
+[0x1e0a0c0] main demux meta debug: no meta reader module matching "any" could be loaded
+[0x1e0a0c0] main demux meta debug: TIMER module_need() : 12.575 ms - Total 12.575 ms / 1 intvls (Avg 12.575 ms)
+[0x1ee0b68] main input debug: `file/xspf-open:///home/pi/.local/share/vlc/ml.xspf' successfully opened
+[0x1dfc440] main xml reader debug: looking for xml reader module: 1 candidate
+[0x1dfc440] main xml reader debug: using xml reader module "xml"
+[0x1dfc440] main xml reader debug: TIMER module_need() : 3.875 ms - Total 3.875 ms / 1 intvls (Avg 3.875 ms)
+[0x1e05d50] playlist demux debug: parsed 0 tracks successfully
+[0x1ee0b68] main input debug: EOF reached
+[0x1e05d50] main demux debug: removing module "playlist"
+[0x1e07700] main stream debug: removing module "stream_filter_record"
+[0x1e05c68] main access debug: removing module "filesystem"
+[0x1ee0b68] main input debug: TIMER input launching for 'Media Library' : 26.734 ms - Total 26.734 ms / 1 intvls (Avg 26.734 ms)
+[0x1e07848] main interface debug: looking for interface module: 1 candidate
+[0x1e07848] main interface debug: using interface module "hotkeys"
+[0x1e07848] main interface debug: TIMER module_need() : 1.247 ms - Total 1.247 ms / 1 intvls (Avg 1.247 ms)
+[0x1ee1850] main interface debug: looking for interface module: 1 candidate
+[0x1ee1850] inhibit interface error: Failed to connect to the D-Bus session daemon: Unable to autolaunch a dbus-daemon without a $DISPLAY for X11
+[0x1ee1850] main interface debug: no interface module matching "inhibit,none" could be loaded
+[0x1ee1850] main interface debug: TIMER module_need() : 1.168 ms - Total 1.168 ms / 1 intvls (Avg 1.168 ms)
+[0x1ee1850] main interface error: no suitable interface module
+[0x1df5c90] main playlist debug: rebuilding array of current - root Playlist
+[0x1df5c90] main playlist debug: rebuild done - 0 items, index -1
+[0x1df5c90] main playlist debug: playlist threads correctly activated
+[0x1df5c90] main playlist debug: adding item `http://www.tm-radio.com:8000/tribalmixes' ( http://www.tm-radio.com:8000/tribalmixes )
+[0x1df5c90] main playlist debug: no fetch required for (null) (art currently (null))
+[0x1ee1a70] main interface debug: looking for interface module: 1 candidate
+[0x1ee1a70] main interface debug: no interface module matching "globalhotkeys,none" could be loaded
+[0x1ee1a70] main interface debug: TIMER module_need() : 1.819 ms - Total 1.819 ms / 1 intvls (Avg 1.819 ms)
+[0x1ee1a70] main interface error: no suitable interface module
+[0x1d6e0c8] main libvlc error: interface "globalhotkeys,none" initialization failed
+[0x1ee1a70] main interface debug: looking for interface module: 1 candidate
+[0x1ee1a70] dummy interface: using the dummy interface module...
+[0x1ee1a70] main interface debug: using interface module "dummy"
+[0x1ee1a70] main interface debug: TIMER module_need() : 0.977 ms - Total 0.977 ms / 1 intvls (Avg 0.977 ms)
+[0x1df5c90] main playlist debug: processing request item: null, node: Playlist, skip: 0
+[0x1df5c90] main playlist debug: rebuilding array of current - root Playlist
+[0x1df5c90] main playlist debug: rebuild done - 1 items, index -1
+[0x1df5c90] main playlist debug: starting playback of the new playlist item
+[0x1df5c90] main playlist debug: resyncing on http://www.tm-radio.com:8000/tribalmixes
+[0x1df5c90] main playlist debug: http://www.tm-radio.com:8000/tribalmixes is at 0
+[0x1df5c90] main playlist debug: creating new input thread
+[0x1e076f8] main input debug: Creating an input for 'http://www.tm-radio.com:8000/tribalmixes'
+[0x1e076f8] main input debug: using timeshift granularity of 50 MiB, in path '/tmp'
+[0x1e076f8] main input debug: `http://www.tm-radio.com:8000/tribalmixes' gives access `http' demux `' path `www.tm-radio.com:8000/tribalmixes'
+[0x1e076f8] main input debug: creating demux: access='http' demux='' location='www.tm-radio.com:8000/tribalmixes' file='(null)'
+[0x1dfc180] main demux debug: looking for access_demux module: 0 candidates
+[0x1dfc180] main demux debug: no access_demux module matched "http"
+[0x1dfc180] main demux debug: TIMER module_need() : 0.423 ms - Total 0.423 ms / 1 intvls (Avg 0.423 ms)
+[0x1e076f8] main input debug: creating access 'http' location='www.tm-radio.com:8000/tribalmixes', path='(null)'
+[0x1dfc270] main access debug: looking for access module: 2 candidates
+[0x1dfc270] access_http access debug: asking libproxy about url 'http://www.tm-radio.com:8000/tribalmixes'
+[0x1dfc270] access_http access debug: libproxy suggest to use 'direct://'
+[0x1dfc270] access_http access debug: http: server='www.tm-radio.com' port=8000 file='/tribalmixes'
+[0x1dfc270] main access debug: net: connecting to www.tm-radio.com port 8000
+[0x1dfc270] main access debug: connection succeeded (socket = 4)
+[0x1dfc270] access_http access debug: protocol 'HTTP' answer code 200
+[0x1dfc270] access_http access debug: Content-Type: audio/mpeg
+[0x1dfc270] access_http access debug: Meta-Info: icy-br: 256
+[0x1dfc270] access_http access debug: Meta-Info: ice-audio-info: bitrate=256;channels=2;samplerate=44100
+[0x1dfc270] access_http access debug: Meta-Info: icy-description: best of underground: techno, tech, progressive, deep house
+[0x1dfc270] access_http access debug: Icy-Genre: techno
+[0x1dfc270] access_http access debug: Icy-Name: TM Radio
+[0x1dfc270] access_http access debug: Meta-Info: icy-pub: 1
+[0x1dfc270] access_http access debug: Meta-Info: icy-url: http://www.tm-radio.com
+[0x1dfc270] access_http access debug: Server: Icecast 2.3.3
+[0x1dfc270] access_http access debug: Icy-MetaInt: 16000
+[0x1dfc270] access_http access warning: ICY metaint=16000
+[0x1dfc270] access_http access: Raw-audio server found, mp3 demuxer selected
+[0x1dfc270] access_http access debug: auto re-connect enabled
+[0x1dfc270] main access debug: using access module "access_http"
+[0x1dfc270] main access debug: TIMER module_need() : 221.676 ms - Total 221.676 ms / 1 intvls (Avg 221.676 ms)
+[0x1e05380] main stream debug: Using stream method for AStream*
+[0x1e05380] main stream debug: starting pre-buffering
+[0x1e05380] main stream debug: received first data after 175 ms
+[0x1e05380] main stream debug: pre-buffering done 1024 bytes in 0s - 5 KiB/s
+[0x1dffa98] main stream debug: looking for stream_filter module: 7 candidates
+[0x1dffa98] main stream debug: no stream_filter module matching "any" could be loaded
+[0x1dffa98] main stream debug: TIMER module_need() : 0.579 ms - Total 0.579 ms / 1 intvls (Avg 0.579 ms)
+[0x1dffa98] main stream debug: looking for stream_filter module: 1 candidate
+[0x1dffa98] main stream debug: using stream_filter module "stream_filter_record"
+[0x1dffa98] main stream debug: TIMER module_need() : 0.382 ms - Total 0.382 ms / 1 intvls (Avg 0.382 ms)
+[0x1e076f8] main input debug: creating demux: access='http' demux='mp3' location='www.tm-radio.com:8000/tribalmixes' file='(null)'
+[0x1dffbb8] main demux debug: looking for demux module: 1 candidate
+[0x1dffbb8] es demux debug: detected format mpga
+[0x1e00848] main demux packetizer debug: looking for packetizer module: 21 candidates
+[0x1e00848] main demux packetizer debug: using packetizer module "mpeg_audio"
+[0x1e00848] main demux packetizer debug: TIMER module_need() : 9.764 ms - Total 9.764 ms / 1 intvls (Avg 9.764 ms)
+[0x1e00848] mpeg_audio demux packetizer debug: MPGA channels:2 samplerate:44100 bitrate:192
+[0x1e076f8] main input debug: selecting program id=0
+[0x1dffbb8] main demux debug: using demux module "es"
+[0x1dffbb8] main demux debug: TIMER module_need() : 11.808 ms - Total 11.808 ms / 1 intvls (Avg 11.808 ms)
+[0x1dfc9c8] main decoder debug: looking for decoder module: 30 candidates
+[0x1dfc9c8] main decoder debug: using decoder module "mpeg_audio"
+[0x1dfc9c8] main decoder debug: TIMER module_need() : 9.282 ms - Total 9.282 ms / 1 intvls (Avg 9.282 ms)
+[0x1d94458] main demux meta debug: looking for meta reader module: 2 candidates
+[0x1d94458] lua demux meta debug: Trying Lua scripts in /home/pi/.local/share/vlc/lua/meta/reader
+[0x1d94458] lua demux meta debug: Trying Lua scripts in /usr/lib/vlc/lua/meta/reader
+[0x1d94458] lua demux meta debug: Trying Lua playlist script /usr/lib/vlc/lua/meta/reader/filename.luac
+[0x1d94458] lua demux meta debug: Trying Lua scripts in /usr/share/vlc/lua/meta/reader
+[0x1d94458] main demux meta debug: no meta reader module matching "any" could be loaded
+[0x1d94458] main demux meta debug: TIMER module_need() : 3.225 ms - Total 3.225 ms / 1 intvls (Avg 3.225 ms)
+[0x1e076f8] main input debug: `http://www.tm-radio.com:8000/tribalmixes' successfully opened
+[0x1e076f8] main input debug: Buffering 0%
+[0x1e076f8] main input debug: Buffering 2%
+[0x1e076f8] main input debug: Buffering 5%
+[0x1dfc9c8] mpeg_audio decoder debug: MPGA channels:2 samplerate:44100 bitrate:192
+[0x1e076f8] main input debug: Buffering 7%
+[0x1df5c90] main playlist debug: creating audio output
+[0x1e076f8] main input debug: Buffering 10%
+[0x1e076f8] main input debug: Buffering 13%
+[0x1e076f8] main input debug: Buffering 15%
+[0x1e076f8] main input debug: Buffering 18%
+[0x1e076f8] main input debug: Buffering 20%
+[0x1e076f8] main input debug: Buffering 23%
+[0x1e076f8] main input debug: Buffering 26%
+[0x1d9b980] main audio output debug: looking for audio output module: 3 candidates
+[0x1d9b980] pulse audio output debug: using stereo channel map
+[0x1d9b980] pulse audio output debug: using library version 2.0.0
+[0x1d9b980] pulse audio output debug:  (compiled with version 2.0.0, protocol 26)
+[0x1d9b980] pulse audio output error: PulseAudio server connection failure: Connection refused
+[0x1d9b980] alsa audio output debug: keeping 2 channels
+[0x1dfc270] access_http access debug: New Title=Kenshi Kamaro - Guest Mix - Time Differences 308 (1st April 2018) on TM Radio
+[0x1e076f8] main input debug: Buffering 28%
+[0x1e076f8] main input debug: Buffering 31%
+[0x1e076f8] main input debug: Buffering 33%
+[0x1e076f8] main input debug: Buffering 36%
+[0x1e076f8] main input debug: Buffering 39%
+[0x1e076f8] main input debug: Buffering 41%
+[0x1e076f8] main input debug: Buffering 44%
+[0x1e076f8] main input debug: Buffering 47%
+[0x1e076f8] main input debug: Buffering 49%
+[0x1e076f8] main input debug: Buffering 52%
+[0x1e076f8] main input debug: Buffering 54%
+[0x1e076f8] main input debug: Buffering 57%
+[0x1e076f8] main input debug: Buffering 60%
+[0x1d9b980] alsa audio output debug: using ALSA device: default
+[0x1d9b980] alsa audio output debug:  Plug PCM: Direct Stream Mixing PCM
 Hardware PCM card 0 'RPi-Cirrus' device 0 subdevice 0
 Its setup is:
   stream       : PLAYBACK
@@ -202,43 +206,43 @@ Its setup is:
   boundary     : 1073741824
   appl_ptr     : 0
   hw_ptr       : 0
-[0x609ca0] alsa audio output debug:  device name   : 
-[0x609ca0] alsa audio output debug:  device ID     : WM5102 AiFi wm5102-aif1-0
-[0x609ca0] alsa audio output debug:  subdevice name: subdevice #0
-[0x609ca0] alsa audio output debug: initial hardware setup:
-ACCESS:  MMAP_INTERLEAVED MMAP_NONINTERLEAVED RW_INTERLEAVED RW_NONINTERLEAVED
-FORMAT:  S16_LE
+[0x1d9b980] alsa audio output debug:  device name   : 
+[0x1d9b980] alsa audio output debug:  device ID     : WM5102 AiFi wm5102-aif1-0
+[0x1d9b980] alsa audio output debug:  subdevice name: subdevice #0
+[0x1d9b980] alsa audio output debug: initial hardware setup:
+ACCESS:  MMAP_INTERLEAVED MMAP_NONINTERLEAVED MMAP_COMPLEX RW_INTERLEAVED RW_NONINTERLEAVED
+FORMAT:  S8 U8 S16_LE S16_BE U16_LE U16_BE S24_LE S24_BE U24_LE U24_BE S32_LE S32_BE U32_LE U32_BE FLOAT_LE FLOAT_BE FLOAT64_LE FLOAT64_BE MU_LAW A_LAW IMA_ADPCM S24_3LE S24_3BE U24_3LE U24_3BE S20_3LE S20_3BE U20_3LE U20_3BE S18_3LE S18_3BE U18_3LE U18_3BE
 SUBFORMAT:  STD
-SAMPLE_BITS: 16
-FRAME_BITS: 32
-CHANNELS: 2
+SAMPLE_BITS: [4 64]
+FRAME_BITS: [4 640000]
+CHANNELS: [1 10000]
 RATE: 48000
 PERIOD_TIME: (21333 21334)
 PERIOD_SIZE: 1024
-PERIOD_BYTES: 4096
+PERIOD_BYTES: [512 81920000]
 PERIODS: [2 4]
 BUFFER_TIME: (42666 85334)
 BUFFER_SIZE: [2048 4096]
-BUFFER_BYTES: [8192 16384]
+BUFFER_BYTES: [1024 327680000]
 TICK_TIME: ALL
-[0x609ca0] alsa audio output debug: resampling from 44100 Hz to 48000 Hz
-[0x609ca0] alsa audio output debug: final HW setup:
+[0x1d9b980] alsa audio output debug: resampling from 44100 Hz to 48000 Hz
+[0x1d9b980] alsa audio output debug: final HW setup:
 ACCESS:  RW_INTERLEAVED
-FORMAT:  S16_LE
+FORMAT:  FLOAT_LE
 SUBFORMAT:  STD
-SAMPLE_BITS: 16
-FRAME_BITS: 32
+SAMPLE_BITS: 32
+FRAME_BITS: 64
 CHANNELS: 2
 RATE: 48000
 PERIOD_TIME: (21333 21334)
 PERIOD_SIZE: 1024
-PERIOD_BYTES: 4096
+PERIOD_BYTES: 8192
 PERIODS: 4
 BUFFER_TIME: (85333 85334)
 BUFFER_SIZE: 4096
-BUFFER_BYTES: 16384
-TICK_TIME: [0 0]
-[0x609ca0] alsa audio output debug: initial software parameters:
+BUFFER_BYTES: 32768
+TICK_TIME: 0
+[0x1d9b980] alsa audio output debug: initial software parameters:
 tstamp_mode: NONE
 period_step: 1
 avail_min: 1024
@@ -247,7 +251,7 @@ stop_threshold: 4096
 silence_threshold: 0
 silence_size: 0
 boundary: 1073741824
-[0x609ca0] alsa audio output debug: final software parameters:
+[0x1d9b980] alsa audio output debug: final software parameters:
 tstamp_mode: NONE
 period_step: 1
 avail_min: 1024
@@ -256,103 +260,59 @@ stop_threshold: 4096
 silence_threshold: 0
 silence_size: 0
 boundary: 1073741824
-[0x609ca0] alsa audio output warning: device cannot be paused
-[0x609ca0] alsa audio output debug: Available ALSA PCM devices:
-[0x609ca0] alsa audio output debug: Discard all samples (playback) or generate zero samples (capture) (null)
-[0x609ca0] alsa audio output debug: PulseAudio Sound Server (pulse)
-[0x609ca0] alsa audio output debug: RPi-Cirrus,  Default Audio Device (sysdefault:CARD=RPiCirrus)
-[0x609ca0] main audio output debug: using audio output module "alsa"
-[0x609ca0] main audio output debug: TIMER module_need() : 69.512 ms - Total 69.512 ms / 1 intvls (Avg 69.512 ms)
-[0x609ca0] main audio output debug: output 's16l' 48000 Hz Stereo frame=1 samples/4 bytes
-[0x609ca0] main audio output debug: mixer 'f32l' 48000 Hz Stereo frame=1 samples/8 bytes
-[0x609ca0] main audio output debug: filter(s) 'f32l'->'s16l' 48000 Hz->48000 Hz Stereo->Stereo
-[0x6114f0] main audio filter debug: looking for audio filter module: 14 candidates
-[0x6114f0] audio_format audio filter debug: f32l->s16l, bits per sample: 32->16
-[0x6114f0] main audio filter debug: using audio filter module "audio_format"
-[0x6114f0] main audio filter debug: TIMER module_need() : 11.820 ms - Total 11.820 ms / 1 intvls (Avg 11.820 ms)
-[0x609ca0] main audio output debug: conversion pipeline completed
-[0x614240] main mixer debug: looking for audio mixer module: 2 candidates
-[0x614240] main mixer debug: using audio mixer module "float32_mixer"
-[0x614240] main mixer debug: TIMER module_need() : 1.320 ms - Total 1.320 ms / 1 intvls (Avg 1.320 ms)
-[0x609ca0] main audio output debug: input 'mpga' 44100 Hz Stereo frame=1152 samples/1053 bytes
-[0x60ead0] main audio filter debug: looking for audio filter module: 1 candidate
-[0x60ead0] scaletempo audio filter debug: format: 44100 rate, 2 nch, 4 bps, fl32
-[0x60ead0] scaletempo audio filter debug: params: 30 stride, 0.200 overlap, 14 search
-[0x60ead0] scaletempo audio filter debug: 1.000 scale, 1323.000 stride_in, 1323 stride_out, 1059 standing, 264 overlap, 617 search, 2204 queue, fl32 mode
-[0x60ead0] main audio filter debug: using audio filter module "scaletempo"
-[0x60ead0] main audio filter debug: TIMER module_need() : 1.656 ms - Total 1.656 ms / 1 intvls (Avg 1.656 ms)
-[0x609ca0] main audio output debug: filter(s) 'mpga'->'f32l' 44100 Hz->44100 Hz Stereo->Stereo
-[0x614370] main audio filter debug: looking for audio filter module: 14 candidates
-[0x614370] mpgatofixed32 audio filter debug: mpga->f32l, bits per sample: 32
-[0x614370] main audio filter debug: using audio filter module "mpgatofixed32"
-[0x614370] main audio filter debug: TIMER module_need() : 0.593 ms - Total 0.593 ms / 1 intvls (Avg 0.593 ms)
-[0x609ca0] main audio output debug: conversion pipeline completed
-[0x609ca0] main audio output debug: filter(s) 'f32l'->'f32l' 44100 Hz->44100 Hz Stereo->Stereo
-[0x609ca0] main audio output debug: conversion pipeline completed
-[0x609ca0] main audio output debug: filter(s) 'f32l'->'f32l' 52800 Hz->48000 Hz Stereo->Stereo
-[0x61bc18] main audio filter debug: looking for audio filter module: 14 candidates
-[0x61bc18] main audio filter debug: using audio filter module "samplerate"
-[0x61bc18] main audio filter debug: TIMER module_need() : 0.853 ms - Total 0.853 ms / 1 intvls (Avg 0.853 ms)
-[0x609ca0] main audio output debug: conversion pipeline completed
-[0x671ba8] main decoder debug: End of audio preroll
-[0x5f5730] main input debug: Buffering 62%
-[0x5f5730] main input debug: Buffering 65%
-[0x5f5730] main input debug: Buffering 67%
-[0x5f5730] main input debug: Buffering 70%
-[0x5f5730] main input debug: Buffering 73%
-[0x5f5730] main input debug: Buffering 75%
-[0x5f5730] main input debug: Buffering 78%
-[0x5f5730] main input debug: Buffering 80%
-[0x5f5730] main input debug: Buffering 83%
-[0x5f5730] main input debug: Buffering 86%
-[0x5f5730] main input debug: Buffering 88%
-[0x5f5730] main input debug: Buffering 91%
-[0x5f5730] main input debug: Buffering 94%
-[0x5f5730] main input debug: Buffering 96%
-[0x5f5730] main input debug: Buffering 99%
-[0x5f5730] main input debug: Stream buffering done (1018 ms in 156 ms)
-[0x5f5730] main input debug: Decoder buffering done in 0 ms
-[0x609ca0] main audio output warning: PTS is out of range (-9890), dropping buffer
-[0x609ca0] main audio output warning: PTS is out of range (-35887), dropping buffer
-[0x614370] mpgatofixed32 audio filter debug: libmad error: bad main_data_begin pointer
-[0x609ca0] alsa audio output debug: prepending 2752 zeroes
-[0x671450] access_http access debug: New Title=Lucas Aguilera - Analogikko Radio 013 on TM Radio - 08-june-2018
-[0x609ca0] main audio output warning: not synchronized (-40009 us), resampling
-[0x609ca0] main audio output warning: buffer too early (-40451), down-sampling
-[0x609ca0] main audio output warning: resampling stopped after 9701802 usec (drift: -324)
-[0x609ca0] main audio output warning: not synchronized (-40002 us), resampling
-[0x671450] access_http access debug: New Title=The Martinez Brothers vs Seth Troxler (part 2) - Circoloco Radio 035 - 29-may-2018
-[0x609ca0] main audio output warning: not synchronized (-40004 us), resampling
-[0x609ca0] main audio output warning: buffer too early (-79689), down-sampling
-[0x609ca0] main audio output warning: resampling stopped after 13551280 usec (drift: -422)
-[0x609ca0] main audio output warning: PTS is out of range (-39033), dropping buffer
-[0x614370] mpgatofixed32 audio filter debug: libmad error: bad main_data_begin pointer
-n audio filter debug: removing module "samplerate"
-[0x176acd8] main audio output debug: removing module "alsa"
-[0x176e8d8] main audio filter debug: removing module "audio_format"
-[0x176d240] main mixer debug: removing module "float32_mixer"
-[0x17cbd20] main playlist debug: releasing audio output
-[0x17d6e58] main demux debug: removing module "es"
-[0x17d71f8] main demux packetizer debug: removing module "mpeg_audio"
-[0x17d6d10] main stream debug: removing module "stream_filter_record"
-[0x17d22f8] main access debug: removing module "access_http"
-[0x1756938] main input debug: Program doesn't contain anymore ES
-[0x17cbd20] main playlist debug: dead input
-[0x1756938] main input debug: TIMER input launching for 'http://live.protonradio.com/' : 1116.837 ms - Total 1116.837 ms / 1 intvls (Avg 1116.837 ms)
-[0x176e7b0] main playlist export debug: saving Media Library to file /home/pi/.local/share/vlc/ml.xspf
-[0x176e7b0] main playlist export debug: looking for playlist export module: 1 candidate
-[0x176e7b0] main playlist export debug: using playlist export module "export"
-[0x176e7b0] main playlist export debug: TIMER module_need() : 1.543 ms - Total 1.543 ms / 1 intvls (Avg 1.543 ms)
-[0x176e7b0] main playlist export debug: removing module "export"
-[0x17cbd20] main playlist debug: playlist correctly deactivated
-[0x17440c8] main libvlc debug: removing all services discovery tasks
-[0x17440c8] main libvlc debug: removing all interfaces
-[0x17440c8] main libvlc debug: exiting
-[0x18b7b58] main interface debug: removing module "dummy"
-[0x17dda20] main interface debug: removing module "hotkeys"
-[0x17cbd20] main playlist debug: destroying
-[0x17440c8] main libvlc debug: TIMER ML Load : Total 32.039 ms / 1 intvls (Avg 32.039 ms)
-[0x17440c8] main libvlc debug: TIMER Items array build : Total 0.414 ms / 2 intvls (Avg 0.207 ms)
-[0x17440c8] main libvlc debug: TIMER ML Dump : Total 2.524 ms / 1 intvls (Avg 2.524 ms)
-[0x17440c8] main libvlc debug: removing stats
-[0x17440c8] main libvlc debug: removing module "memcpy"
+[0x1d9b980] alsa audio output warning: device cannot be paused
+[0x1d9b980] alsa audio output debug: Available ALSA PCM devices:
+[0x1e076f8] main input debug: Buffering 62%
+[0x1e076f8] main input debug: Buffering 65%
+[0x1e076f8] main input debug: Buffering 67%
+[0x1e076f8] main input debug: Buffering 70%
+[0x1e076f8] main input debug: Buffering 73%
+[0x1e076f8] main input debug: Buffering 75%
+[0x1e076f8] main input debug: Buffering 78%
+[0x1e076f8] main input debug: Buffering 80%
+[0x1e076f8] main input debug: Buffering 83%
+[0x1e076f8] main input debug: Buffering 86%
+[0x1e076f8] main input debug: Buffering 88%
+[0x1e076f8] main input debug: Buffering 91%
+[0x1e076f8] main input debug: Buffering 94%
+[0x1d9b980] alsa audio output debug: Discard all samples (playback) or generate zero samples (capture) (null)
+[0x1d9b980] alsa audio output debug: PulseAudio Sound Server (pulse)
+[0x1d9b980] alsa audio output debug: RPi-Cirrus,  Default Audio Device (sysdefault:CARD=RPiCirrus)
+[0x1d9b980] main audio output debug: using audio output module "alsa"
+[0x1d9b980] main audio output debug: TIMER module_need() : 152.456 ms - Total 152.456 ms / 1 intvls (Avg 152.456 ms)
+[0x1d9b980] main audio output debug: output 'f32l' 48000 Hz Stereo frame=1 samples/8 bytes
+[0x1d9b980] main audio output debug: mixer 'f32l' 48000 Hz Stereo frame=1 samples/8 bytes
+[0x1d9b980] main audio output debug: filter(s) 'f32l'->'f32l' 48000 Hz->48000 Hz Stereo->Stereo
+[0x1d9b980] main audio output debug: conversion pipeline completed
+[0x1da55d8] main mixer debug: looking for audio mixer module: 2 candidates
+[0x1da55d8] main mixer debug: using audio mixer module "float32_mixer"
+[0x1da55d8] main mixer debug: TIMER module_need() : 1.229 ms - Total 1.229 ms / 1 intvls (Avg 1.229 ms)
+[0x1d9b980] main audio output debug: input 'mpga' 44100 Hz Stereo frame=1152 samples/1053 bytes
+[0x1da71a0] main audio filter debug: looking for audio filter module: 1 candidate
+[0x1da71a0] scaletempo audio filter debug: format: 44100 rate, 2 nch, 4 bps, fl32
+[0x1da71a0] scaletempo audio filter debug: params: 30 stride, 0.200 overlap, 14 search
+[0x1da71a0] scaletempo audio filter debug: 1.000 scale, 1323.000 stride_in, 1323 stride_out, 1059 standing, 264 overlap, 617 search, 2204 queue, fl32 mode
+[0x1da71a0] main audio filter debug: using audio filter module "scaletempo"
+[0x1da71a0] main audio filter debug: TIMER module_need() : 1.386 ms - Total 1.386 ms / 1 intvls (Avg 1.386 ms)
+[0x1d9b980] main audio output debug: filter(s) 'mpga'->'f32l' 44100 Hz->44100 Hz Stereo->Stereo
+[0x1da6120] main audio filter debug: looking for audio filter module: 14 candidates
+[0x1da6120] mpgatofixed32 audio filter debug: mpga->f32l, bits per sample: 32
+[0x1da6120] main audio filter debug: using audio filter module "mpgatofixed32"
+[0x1da6120] main audio filter debug: TIMER module_need() : 1.728 ms - Total 1.728 ms / 1 intvls (Avg 1.728 ms)
+[0x1d9b980] main audio output debug: conversion pipeline completed
+[0x1d9b980] main audio output debug: filter(s) 'f32l'->'f32l' 44100 Hz->44100 Hz Stereo->Stereo
+[0x1d9b980] main audio output debug: conversion pipeline completed
+[0x1d9b980] main audio output debug: filter(s) 'f32l'->'f32l' 52800 Hz->48000 Hz Stereo->Stereo
+[0x1d991c8] main audio filter debug: looking for audio filter module: 14 candidates
+[0x1d991c8] main audio filter debug: using audio filter module "samplerate"
+[0x1d991c8] main audio filter debug: TIMER module_need() : 3.448 ms - Total 3.448 ms / 1 intvls (Avg 3.448 ms)
+[0x1d9b980] main audio output debug: conversion pipeline completed
+[0x1dfc9c8] main decoder debug: End of audio preroll
+[0x1e076f8] main input debug: Buffering 96%
+[0x1e076f8] main input debug: Buffering 99%
+[0x1e076f8] main input debug: Stream buffering done (1018 ms in 174 ms)
+[0x1e076f8] main input debug: Decoder buffering done in 0 ms
+[0x1d9b980] main audio output warning: PTS is out of range (-9913), dropping buffer
+[0x1d9b980] main audio output warning: PTS is out of range (-35917), dropping buffer
+[0x1da6120] mpgatofixed32 audio filter debug: libmad error: bad main_data_begin pointer
+[0x1d9b980] alsa audio output debug: prepending 2825 zeroes

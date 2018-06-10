@@ -32,6 +32,7 @@ fi
 
 # set source state
 echo "s_$1" >www/status
+cat /dev/null >www/title
 
 # Switch SPDIF input
 in='$I'$1"\r\n"

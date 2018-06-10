@@ -27,10 +27,11 @@ if [ $a == "h" ];then
 	if [ "$b" == "m" ];then
 		amixer  -Dhw:RPiCirrus cget name='HPOUT1L Input 1'|grep values=0 2>&1 >/dev/null
 		if [ $? -eq 1 ];then
-			echo mute
+			echo mute && touch .hmute
 	        	amixer -q  -Dhw:RPiCirrus cset name='HPOUT1L Input 1' None
        			amixer -q  -Dhw:RPiCirrus cset name='HPOUT1R Input 1' None
 		else
+			rm .hmute 2>/dev/null
 			amixer -q  -Dhw:RPiCirrus cset name='HPOUT1L Input 1' EQ1
 			amixer -q  -Dhw:RPiCirrus cset name='HPOUT1R Input 1' EQ2
 		fi
@@ -45,10 +46,11 @@ elif [ $a == "s" ];then
 	        if [ "$b" == "m" ];then
                 amixer  -Dhw:RPiCirrus cget name='AIF2TX1 Input 1'|grep values=0 2>&1 >/dev/null
                 if [ $? -eq 1 ];then
-			echo mute
+			echo mute && touch .smute
                         amixer -q  -Dhw:RPiCirrus cset name='AIF2TX1 Input 1' None
                         amixer -q  -Dhw:RPiCirrus cset name='AIF2TX2 Input 1' None
                 else
+			rm .smute 2>/dev/null
                         amixer -q  -Dhw:RPiCirrus cset name='AIF2TX1 Input 1' EQ1
                         amixer -q  -Dhw:RPiCirrus cset name='AIF2TX2 Input 1' EQ2
                 fi

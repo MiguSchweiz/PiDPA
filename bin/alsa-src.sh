@@ -2,6 +2,7 @@
 # set homedir
 cd "$(dirname "$0")"
 cd ..
+echo $1 >log
 
 # Help
 if [ "$1" == "-h" ];then
