@@ -21,8 +21,9 @@ done <conf/alsa_clients.conf
 # check for ALSA restore
 cat www/status|grep a_ >/dev/null
 if [ $? -eq 1 ];then
-	echo "Restore ALSA settings"
-	sudo alsactl restore
+        # set ALSA input to SPDIF output
+        amixer -q -Dhw:RPiCirrus cset name='EQ1 Input 1' AIF1RX1
+        amixer -q -Dhw:RPiCirrus cset name='EQ2 Input 1' AIF1RX2
 fi
 
 # set source state
