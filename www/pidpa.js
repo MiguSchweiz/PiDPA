@@ -10,7 +10,7 @@ var srun=false;
 
 function stat(){
 	if (restat==false){
-		rstime=6000;
+		rstime=4000;
 		restat=true;
 		return;
 	}
@@ -54,6 +54,8 @@ function stat(){
 		/*t=stats[3];
 		$( "#stat" ).html(t);*/
 		sync=false;	
+		$("#titspk" ).text("Speakers");
+		$("#tithp" ).text("Headphones");
 	});
 }
 
@@ -103,6 +105,16 @@ function setSource(src){
 			selectEQButton("#eq_off");
 		}
 	});
+}
+
+function setVolume(src){
+		jQuery.get(src, function(data) {
+			if (src.match(/cmd=s/g)){
+				$("#titspk" ).text(data);
+			}else{
+				$("#tithp" ).text(data);
+			}
+		});
 }
 
 function setTitleLines(){
@@ -155,7 +167,7 @@ function mouseListeners(){
 	// speaker buttons
 	$( "#splus" ).mousedown(function() {
 		clickVol("#splus");
-		$.post( "pidpa.php?cmd=splus" );
+		setVolume( "pidpa.php?cmd=splus" );
 		//$("#ismute").attr("src","img/speaker_off.png");
 	});
 	$( "#smute" ).mousedown(function() {
@@ -172,12 +184,12 @@ function mouseListeners(){
 	});	
 	$( "#sminus" ).mousedown(function() {
 		clickVol("#sminus");
-		$.post( "pidpa.php?cmd=sminus" );
+		setVolume( "pidpa.php?cmd=sminus" );
 	});
 	// headphone buttons
 	$( "#hplus" ).mousedown(function() {
 		clickVol("#hplus");
-		$.post( "pidpa.php?cmd=hplus" );
+		setVolume( "pidpa.php?cmd=hplus" );
 		//$("#ihmute").attr("src","img/speaker_off.png");
 	});
 	$( "#hmute" ).mousedown(function() {
@@ -194,7 +206,7 @@ function mouseListeners(){
 	});	
 	$( "#hminus" ).mousedown(function() {
 		clickVol("#hminus");
-		$.post( "pidpa.php?cmd=hminus" );
+		setVolume( "pidpa.php?cmd=hminus" );
 	});
 	// EQ
 	$( "#eq_nb" ).mousedown(function() {
@@ -218,6 +230,8 @@ function selectButton(id){
 	resetButtons();
 	checkSync();
 	$( id ).css("border-color","#7D4914");
+	$("#titspk" ).text("Speakers");
+	$("#tithp" ).text("Headphones");
 	//$( id ).css("color","#ffffff");
 }
 
@@ -226,6 +240,8 @@ function selectEQButton(id){
 	$( "#eq_off" ).css("border-color","#FA9127");
 	checkSync();
 	$( id ).css("border-color","#7D4914");
+	$("#titspk" ).text("Speakers");
+	$("#tithp" ).text("Headphones");
 	//$( id ).css("color","#ffffff");
 }
 
