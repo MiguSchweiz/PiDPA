@@ -319,3 +319,4 @@ boundary: 1073741824
 [0x3f4808] mpgatofixed32 audio filter debug: libmad error: bad main_data_begin pointer
 [0x3e79c8] alsa audio output debug: prepending 2782 zeroes
 [0x454270] access_http access debug: New Title=RITA ORA/LIAM PAYNE - FOR YOU
+[0x454270] access_http access debug: New Title=LSD - AUDIO
