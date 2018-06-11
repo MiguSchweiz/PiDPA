@@ -4,7 +4,7 @@
 # description: myapp daemon
 # processname: myapp
 
-DAEMON_PATH="/home/pi/PiDPA/bin"
+DAEMON_PATH="PIDPA_DIR/bin"
 
 DAEMON=./stat.sh
 DAEMONOPTS=""
