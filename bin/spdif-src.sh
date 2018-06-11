@@ -32,6 +32,7 @@ fi
 
 # set source state
 echo "s_$1" >www/status
+./bin/setvlevels.sh
 cat /dev/null >www/title
 
 # Switch SPDIF input

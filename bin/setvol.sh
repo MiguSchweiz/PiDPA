@@ -5,6 +5,8 @@ cd ..
 
 a=$1
 b=$2
+smute=0
+hmute=0
 
 echo $a | egrep "^h$|^s$" >/dev/null || a="-h"
 echo $b | egrep "^m$|^\+$|^-$" >/dev/null || a="-h"
@@ -27,7 +29,7 @@ if [ $a == "h" ];then
 	if [ "$b" == "m" ];then
 		amixer  -Dhw:RPiCirrus cget name='HPOUT1L Input 1'|grep values=0 2>&1 >/dev/null
 		if [ $? -eq 1 ];then
-			echo mute && touch .hmute
+			echo mute && touch .hmute && hmute=1
 	        	amixer -q  -Dhw:RPiCirrus cset name='HPOUT1L Input 1' None
        			amixer -q  -Dhw:RPiCirrus cset name='HPOUT1R Input 1' None
 		else
@@ -46,7 +48,7 @@ elif [ $a == "s" ];then
 	        if [ "$b" == "m" ];then
                 amixer  -Dhw:RPiCirrus cget name='AIF2TX1 Input 1'|grep values=0 2>&1 >/dev/null
                 if [ $? -eq 1 ];then
-			echo mute && touch .smute
+			echo mute && touch .smute && smute=1
                         amixer -q  -Dhw:RPiCirrus cset name='AIF2TX1 Input 1' None
                         amixer -q  -Dhw:RPiCirrus cset name='AIF2TX2 Input 1' None
                 else
@@ -63,4 +65,34 @@ elif [ $a == "s" ];then
 		echo $nv
 	fi
 fi
+
+# set .vlevels
+src=`cat www/status`
+ls .vlevels 2>&1>/dev/null && vl=`cat .vlevels | grep $src`
+echo $vl|egrep "s_|a_" >/dev/null
+if [ $? -eq 1 ];then
+	sm=0
+	hm=1
+	sv=15
+	hv=80
+else
+	sm=`echo $vl | awk -F';' '{ print $2 }'`
+	hm=`echo $vl | awk -F';' '{ print $3 }'`
+	sv=`echo $vl | awk -F';' '{ print $4 }'`
+	hv=`echo $vl | awk -F';' '{ print $5 }'`
+fi
+if [ $a == "s" ] && [ $b == "m" ];then
+	sm=$smute
+elif [ $a == "h" ] && [ $b == "m" ];then
+	hm=$hmute
+elif [ $a == "s" ];then
+	sv=$nv
+elif [ $a == "h" ];then
+	hv=$nv
+fi
+cat .vlevels|grep -v $src";" > .vlevels.sav
+echo $src";"$sm";"$hm";"$sv";"$hv >> .vlevels.sav
+mv .vlevels.sav .vlevels
+
+
 

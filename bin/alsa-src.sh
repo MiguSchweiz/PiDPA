@@ -2,7 +2,6 @@
 # set homedir
 cd "$(dirname "$0")"
 cd ..
-echo $1 >log
 
 # Help
 if [ "$1" == "-h" ];then
@@ -22,13 +21,14 @@ done <conf/alsa_clients.conf
 # check for ALSA restore
 cat www/status|grep a_ >/dev/null
 if [ $? -eq 1 ];then
-        # set ALSA input to SPDIF output
+        # set ALSA to EQ input
         amixer -q -Dhw:RPiCirrus cset name='EQ1 Input 1' AIF1RX1
         amixer -q -Dhw:RPiCirrus cset name='EQ2 Input 1' AIF1RX2
 fi
 
 # set source state
 echo "a_$1" >www/status
+./bin/setvlevels.sh
 
 # start client if any
 [[ $1 == ?(-)+([0-9]) ]] &&

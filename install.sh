@@ -5,14 +5,13 @@ hd=`pwd`
 echo "### check for latest cirrus driver in /boot/config.txt: "
 egrep "rpi-cirrus-wm5102$" /boot/config.txt 
 if [ $? -eq 1 ];then
-	echo "### install latest raspbian release, and add 'dtoverlay=rpi-cirrus-wm5102' to /boot/config.txt"
-	printf "### cirrus driver not present, do you want to continue ? (y/n):"
+	echo "### install latest raspbian release, follow instructions under doc/RPi Linux driver for Cirrus Audio Card.html "
+	printf "### latest cirrus driver not present, do you want to continue ? (y/n):"
 	read a
 	[ "$a" != "y" ] && exit 1
 else
 	echo OK
 fi
-
 
 echo "### set file permissions"
 sudo chown -R pi:pi .

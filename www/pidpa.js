@@ -156,7 +156,7 @@ function mouseListeners(){
 	$( "#splus" ).mousedown(function() {
 		clickVol("#splus");
 		$.post( "pidpa.php?cmd=splus" );
-		$("#ismute").attr("src","img/speaker_off.png");
+		//$("#ismute").attr("src","img/speaker_off.png");
 	});
 	$( "#smute" ).mousedown(function() {
 		clickVol("#smute");
@@ -178,7 +178,7 @@ function mouseListeners(){
 	$( "#hplus" ).mousedown(function() {
 		clickVol("#hplus");
 		$.post( "pidpa.php?cmd=hplus" );
-		$("#ihmute").attr("src","img/speaker_off.png");
+		//$("#ihmute").attr("src","img/speaker_off.png");
 	});
 	$( "#hmute" ).mousedown(function() {
 		clickVol("#hmute")
