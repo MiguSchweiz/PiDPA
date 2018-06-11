@@ -11,6 +11,7 @@ if [ $co2 -ge 300 -o $aq -ge 300 ]; then
 	sudo pkill vlc
 	pkill mplayer
 	pkill aplay
-	./alsa-src.sh 5
+	./alsa-src.sh
+	cvlc --loop ../media/buzzer.wav
 fi
 
