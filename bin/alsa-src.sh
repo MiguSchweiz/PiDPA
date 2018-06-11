@@ -33,6 +33,7 @@ echo "a_$1" >www/status
 # start client if any
 [[ $1 == ?(-)+([0-9]) ]] &&
 cat conf/media.conf |grep -v "#" > conf/.media &&
+# get line in .media specified in $1
 s=`sed "${1}q;d" conf/.media` &&
 $s 2>&1 &
 
