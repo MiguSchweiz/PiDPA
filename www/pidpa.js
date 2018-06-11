@@ -248,6 +248,7 @@ function resetButtons(){
 	$( "#a_2" ).css("border-bottom-color","#ffffff");
 	$( "#a_3" ).css("border-bottom-color","#ffffff");
 	$( "#a_4" ).css("border-bottom-color","#ffffff");
+	$( "#a_5" ).css("border-bottom-color","#ffffff");
 }
 
 function selectStation(id){
