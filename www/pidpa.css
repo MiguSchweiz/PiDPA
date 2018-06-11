@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+.body {
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	border-width: 0px;
+	/*background-color: #FA9127;*/
+	position: absolute;
+}
+
+
+.desktop {
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+	margin: auto;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	border-width: 0px;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-color: #FA9127;
+	background-color: #FFFFFF;
+	max-width: 790px;
+	height:100%;
+}
+
+.statC {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.stat {
+	font-family: "Open Sans";
+	color: #7D4914;
+	font-size: medium;
+	text-align: center;
+	height: 45px;
+	line-height: 45px;
+	width: 100%;
+	overflow: hidden;
+
+}
+.tsrc {
+	padding-top: 0px;
+	margin:auto;
+}
+
+.button{
+	font-family: "Open Sans";
+	text-align: center;
+	color: #FA9127;
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+	border-style: solid;
+	border-color: #FA9127;
+	border-width: 1px;
+}
+
+.tradio {
+	padding-top: 20px;
+	margin:auto;
+}
+
+.cs {
+	border-bottom-style: solid;
+	border-bottom-color: #ffffff;
+	border-bottom-width: 3px;
+}
+
+.titvol {
+	font-family: "Open Sans";
+	text-align: center;
+	color: #FA9127;
+	margin: auto;
+	padding-top: 20px;
+}
+
+.tvol {
+	
+	margin:auto;	
+}
+
+.cvn {
+	font-family: "Open Sans";
+	font-size: medium;
+	text-align: center;
+	width: 60px;
+	height: 55px;
+	line-height: 55px;
+}
+
+.cv {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #FA9127;
+	height: 61px;
+	width: 61px;
+}
+.titeq {
+	font-family: "Open Sans";
+	text-align: center;
+	color: #FA9127;
+	margin: auto;
+	padding-top: 20px;
+}
+.teq {
+	padding-top: 0px;
+	margin:auto;
+	height: 60px;
+}
+
+.measTextTTitle{
+        visibility:hidden;
+        display:none;
+        margin: 0px;
+        border: 0px;
+        padding: 0px;
+        white-space: nowrap;
+        width: auto;
+
+}
+
+
+
+

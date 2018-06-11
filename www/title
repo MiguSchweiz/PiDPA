@@ -1,0 +1,336 @@
+[0x18170c8] main libvlc debug: VLC media player - 2.0.3 Twoflower
+[0x18170c8] main libvlc debug: Copyright © 1996-2012 VLC authors and VideoLAN
+[0x18170c8] main libvlc debug: revision 2.0.2-93-g77aa89e
+[0x18170c8] main libvlc debug: configured with ./configure  '--enable-static' '--build=arm-linux-gnueabihf' 'CFLAGS=-g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security' 'CPPFLAGS=-D_FORTIFY_SOURCE=2' 'CXXFLAGS=-g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security' 'LDFLAGS=-Wl,-z,relro' '--config-cache' '--disable-maintainer-mode' '--disable-silent-rules' '--disable-update-check' '--enable-fast-install' '--prefix=/usr' '--docdir=/usr/share/doc/vlc-nox' '--sysconfdir=/etc' '--with-binary-version=5+deb7u2' '--enable-a52' '--enable-aa' '--enable-bluray' '--enable-bonjour' '--enable-caca' '--enable-dbus' '--enable-dca' '--enable-dirac' '--enable-directfb' '--enable-dvbpsi' '--enable-dvdnav' '--enable-faad' '--enable-flac' '--enable-fluidsynth' '--enable-freetype' '--enable-fribidi' '--enable-gnutls' '--enable-jack' '--enable-kate' '--enable-libass' '--enable-libmpeg2' '--enable-libproxy' '--enable-libxml2' '--enable-lirc' '--enable-live555' '--enable-mad' '--enable-mkv' '--enable-mod' '--enable-mpc' '--enable-mtp' '--enable-mux_ogg' '--enable-ncurses' '--enable-notify' '--enable-ogg' '--enable-oss' '--enable-pulse' '--enable-qt4' '--enable-realrtsp' '--enable-samplerate' '--enable-schroedinger' '--enable-sdl' '--enable-shout' '--enable-skins2' '--enable-smb' '--enable-speex' '--enable-svg' '--enable-taglib' '--enable-theora' '--enable-twolame' '--enable-upnp' '--enable-vcd' '--enable-vcdx' '--enable-vorbis' '--enable-x264' '--enable-zvbi' '--with-kde-solid=/usr/share/kde4/apps/solid/actions/' '--disable-dxva2' '--disable-gnomevfs' '--disable-goom' '--disable-portaudio' '--disable-projectm' '--disable-sqlite' '--disable-telx' '--enable-alsa' '--enable-atmo' '--enable-dc1394' '--enable-dv' '--enable-fbosd' '--enable-libva' '--enable-linsys' '--enable-omxil' '--enable-pvr' '--enable-udev' '--enable-v4l2' '--disable-crystalhd' '--disable-mmx' '--disable-sse' '--disable-neon' '--disable-altivec' 'build_alias=arm-linux-gnueabihf'
+[0x18170c8] main libvlc debug: searching plug-in modules
+[0x18170c8] main libvlc debug: loading plugins cache file /usr/lib/vlc/plugins/plugins.dat
+[0x18170c8] main libvlc debug: recursively browsing `/usr/lib/vlc/plugins'
+[0x18170c8] main libvlc debug: saving plugins cache /usr/lib/vlc/plugins/plugins.dat
+[0x18170c8] main libvlc debug: plug-ins loaded: 410 modules
+[0x18170c8] main libvlc debug: opening config file (/home/pi/.config/vlc/vlcrc)
+[0x18170c8] main libvlc debug: translation test: code is "C"
+[0x18170c8] main libvlc debug: CPU has capabilities FPU 
+[0x18170c8] main libvlc debug: looking for memcpy module: 1 candidate
+[0x18170c8] main libvlc debug: using memcpy module "memcpy"
+[0x1989b68] main input debug: Creating an input for 'Media Library'
+[0x1989b68] main input debug: Input is a meta file: disabling unneeded options
+[0x1989b68] main input debug: using timeshift granularity of 50 MiB, in path '/tmp'
+[0x1989b68] main input debug: `file/xspf-open:///home/pi/.local/share/vlc/ml.xspf' gives access `file' demux `xspf-open' path `/home/pi/.local/share/vlc/ml.xspf'
+[0x1989b68] main input debug: creating demux: access='file' demux='xspf-open' location='/home/pi/.local/share/vlc/ml.xspf' file='/home/pi/.local/share/vlc/ml.xspf'
+[0x182a0a0] main demux debug: looking for access_demux module: 3 candidates
+[0x182a0a0] main demux debug: no access_demux module matching "file" could be loaded
+[0x182a0a0] main demux debug: TIMER module_need() : 6.735 ms - Total 6.735 ms / 1 intvls (Avg 6.735 ms)
+[0x1989b68] main input debug: creating access 'file' location='/home/pi/.local/share/vlc/ml.xspf', path='/home/pi/.local/share/vlc/ml.xspf'
+[0x18aec68] main access debug: looking for access module: 2 candidates
+[0x18aec68] filesystem access debug: opening file `/home/pi/.local/share/vlc/ml.xspf'
+[0x18aec68] main access debug: using access module "filesystem"
+[0x18aec68] main access debug: TIMER module_need() : 2.177 ms - Total 2.177 ms / 1 intvls (Avg 2.177 ms)
+[0x18b0848] main stream debug: Using stream method for AStream*
+[0x18b0848] main stream debug: starting pre-buffering
+[0x18b0848] main stream debug: received first data after 0 ms
+[0x18b0848] main stream debug: pre-buffering done 296 bytes in 0s - 1979 KiB/s
+[0x18b0700] main stream debug: looking for stream_filter module: 7 candidates
+[0x18b0700] main stream debug: no stream_filter module matching "any" could be loaded
+[0x18b0700] main stream debug: TIMER module_need() : 4.575 ms - Total 4.575 ms / 1 intvls (Avg 4.575 ms)
+[0x18b0700] main stream debug: looking for stream_filter module: 1 candidate
+[0x18b0700] main stream debug: using stream_filter module "stream_filter_record"
+[0x18b0700] main stream debug: TIMER module_need() : 1.269 ms - Total 1.269 ms / 1 intvls (Avg 1.269 ms)
+[0x1989b68] main input debug: creating demux: access='file' demux='xspf-open' location='/home/pi/.local/share/vlc/ml.xspf' file='/home/pi/.local/share/vlc/ml.xspf'
+[0x18aed50] main demux debug: looking for demux module: 1 candidate
+[0x18aed50] playlist demux debug: using XSPF playlist reader
+[0x18aed50] main demux debug: using demux module "playlist"
+[0x18aed50] main demux debug: TIMER module_need() : 1.582 ms - Total 1.582 ms / 1 intvls (Avg 1.582 ms)
+[0x18b30c0] main demux meta debug: looking for meta reader module: 2 candidates
+[0x18b30c0] lua demux meta debug: Trying Lua scripts in /home/pi/.local/share/vlc/lua/meta/reader
+[0x18b30c0] lua demux meta debug: Trying Lua scripts in /usr/lib/vlc/lua/meta/reader
+[0x18b30c0] lua demux meta debug: Trying Lua playlist script /usr/lib/vlc/lua/meta/reader/filename.luac
+[0x18b30c0] lua demux meta debug: Trying Lua scripts in /usr/share/vlc/lua/meta/reader
+[0x18b30c0] main demux meta debug: no meta reader module matching "any" could be loaded
+[0x18b30c0] main demux meta debug: TIMER module_need() : 14.724 ms - Total 14.724 ms / 1 intvls (Avg 14.724 ms)
+[0x1989b68] main input debug: `file/xspf-open:///home/pi/.local/share/vlc/ml.xspf' successfully opened
+[0x18a5440] main xml reader debug: looking for xml reader module: 1 candidate
+[0x18a5440] main xml reader debug: using xml reader module "xml"
+[0x18a5440] main xml reader debug: TIMER module_need() : 3.800 ms - Total 3.800 ms / 1 intvls (Avg 3.800 ms)
+[0x18aed50] playlist demux debug: parsed 0 tracks successfully
+[0x1989b68] main input debug: EOF reached
+[0x18aed50] main demux debug: removing module "playlist"
+[0x18b0700] main stream debug: removing module "stream_filter_record"
+[0x18aec68] main access debug: removing module "filesystem"
+[0x1989b68] main input debug: TIMER input launching for 'Media Library' : 34.606 ms - Total 34.606 ms / 1 intvls (Avg 34.606 ms)
+[0x18b0848] main interface debug: looking for interface module: 1 candidate
+[0x18b0848] main interface debug: using interface module "hotkeys"
+[0x18b0848] main interface debug: TIMER module_need() : 1.215 ms - Total 1.215 ms / 1 intvls (Avg 1.215 ms)
+[0x198a850] main interface debug: looking for interface module: 1 candidate
+[0x198a850] inhibit interface error: Failed to connect to the D-Bus session daemon: Unable to autolaunch a dbus-daemon without a $DISPLAY for X11
+[0x198a850] main interface debug: no interface module matching "inhibit,none" could be loaded
+[0x198a850] main interface debug: TIMER module_need() : 1.160 ms - Total 1.160 ms / 1 intvls (Avg 1.160 ms)
+[0x198a850] main interface error: no suitable interface module
+[0x189ec90] main playlist debug: playlist threads correctly activated
+[0x189ec90] main playlist debug: rebuilding array of current - root Playlist
+[0x189ec90] main playlist debug: rebuild done - 0 items, index -1
+[0x189ec90] main playlist debug: adding item `http://stream.srg-ssr.ch/m/drs3/mp3_128' ( http://stream.srg-ssr.ch/m/drs3/mp3_128 )
+[0x189ec90] main playlist debug: no fetch required for (null) (art currently (null))
+[0x74f00620] main interface debug: looking for interface module: 1 candidate
+[0x74f00620] main interface debug: no interface module matching "globalhotkeys,none" could be loaded
+[0x74f00620] main interface debug: TIMER module_need() : 1.859 ms - Total 1.859 ms / 1 intvls (Avg 1.859 ms)
+[0x74f00620] main interface error: no suitable interface module
+[0x18170c8] main libvlc error: interface "globalhotkeys,none" initialization failed
+[0x1829788] main interface debug: looking for interface module: 1 candidate
+[0x1829788] dummy interface: using the dummy interface module...
+[0x1829788] main interface debug: using interface module "dummy"
+[0x1829788] main interface debug: TIMER module_need() : 0.918 ms - Total 0.918 ms / 1 intvls (Avg 0.918 ms)
+[0x189ec90] main playlist debug: processing request item: null, node: Playlist, skip: 0
+[0x189ec90] main playlist debug: rebuilding array of current - root Playlist
+[0x189ec90] main playlist debug: rebuild done - 1 items, index -1
+[0x189ec90] main playlist debug: starting playback of the new playlist item
+[0x189ec90] main playlist debug: resyncing on http://stream.srg-ssr.ch/m/drs3/mp3_128
+[0x189ec90] main playlist debug: http://stream.srg-ssr.ch/m/drs3/mp3_128 is at 0
+[0x189ec90] main playlist debug: creating new input thread
+[0x1837ea0] main input debug: Creating an input for 'http://stream.srg-ssr.ch/m/drs3/mp3_128'
+[0x1837ea0] main input debug: using timeshift granularity of 50 MiB, in path '/tmp'
+[0x1837ea0] main input debug: `http://stream.srg-ssr.ch/m/drs3/mp3_128' gives access `http' demux `' path `stream.srg-ssr.ch/m/drs3/mp3_128'
+[0x1837ea0] main input debug: creating demux: access='http' demux='' location='stream.srg-ssr.ch/m/drs3/mp3_128' file='(null)'
+[0x18a5078] main demux debug: looking for access_demux module: 0 candidates
+[0x18a5078] main demux debug: no access_demux module matched "http"
+[0x18a5078] main demux debug: TIMER module_need() : 0.378 ms - Total 0.378 ms / 1 intvls (Avg 0.378 ms)
+[0x1837ea0] main input debug: creating access 'http' location='stream.srg-ssr.ch/m/drs3/mp3_128', path='(null)'
+[0x18a5160] main access debug: looking for access module: 2 candidates
+[0x18a5160] access_http access debug: asking libproxy about url 'http://stream.srg-ssr.ch/m/drs3/mp3_128'
+[0x18a5160] access_http access debug: libproxy suggest to use 'direct://'
+[0x18a5160] access_http access debug: http: server='stream.srg-ssr.ch' port=80 file='/m/drs3/mp3_128'
+[0x18a5160] main access debug: net: connecting to stream.srg-ssr.ch port 80
+[0x18a5160] main access debug: connection succeeded (socket = 4)
+[0x18a5160] access_http access debug: protocol 'HTTP' answer code 200
+[0x18a5160] access_http access debug: Content-Type: audio/mpeg
+[0x18a5160] access_http access debug: Meta-Info: icy-br: 128
+[0x18a5160] access_http access debug: Meta-Info: ice-audio-info: ice-samplerate=44100;ice-bitrate=128;ice-channels=2
+[0x18a5160] access_http access debug: Meta-Info: icy-br: 128
+[0x18a5160] access_http access debug: Meta-Info: icy-description: Radio SRF 3 - srf3.ch - facebook/srf3 - twitter @srf3
+[0x18a5160] access_http access debug: Icy-Genre: Pop Music
+[0x18a5160] access_http access debug: Icy-Name: SRF 3
+[0x18a5160] access_http access debug: Meta-Info: icy-pub: 0
+[0x18a5160] access_http access debug: Meta-Info: icy-url: http://srf3.ch
+[0x18a5160] access_http access debug: Server: Icecast 2.4.0-kh8
+[0x18a5160] access_http access debug: Connection: Close
+[0x18a5160] access_http access debug: Icy-MetaInt: 16000
+[0x18a5160] access_http access warning: ICY metaint=16000
+[0x18a5160] access_http access: Raw-audio server found, mp3 demuxer selected
+[0x18a5160] access_http access debug: auto re-connect enabled
+[0x18a5160] main access debug: using access module "access_http"
+[0x18a5160] main access debug: TIMER module_need() : 173.602 ms - Total 173.602 ms / 1 intvls (Avg 173.602 ms)
+[0x18ae288] main stream debug: Using stream method for AStream*
+[0x18ae288] main stream debug: starting pre-buffering
+[0x18ae288] main stream debug: received first data after 0 ms
+[0x18ae288] main stream debug: pre-buffering done 1024 bytes in 0s - 10204 KiB/s
+[0x18ae458] main stream debug: looking for stream_filter module: 7 candidates
+[0x18ae458] main stream debug: no stream_filter module matching "any" could be loaded
+[0x18ae458] main stream debug: TIMER module_need() : 0.548 ms - Total 0.548 ms / 1 intvls (Avg 0.548 ms)
+[0x18ae458] main stream debug: looking for stream_filter module: 1 candidate
+[0x18ae458] main stream debug: using stream_filter module "stream_filter_record"
+[0x18ae458] main stream debug: TIMER module_need() : 0.428 ms - Total 0.428 ms / 1 intvls (Avg 0.428 ms)
+[0x1837ea0] main input debug: creating demux: access='http' demux='mp3' location='stream.srg-ssr.ch/m/drs3/mp3_128' file='(null)'
+[0x18a9b90] main demux debug: looking for demux module: 1 candidate
+[0x18a9b90] es demux debug: detected format mpga
+[0x18a9770] main demux packetizer debug: looking for packetizer module: 21 candidates
+[0x18a9770] main demux packetizer debug: using packetizer module "mpeg_audio"
+[0x18a9770] main demux packetizer debug: TIMER module_need() : 9.508 ms - Total 9.508 ms / 1 intvls (Avg 9.508 ms)
+[0x18a9770] mpeg_audio demux packetizer debug: MPGA channels:2 samplerate:44100 bitrate:128
+[0x1837ea0] main input debug: selecting program id=0
+[0x18a9b90] main demux debug: using demux module "es"
+[0x18a9b90] main demux debug: TIMER module_need() : 11.408 ms - Total 11.408 ms / 1 intvls (Avg 11.408 ms)
+[0x18a5950] main decoder debug: looking for decoder module: 30 candidates
+[0x18a5950] main decoder debug: using decoder module "mpeg_audio"
+[0x18a5950] main decoder debug: TIMER module_need() : 6.634 ms - Total 6.634 ms / 1 intvls (Avg 6.634 ms)
+[0x183d388] main demux meta debug: looking for meta reader module: 2 candidates
+[0x183d388] lua demux meta debug: Trying Lua scripts in /home/pi/.local/share/vlc/lua/meta/reader
+[0x183d388] lua demux meta debug: Trying Lua scripts in /usr/lib/vlc/lua/meta/reader
+[0x183d388] lua demux meta debug: Trying Lua playlist script /usr/lib/vlc/lua/meta/reader/filename.luac
+[0x183d388] lua demux meta debug: Trying Lua scripts in /usr/share/vlc/lua/meta/reader
+[0x183d388] main demux meta debug: no meta reader module matching "any" could be loaded
+[0x183d388] main demux meta debug: TIMER module_need() : 2.880 ms - Total 2.880 ms / 1 intvls (Avg 2.880 ms)
+[0x1837ea0] main input debug: `http://stream.srg-ssr.ch/m/drs3/mp3_128' successfully opened
+[0x1837ea0] main input debug: Buffering 0%
+[0x1837ea0] main input debug: Buffering 2%
+[0x18a5950] mpeg_audio decoder debug: MPGA channels:2 samplerate:44100 bitrate:128
+[0x189ec90] main playlist debug: creating audio output
+[0x1837ea0] main input debug: Buffering 5%
+[0x1837ea0] main input debug: Buffering 7%
+[0x1837ea0] main input debug: Buffering 10%
+[0x1837ea0] main input debug: Buffering 13%
+[0x1837ea0] main input debug: Buffering 15%
+[0x1837ea0] main input debug: Buffering 18%
+[0x1837ea0] main input debug: Buffering 20%
+[0x1837ea0] main input debug: Buffering 23%
+[0x1837ea0] main input debug: Buffering 26%
+[0x18389c8] main audio output debug: looking for audio output module: 3 candidates
+[0x1837ea0] main input debug: Buffering 28%
+[0x1837ea0] main input debug: Buffering 31%
+[0x1837ea0] main input debug: Buffering 33%
+[0x1837ea0] main input debug: Buffering 36%
+[0x1837ea0] main input debug: Buffering 39%
+[0x1837ea0] main input debug: Buffering 41%
+[0x1837ea0] main input debug: Buffering 44%
+[0x1837ea0] main input debug: Buffering 47%
+[0x1837ea0] main input debug: Buffering 49%
+[0x1837ea0] main input debug: Buffering 52%
+[0x1837ea0] main input debug: Buffering 54%
+[0x18389c8] pulse audio output debug: using stereo channel map
+[0x18389c8] pulse audio output debug: using library version 2.0.0
+[0x18389c8] pulse audio output debug:  (compiled with version 2.0.0, protocol 26)
+[0x18389c8] pulse audio output error: PulseAudio server connection failure: Connection refused
+[0x18389c8] alsa audio output debug: keeping 2 channels
+[0x1837ea0] main input debug: Buffering 57%
+[0x1837ea0] main input debug: Buffering 60%
+[0x1837ea0] main input debug: Buffering 62%
+[0x1837ea0] main input debug: Buffering 65%
+[0x1837ea0] main input debug: Buffering 67%
+[0x1837ea0] main input debug: Buffering 70%
+[0x1837ea0] main input debug: Buffering 73%
+[0x1837ea0] main input debug: Buffering 75%
+[0x1837ea0] main input debug: Buffering 78%
+[0x1837ea0] main input debug: Buffering 80%
+[0x1837ea0] main input debug: Buffering 83%
+[0x1837ea0] main input debug: Buffering 86%
+[0x1837ea0] main input debug: Buffering 88%
+[0x1837ea0] main input debug: Buffering 91%
+[0x18a5160] access_http access debug: New Title=KYGO FEAT. MIGUEL - REMIND ME TO FORGET
+[0x1837ea0] main input debug: Buffering 94%
+[0x1837ea0] main input debug: Buffering 96%
+[0x1837ea0] main input debug: Buffering 99%
+[0x1837ea0] main input debug: Stream buffering done (1018 ms in 16 ms)
+[0x18389c8] alsa audio output debug: using ALSA device: default
+[0x18389c8] alsa audio output debug:  Plug PCM: Direct Stream Mixing PCM
+Hardware PCM card 0 'RPi-Cirrus' device 0 subdevice 0
+Its setup is:
+  stream       : PLAYBACK
+  access       : MMAP_INTERLEAVED
+  format       : S16_LE
+  subformat    : STD
+  channels     : 2
+  rate         : 48000
+  exact rate   : 48000 (48000/1)
+  msbits       : 16
+  buffer_size  : 4096
+  period_size  : 1024
+  period_time  : 21333
+  tstamp_mode  : ENABLE
+  period_step  : 1
+  avail_min    : 1024
+  period_event : 0
+  start_threshold  : 1
+  stop_threshold   : 1073741824
+  silence_threshold: 0
+  silence_size : 1073741824
+  boundary     : 1073741824
+  appl_ptr     : 0
+  hw_ptr       : 0
+[0x18389c8] alsa audio output debug:  device name   : 
+[0x18389c8] alsa audio output debug:  device ID     : WM5102 AiFi wm5102-aif1-0
+[0x18389c8] alsa audio output debug:  subdevice name: subdevice #0
+[0x18389c8] alsa audio output debug: initial hardware setup:
+ACCESS:  MMAP_INTERLEAVED MMAP_NONINTERLEAVED MMAP_COMPLEX RW_INTERLEAVED RW_NONINTERLEAVED
+FORMAT:  S8 U8 S16_LE S16_BE U16_LE U16_BE S24_LE S24_BE U24_LE U24_BE S32_LE S32_BE U32_LE U32_BE FLOAT_LE FLOAT_BE FLOAT64_LE FLOAT64_BE MU_LAW A_LAW IMA_ADPCM S24_3LE S24_3BE U24_3LE U24_3BE S20_3LE S20_3BE U20_3LE U20_3BE S18_3LE S18_3BE U18_3LE U18_3BE
+SUBFORMAT:  STD
+SAMPLE_BITS: [4 64]
+FRAME_BITS: [4 640000]
+CHANNELS: [1 10000]
+RATE: 48000
+PERIOD_TIME: (21333 21334)
+PERIOD_SIZE: 1024
+PERIOD_BYTES: [512 81920000]
+PERIODS: [2 4]
+BUFFER_TIME: (42666 85334)
+BUFFER_SIZE: [2048 4096]
+BUFFER_BYTES: [1024 327680000]
+TICK_TIME: ALL
+[0x18389c8] alsa audio output debug: resampling from 44100 Hz to 48000 Hz
+[0x18389c8] alsa audio output debug: final HW setup:
+ACCESS:  RW_INTERLEAVED
+FORMAT:  FLOAT_LE
+SUBFORMAT:  STD
+SAMPLE_BITS: 32
+FRAME_BITS: 64
+CHANNELS: 2
+RATE: 48000
+PERIOD_TIME: (21333 21334)
+PERIOD_SIZE: 1024
+PERIOD_BYTES: 8192
+PERIODS: 4
+BUFFER_TIME: (85333 85334)
+BUFFER_SIZE: 4096
+BUFFER_BYTES: 32768
+TICK_TIME: 0
+[0x18389c8] alsa audio output debug: initial software parameters:
+tstamp_mode: NONE
+period_step: 1
+avail_min: 1024
+start_threshold: 1
+stop_threshold: 4096
+silence_threshold: 0
+silence_size: 0
+boundary: 1073741824
+[0x18389c8] alsa audio output debug: final software parameters:
+tstamp_mode: NONE
+period_step: 1
+avail_min: 1024
+start_threshold: 1
+stop_threshold: 4096
+silence_threshold: 0
+silence_size: 0
+boundary: 1073741824
+[0x18389c8] alsa audio output warning: device cannot be paused
+[0x18389c8] alsa audio output debug: Available ALSA PCM devices:
+[0x18389c8] alsa audio output debug: Discard all samples (playback) or generate zero samples (capture) (null)
+[0x18389c8] alsa audio output debug: PulseAudio Sound Server (pulse)
+[0x18389c8] alsa audio output debug: RPi-Cirrus,  Default Audio Device (sysdefault:CARD=RPiCirrus)
+[0x18389c8] main audio output debug: using audio output module "alsa"
+[0x18389c8] main audio output debug: TIMER module_need() : 150.890 ms - Total 150.890 ms / 1 intvls (Avg 150.890 ms)
+[0x18389c8] main audio output debug: output 'f32l' 48000 Hz Stereo frame=1 samples/8 bytes
+[0x18389c8] main audio output debug: mixer 'f32l' 48000 Hz Stereo frame=1 samples/8 bytes
+[0x18389c8] main audio output debug: filter(s) 'f32l'->'f32l' 48000 Hz->48000 Hz Stereo->Stereo
+[0x18389c8] main audio output debug: conversion pipeline completed
+[0x1857a58] main mixer debug: looking for audio mixer module: 2 candidates
+[0x1857a58] main mixer debug: using audio mixer module "float32_mixer"
+[0x1857a58] main mixer debug: TIMER module_need() : 1.301 ms - Total 1.301 ms / 1 intvls (Avg 1.301 ms)
+[0x18389c8] main audio output debug: input 'mpga' 44100 Hz Stereo frame=1152 samples/1053 bytes
+[0x1857af0] main audio filter debug: looking for audio filter module: 1 candidate
+[0x1857af0] scaletempo audio filter debug: format: 44100 rate, 2 nch, 4 bps, fl32
+[0x1857af0] scaletempo audio filter debug: params: 30 stride, 0.200 overlap, 14 search
+[0x1857af0] scaletempo audio filter debug: 1.000 scale, 1323.000 stride_in, 1323 stride_out, 1059 standing, 264 overlap, 617 search, 2204 queue, fl32 mode
+[0x1857af0] main audio filter debug: using audio filter module "scaletempo"
+[0x1857af0] main audio filter debug: TIMER module_need() : 1.335 ms - Total 1.335 ms / 1 intvls (Avg 1.335 ms)
+[0x18389c8] main audio output debug: filter(s) 'mpga'->'f32l' 44100 Hz->44100 Hz Stereo->Stereo
+[0x1845550] main audio filter debug: looking for audio filter module: 14 candidates
+[0x1845550] mpgatofixed32 audio filter debug: mpga->f32l, bits per sample: 32
+[0x1845550] main audio filter debug: using audio filter module "mpgatofixed32"
+[0x1845550] main audio filter debug: TIMER module_need() : 1.627 ms - Total 1.627 ms / 1 intvls (Avg 1.627 ms)
+[0x18389c8] main audio output debug: conversion pipeline completed
+[0x18389c8] main audio output debug: filter(s) 'f32l'->'f32l' 44100 Hz->44100 Hz Stereo->Stereo
+[0x18389c8] main audio output debug: conversion pipeline completed
+[0x18389c8] main audio output debug: filter(s) 'f32l'->'f32l' 52800 Hz->48000 Hz Stereo->Stereo
+[0x185d440] main audio filter debug: looking for audio filter module: 14 candidates
+[0x185d440] main audio filter debug: using audio filter module "samplerate"
+[0x185d440] main audio filter debug: TIMER module_need() : 3.633 ms - Total 3.633 ms / 1 intvls (Avg 3.633 ms)
+[0x18389c8] main audio output debug: conversion pipeline completed
+[0x18a5950] main decoder debug: End of audio preroll
+[0x1837ea0] main input debug: Decoder buffering done in 145 ms
+[0x18389c8] main audio output warning: PTS is out of range (-9922), dropping buffer
+[0x18389c8] main audio output warning: PTS is out of range (-35935), dropping buffer
+[0x1845550] mpgatofixed32 audio filter debug: libmad error: bad main_data_begin pointer
+[0x18389c8] alsa audio output debug: prepending 2827 zeroes
+[0x1845550] mpgatofixed32 audio filter debug: libmad error: bad main_data_begin pointer
+[0x18389c8] main audio output warning: PTS is out of range (-39155), dropping buffer
+[0x1845550] mpgatofixed32 audio filter debug: libmad error: bad main_data_begin pointer
+[0x18a5160] access_http access debug: New Title=Radio SRF 3 - srf3.ch - studio@srf3.ch - facebook/srf3 - twitter @srf3 - instagram/srf3
+[0x18a5160] access_http access debug: New Title=GORILLAZ FEAT. GEORGE BENSON - HUMILITY
+[0x18a5160] access_http access debug: New Title=Radio SRF 3 - srf3.ch - studio@srf3.ch - facebook/srf3 - twitter @srf3 - instagram/srf3
+[0x18a5160] access_http access debug: New Title=THE KILLERS - SOMEBODY TOLD ME
+[0x18a5160] access_http access debug: New Title=Radio SRF 3 - srf3.ch - studio@srf3.ch - facebook/srf3 - twitter @srf3 - instagram/srf3
+[0x18a5160] access_http access debug: New Title=(null)
+[0x18a5160] access_http access debug: New Title=Radio SRF 3 - srf3.ch - studio@srf3.ch - facebook/srf3 - twitter @srf3 - instagram/srf3
+[0x18a5160] access_http access debug: New Title=RIHANNA FEAT. KANYE WEST/PAUL MCCARTNEY - FOURFIVESECONDS
+[0x18a5160] access_http access debug: New Title=Radio SRF 3 - srf3.ch - studio@srf3.ch - facebook/srf3 - twitter @srf3 - instagram/srf3
+[0x18a5160] access_http access debug: New Title=LYKKE LI - DEEP END
+[0x18a5160] access_http access debug: New Title=Radio SRF 3 - srf3.ch - studio@srf3.ch - facebook/srf3 - twitter @srf3 - instagram/srf3
+[0x18a5160] access_http access debug: New Title=SEVEN - ATTITUDE
+[0x18a5160] access_http access debug: New Title=BRUNO MARS FEAT. CARDI B - FINESSE 
