@@ -1,0 +1,48 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	background: #fff;
+	color: #000;
+}
+
+pre {
+	padding: 0.5em;
+	overflow: auto;
+}
+
+pre, code {
+	background: #eee;
+}
+
+nav {
+	padding: 0.2em;
+	display: block;
+	background: #eee;
+	font-size: 0.75em;
+}
+
+a {
+	white-space: nowrap;
+}
+
+code {
+	white-space: pre;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table, th, td {
+	border: 1px solid #000;
+}
+
+th, td {
+	padding-top: 0.2em;
+	padding-bottom: 0.2em;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+
+.centered {
+	text-align: center;
+}

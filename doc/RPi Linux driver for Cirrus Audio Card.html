@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="main.css">
+<title>RPi Linux driver for Wolfson / Cirrus Logic Audio Card</title>
+</head>
+
+<body>
+
+<h1>RPi Linux driver for Wolfson / Cirrus Logic Audio Card</h1>
+
+<nav>Jump to
+<a href="#installation">Installation</a>
+<a href="#configuration">Configuration</a>
+<a href="#troubleshooting">Troubleshooting</a>
+<a href="http://www.horus.com/~hias/cirrus-driver-4.4.html">Old kernel 4.4 driver</a>
+<a href="http://www.horus.com/~hias/">Home</a>
+</nav>
+
+<p>I've been working on a reworked driver, based on Linux kernel 4.9,
+that doesn't require out-of-tree patches to the upstream kernel modules.
+This driver also adds a lot of new features and bugfixes like fixed
+micbias setting on LineIn, exposing of WM8804 status and AES bits
+as ALSA controls and configurable minimum/maximum samplerate limits.</p>
+
+<h2 id="installation">Installation</h2>
+
+<p>The driver is included in official RPi kernels, you can install it with</p>
+<pre><code>sudo rpi-update</code></pre>
+
+<p>Source code is available from the usual place
+<a href="https://github.com/raspberrypi/linux">https://github.com/raspberrypi/linux</a>.</p>
+
+<p>Please note: If you've been compiling from source please switch to the
+official RPi kernel source. I'm no longer maintaining the code in my development
+tree
+<a href="https://github.com/HiassofT/rpi-linux/tree/cirrus-ng-4.9.y" target="_blank">cirrus-ng-4.9.y</a>
+</p>
+
+<h2 id="configuration">Configuration for kernel 4.9</h2>
+
+<h3>Enable the driver</h3>
+<p>Add the following line to <code>/boot/config.txt</code> to enable
+the Cirrus Logic card driver</p>
+<pre><code>dtoverlay=rpi-cirrus-wm5102</code></pre>
+
+<p>Note: MMAP support is already enabled by default in kernel 4.9, you no
+longer need to add the <code>i2s-mmap</code> overlay.</p>
+
+<h3>Setup module dependencies</h3>
+<p>The cirrus driver requires some manually defined module dependencies,
+if you fail to add them the driver won't load properly.</p>
+
+<p>Create a file <code>/etc/modprobe.d/cirrus.conf</code> with the
+following content:</p>
+<pre><code>softdep arizona-spi pre: arizona-ldo1</code></pre>
+
+<h3>Download and install "usecase" mixer scripts</h3>
+
+<p>Download <a href="http://www.horus.com/~hias/tmp/cirrus/cirrus-ng-scripts.tgz">cirrus-ng-scripts.tgz</a>
+and extract it for example in <code>/home/pi/bin</code>.
+</p>
+
+<pre><code>wget http://www.horus.com/~hias/tmp/cirrus/cirrus-ng-scripts.tgz
+mkdir bin
+cd bin
+tar zxf ../cirrus-ng-scripts.tgz</code></pre>
+
+<p>Note: If you had installed the older usecase scripts for kernel 4.4 you need
+to remove them.</p>
+<p>You have to start the appropriate scripts before you can use
+the card. For example:</p>
+
+<pre><code>./Reset_paths.sh
+./Playback_to_Lineout.sh
+./Playback_to_SPDIF.sh
+./Record_from_Linein.sh</code></pre>
+
+<h2>Additional configuration steps<p></p>
+
+</h2><h3>Disable RPi on-board audio device snd-bcm2835</h3>
+<p>On Raspbian the RPi on-board audio device <code>snd-bcm2835</code> is
+enabled by default. When you run <code>aplay -l</code> you'll see
+two cards, the Cirrus card <code>sndrpiwsp</code> and the on-board
+card <code>bcm2835</code>.</p>
+
+<p>If you don't need on-board audio you can disable it by removing
+(or commenting out) the <code>dtparam=audio=on</code> line from <code>/boot/config.txt</code>.</p>
+
+<pre><code>#dtparam=audio=on
+</code></pre>
+
+<h3>Optionally: use fixed card number</h3>
+
+<p>If you don't want to disable snd-bcm2835 or if you also have
+an USB audio device connected you might notice that
+the card numbers under which the drivers register will change.
+Sometimes the Cirrus card will card 0, sometimes on-board audio.
+The card number depends on which driver is registered first, which
+is purely random.</p>
+
+<p>You can manually assign fixed card (slot/index) numbers using
+the <code>slot</code> option of the <code>snd</code> module. For
+example, if you want the Cirrus card always to be the first and
+on-board audio the second one, add the following line to your
+<code>/etc/modprobe.d/cirrus.conf</code> file:</p>
+<p>For kernel 4.9 add this line:</p>
+<pre><code>options snd slots=snd-soc-rpi-cirrus,snd-bcm2835</code></pre>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>
+If something doesn't work as expected please post your questions in
+<a href="https://www.element14.com/community/thread/57975" target="_blank">this thread</a>
+on the element14 site.
+</p>
+<p>In order to track down problems follow the steps below and
+include the URLs to the paste files in your post:</p>
+
+<ol><li>
+<p>Add the following line to <code>/boot/config.txt</code> to
+enable devicetree debugging, then reboot your RPi.</p>
+<pre><code>dtdebug=1</code></pre>
+</li>
+<li>
+<p>Upload your <code>/boot/config.txt</code> file, the
+GPU firmware version, GPU firmware and linux kernel logs
+and the outputs of <code>lsmod</code> and <code>aplay -l</code>.
+The easiest way to do this is by using the <code>paste</code>
+command which is included in Raspbian. Enter the following
+commands and include the URLs that are output on the
+terminal in your post:</p>
+<pre><code>paste /boot/config.txt
+vcgencmd version | paste
+sudo vcdbg log msg 2&gt;&amp;1 | paste
+dmesg | paste
+lsmod | paste
+aplay -l | paste</code></pre>
+</li>
+</ol>
+<hr>
+<a href="http://www.horus.com/~hias/">Home</a>
+
+
+</body></html>
