@@ -1,0 +1,104 @@
+pcm.!default {
+    type plug
+    #slave.pcm "crossfeed";	
+    slave.pcm "dmixer";
+    #slave.pcm "hw:0,0";
+}
+
+pcm.!cf {
+    type plug
+    slave.pcm "crossfeed";
+}
+
+
+pcm.!dmixer  {
+ 	type dmix
+ 	ipc_key 1024
+ 	slave {
+		#pcm "crossfeed";
+		pcm "hw:0,0";
+		period_time 0
+		period_size 1024
+		buffer_size 4096
+		rate 48000
+	}
+	bindings {
+		0 0
+		1 1
+	}
+}
+
+ctl.!dmixer {
+	type hw
+	card 0
+}
+
+pcm.!ladcomp_eq {
+
+    type ladspa
+    #slave.pcm "ladcomp_se4";
+    slave.pcm "crossfeed";	
+
+    path "/usr/lib/ladspa";
+    plugins [{
+        label dj_eq
+        input {
+	# "Lo gain (dB)" input, control, -70 to 6, default 0
+        # "Mid gain (dB)" input, control, -70 to 6, default 0
+        # "Hi gain (dB)" input, control, -70 to 6, default 0
+	controls [0 0 0]
+        }
+    }]
+
+}
+
+pcm.!ladcomp_se4{
+
+    type ladspa
+    slave.pcm "ladcomp_limiter";
+    path "/usr/lib/ladspa";
+    plugins [{
+        label sc1
+        input {
+        # "Attack time (ms)" input, control, 2 to 400, default 101.5
+        # "Release time (ms)" input, control, 2 to 800, default 401
+        # "Threshold level (dB)" input, control, -30 to 0, default 0
+        # "Ratio (1:n)" input, control, 1 to 10, default 1
+        # "Knee radius (dB)" input, control, 1 to 10, default 3.25
+        # "Makeup gain (dB)" input, control, 0 to 24, default 0
+
+        # controls [0 1.5 800 -30 20 3.25 0 12 24]
+	controls  [1.5 800 -30 20 3.25 3 ]	
+        }
+    }]
+
+}
+
+
+pcm.!ladcomp_limiter {
+    type ladspa
+    slave.pcm "plughw:0,0";
+    #slave.pcm "dmixer";
+    path "/usr/lib/ladspa";
+    plugins [{
+        label fastLookaheadLimiter
+        input {
+            #InputGain(Db) -20 -> +20 ; Limit (db) -20 -> 0 ; Release time (s) 0.01 -> 2
+            controls [ 20 0 0.8  ]
+        }
+    }]
+}
+
+pcm.!crossfeed {
+    type ladspa
+    slave.pcm "plughw:0,0";	
+    path "/usr/lib/ladspa";
+    plugins [ {
+        label bs2b
+    input {
+    controls [700 6]
+    #controls [700 4.5]
+    #controls [650 9.5]
+		}
+	} ]
+}
