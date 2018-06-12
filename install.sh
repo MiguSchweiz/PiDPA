@@ -18,7 +18,9 @@ sudo chown -R pi:pi .
 chmod 755 bin/*
 chmod 755 cirrus/*
 sudo chown -R www-data:www-data www
-sudo chmod -R 777 www/* 
+sudo chmod 777 www/* 
+sudo chmod 755 www/img
+sudo chmod 777 www/img/*
 
 echo "### install apache config"
 printf "do you want to install new apache config? (y/n): "

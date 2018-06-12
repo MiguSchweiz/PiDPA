@@ -1,5 +1,5 @@
-cvlc -vv http://stream.srg-ssr.ch/m/drs3/mp3_128
-cvlc -vv http://stream.srg-ssr.ch/m/drsvirus/mp3_128
-cvlc -vv http://www.tm-radio.com:8000/tribalmixes
-cvlc -vv http://live.protonradio.com/
+cvlc -vv -A alsa --alsa-audio-device dmixer http://stream.srg-ssr.ch/m/drs3/mp3_128
+cvlc -vv -A alsa --alsa-audio-device dmixer http://stream.srg-ssr.ch/m/drsvirus/mp3_128
+cvlc -vv -A alsa --alsa-audio-device dmixer http://www.tm-radio.com:8000/tribalmixes
+cvlc -vv -A alsa --alsa-audio-device dmixer http://live.protonradio.com/
 /home/pi/PiDPA/bin/kodi.sh
