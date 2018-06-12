@@ -225,6 +225,8 @@ function selectStation(id){
 		fallbackSrc=actSrc;
 	}
 	actSrc=id;
+	$("#titspk" ).text("Speakers");
+	$("#tithp" ).text("Headphones");
 	$( id ).css("border-bottom-color","#FA9127");
 }
 
