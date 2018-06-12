@@ -2,16 +2,16 @@
 $dir="/home/pi/PiDPA/bin/";
 $cmd=$_REQUEST["cmd"];
 if ($cmd=="s1"){
-	exec("sudo -u pi ".$dir."spdif-src.sh 1");
+	print shell_exec("sudo -u pi ".$dir."spdif-src.sh 1");
 	#print shell_exec("echo p |sudo "+$dir+"spdif-src.sh 1");
 }else if ($cmd=="s2"){
-	exec("echo p |sudo ".$dir."spdif-src.sh 2");
+	print shell_exec("echo p |sudo ".$dir."spdif-src.sh 2");
 	#print shell_exec("echo p |sudo ".$dir."spdif-src.sh 1");
 }else if ($cmd=="s3"){
-	exec("echo p |sudo ".$dir."spdif-src.sh 3");
+	print shell_exec("echo p |sudo ".$dir."spdif-src.sh 3");
 	#print shell_exec("echo p |sudo ".$dir."spdif-src.sh 1");
 }else if ($cmd=="s4"){
-	exec("echo p |sudo ".$dir."spdif-src.sh 4");
+	print shell_exec("echo p |sudo ".$dir."spdif-src.sh 4");
 	#print shell_exec("echo p |sudo ".$dir."spdif-src.sh 1");
 }else if ($cmd=="a1"){
 	exec("sudo -u pi ".$dir."alsa-src.sh 1 >title");

@@ -7,6 +7,8 @@ var sync=false;
 var tScroll=false;
 var lastTitle="";
 var srun=false;
+var actSrc="";
+var fallbackSrc="";
 
 function stat(){
 	if (restat==false){
@@ -83,26 +85,17 @@ function getTitle(){
 function setSource(src){
 	jQuery.get(src, function(data) {
 		//console.log(data);
-		return;
-		vols=data.toString().split(";");
-		if (vols[0]==0){
-			$("#ismute").attr("src","img/speaker_on.png");
-			smute=true;
+		if (data.match(/failed/)){
+			b="#";
+			//console.log(fallbackSrc);
+			selectStation(fallbackSrc);
+			return;
+		}else if (data == ""){
+			selectStation(actSrc);
 		}else{
-			$("#ismute").attr("src","img/speaker_off.png");
-			smute=false;
-		}
-		if (vols[1]==0){
-			$("#ihmute").attr("src","img/speaker_on.png");
-			hmute=true;
-		}else{
-			$("#ihmute").attr("src","img/speaker_off.png");
-			hmute=false;
-		}
-		if (vols[2]==1){
-			selectEQButton("#eq_nb");
-		}else{
-			selectEQButton("#eq_off");
+			b="#";
+			selectButton(b.concat(data));
+			return;
 		}
 	});
 }
@@ -224,11 +217,20 @@ function checkSync(){
 		restat=false;
 	}
 }
-
+function selectStation(id){
+	checkSync();
+	resetButtons();
+	if (actSrc.match(/a_/)){
+		fallbackSrc=actSrc;
+	}
+	actSrc=id;
+	$( id ).css("border-bottom-color","#FA9127");
+}
 
 function selectButton(id){
 	resetButtons();
 	checkSync();
+	actSrc=id;
 	$( id ).css("border-color","#7D4914");
 	$("#titspk" ).text("Speakers");
 	$("#tithp" ).text("Headphones");
@@ -265,12 +267,6 @@ function resetButtons(){
 	$( "#a_3" ).css("border-bottom-color","#ffffff");
 	$( "#a_4" ).css("border-bottom-color","#ffffff");
 	$( "#a_5" ).css("border-bottom-color","#ffffff");
-}
-
-function selectStation(id){
-	checkSync();
-	resetButtons();
-	$( id ).css("border-bottom-color","#FA9127");
 }
 
 function clickVol(id){
