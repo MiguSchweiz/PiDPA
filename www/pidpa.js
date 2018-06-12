@@ -18,7 +18,8 @@ function stat(){
 	}
 	sync=true;
 	rstime=2000;
-	jQuery.get('status.htm', function(d) {
+	jQuery.get("pidpa.php?cmd=state", function(d) {
+		//console.log("stat:");
 		//console.log(d);
 		stats=d.toString().split(";");
 		s=stats[0];
@@ -28,7 +29,7 @@ function stat(){
 		}else{
 			selectStation(h.concat(s));
 		}
-		console.log();
+		//console.log();
 		showEQ(true);
 		sm=stats[2];
 		if (sm==0){
@@ -62,10 +63,10 @@ function stat(){
 }
 
 function getTitle(){
-	jQuery.get('status.htm', function(dat) {
+	jQuery.get("title.htm", function(dat) {
 		//console.log("gettitle");
-		s=dat.toString().split(";");
-		t=s[4];
+		//s=dat.toString().split(";");
+		t=dat //s[4];
 		if ( t != lastTitle){
 			//console.log("new title");
 			lastTitle=t;
