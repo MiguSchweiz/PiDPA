@@ -17,6 +17,22 @@ if [ "$1" == "-h" ];then
         exit 0
 fi
 
+# mute channels
+if [ ! -f .hmute ];then
+	./bin/setvol.sh h m
+	hm=1
+fi
+if [ ! -f .smute ];then
+        ./bin/setvol.sh s m
+        sm=1
+fi
+
+function unmute(){
+	# restore muted channels
+	[ ! -z $hm ] && ./bin/setvol.sh h m
+	[ ! -z $sm ] && ./bin/setvol.sh s m
+}
+
 # Switch SPDIF input
 cs=`cat  www/status`
 in='$I'$1"\r\n"
@@ -30,9 +46,11 @@ while read p; do
 			echo $cs|grep a_>/dev/null
 			if [ $? -eq 0 ]; then
 				echo failed
+				unmute
 				exit 1
 			else
 				echo "s_"$si
+				unmute
 				exit 1	
 			fi
 		fi
@@ -61,4 +79,5 @@ fi
 echo "s_$1" >www/status
 echo "s_$1"
 ./bin/setvlevels.sh
-cat /dev/null >www/title
+unmute
+cat /dev/null >www/title.htm

@@ -13,6 +13,8 @@ if [ "$1" == "-h" ];then
 	exit 0
 fi
 
+[ -z $1 ] && in=0 || in=$1
+
 # kill running players defined in conf/alsa_clients.conf
 while read p; do
   pkill $p
@@ -27,13 +29,14 @@ if [ $? -eq 1 ];then
 fi
 
 # set source state
-echo "a_$1" >www/status
+echo "a_$in" >www/status
 ./bin/setvlevels.sh
+cat /dev/null >www/title.htm
 
 # start client if any
-[[ $1 == ?(-)+([0-9]) ]] &&
+[[ $in == ?(-)+([1-9]) ]] &&
 cat conf/media.conf |grep -v "#" > conf/.media &&
-# get line in .media specified in $1
-s=`sed "${1}q;d" conf/.media` &&
+sed "${in}q;d" conf/.media
+s=`sed "${in}q;d" conf/.media 2>/dev/null` &&
 $s 2>&1 &
 

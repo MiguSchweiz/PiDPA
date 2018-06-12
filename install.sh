@@ -17,13 +17,8 @@ echo "### set file permissions"
 sudo chown -R pi:pi .
 chmod 755 bin/*
 chmod 755 cirrus/*
-
-echo "### Install pidpa-state service"
-cat system/pidpa-state | sed -e "s#PIDPA_DIR#$hd#" >/tmp/temp.txt
-sudo mv /tmp/temp.txt /etc/init.d/pidpa-state
-sudo chmod 755 /etc/init.d/pidpa-state
-sudo update-rc.d pidpa-state defaults 2>/dev/null
-sudo service pidpa-state start
+sudo chown -R www-data:www-data www
+sudo chmod -R 777 www/* 
 
 echo "### install apache config"
 printf "do you want to install new apache config? (y/n): "
