@@ -67,7 +67,7 @@ cat www/status|grep s_ >/dev/null
 if [ $? -eq 1 ];then
 	# kill running players defined in conf/alsa_clients.conf
 	while read p; do
-		pkill $p
+		sudo pkill $p
 	done <conf/alsa_clients.conf
 
 	# set SPDIF input to EQ

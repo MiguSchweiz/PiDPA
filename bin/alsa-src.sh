@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 # set homedir
 cd "$(dirname "$0")"
 cd ..
@@ -17,7 +18,7 @@ fi
 
 # kill running players defined in conf/alsa_clients.conf
 while read p; do
-  pkill $p
+  sudo pkill $p
 done <conf/alsa_clients.conf
 
 # check for ALSA restore
@@ -33,10 +34,16 @@ echo "a_$in" >www/status
 ./bin/setvlevels.sh
 cat /dev/null >www/title.htm
 
+
 # start client if any
-[[ $in == ?(-)+([1-9]) ]] &&
+echo $in | egrep "[1-9]" &&
 cat conf/media.conf |grep -v "#" > conf/.media &&
-sed "${in}q;d" conf/.media
 s=`sed "${in}q;d" conf/.media 2>/dev/null` &&
+
+# pause / play kodi 
+echo $s|grep kodi >/dev/null &&
+[ $? -eq 0 ] && ./bin/kodiRequest.sh play || ./bin/kodiRequest.sh pause &&
+
+# execute media
 $s 2>&1 &
 
