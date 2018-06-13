@@ -39,20 +39,19 @@ in='$I'$1"\r\n"
 echo -e "$in" >> $SPDIF_TTY
 lost=0
 while read p; do
-	echo $p | grep "lost">/dev/null && lost=1
+	echo $p | egrep "lost|0x60">/dev/null && lost=1
 	if [ $lost -eq 1 ];then
+		echo $cs|grep a_>/dev/null
+		if [ $? -eq 0 ]; then
+			echo failed
+			unmute
+			exit 1
+		fi
 		si=`echo $p | grep "Switch" | awk -F'(' '{print $2}'| sed -e "s/)//"`
 		if [ "$si" != "" ];then
-			echo $cs|grep a_>/dev/null
-			if [ $? -eq 0 ]; then
-				echo failed
-				unmute
-				exit 1
-			else
-				echo "s_"$si
-				unmute
-				exit 1	
-			fi
+			echo "s_"$si
+			unmute
+			exit 1	
 		fi
 	else
 		echo $p | grep "0x20">/dev/null
@@ -78,6 +77,10 @@ fi
 # set source state
 echo "s_$1" >www/status
 echo "s_$1"
+
+#pause kodi
+./bin/kodiRequest.sh pause
+
 ./bin/setvlevels.sh
 unmute
 cat /dev/null >www/title.htm

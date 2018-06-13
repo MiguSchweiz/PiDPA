@@ -31,6 +31,10 @@ fi
 
 # set source state
 echo "a_$in" >www/status
+
+#pause kodi
+./bin/kodiRequest.sh pause
+
 ./bin/setvlevels.sh
 cat /dev/null >www/title.htm
 
@@ -42,7 +46,7 @@ s=`sed "${in}q;d" conf/.media 2>/dev/null` &&
 
 # pause / play kodi 
 echo $s|grep kodi >/dev/null &&
-[ $? -eq 0 ] && ./bin/kodiRequest.sh play || ./bin/kodiRequest.sh pause &&
+[ $? -eq 0 ] && ./bin/kodiRequest.sh play
 
 # execute media
 $s 2>&1 &
