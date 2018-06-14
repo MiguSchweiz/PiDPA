@@ -19,6 +19,9 @@ function stat(){
 	sync=true;
 	rstime=2000;
 	jQuery.get("pidpa.php?cmd=state", function(d) {
+		if (restat==false){
+			return;
+		}
 		//console.log("stat:");
 		//console.log(d);
 		stats=d.toString().split(";");
@@ -61,7 +64,11 @@ function stat(){
 		$("#tithp" ).text("Headphones");
 	});
 }
-
+function checkSync(){
+	if (sync==false){
+		restat=false;
+	}
+}
 function getTitle(){
 	jQuery.get("title.htm", function(dat) {
 		//console.log("gettitle");
@@ -84,15 +91,19 @@ function getTitle(){
 }
 
 function setSource(src){
+	console.log("setSource:");
+	console.log(src);
+
 	jQuery.get(src, function(data) {
-		//console.log(data);
+		console.log("setSourceData:");
+		console.log(data);
 		if (data.match(/failed/)){
 			b="#";
 			//console.log(fallbackSrc);
 			selectStation(fallbackSrc);
 			return;
 		}else if (data == ""){
-			selectStation(actSrc);
+			//selectStation(actSrc);
 		}else{
 			b="#";
 			selectButton(b.concat(data));
@@ -213,14 +224,13 @@ function mouseListeners(){
 	});
 }
 
-function checkSync(){
-	if (sync==false){
-		restat=false;
-	}
-}
+
 function selectStation(id){
 	checkSync();
-	resetButtons();
+	var re = new RegExp(actSrc, 'g');
+	if (! id.match(re)){
+		resetButtons();
+	}
 	if (actSrc.match(/a_/)){
 		fallbackSrc=actSrc;
 	}
@@ -231,7 +241,11 @@ function selectStation(id){
 }
 
 function selectButton(id){
-	resetButtons();
+	console.log(id);
+	var re = new RegExp(actSrc, 'g');
+	if (! id.match(re)){
+		resetButtons();
+	}
 	checkSync();
 	actSrc=id;
 	$( id ).css("border-color","#7D4914");
@@ -261,6 +275,7 @@ function showEQ(enable){
 }
 
 function resetButtons(){
+			console.log("resetButtons");
 	$( "#s_1" ).css("border-color","#FA9127");
 	$( "#s_2" ).css("border-color","#FA9127");
 	$( "#s_3" ).css("border-color","#FA9127");
@@ -319,7 +334,7 @@ function rstat(){
 $(document).ready(function() {
 	elementPos();
 	mouseListeners();
-	stat();
+	//stat();
 	rstat();
 	//setInterval(function(){ getTitle(); }, 2000);
 	getTitle();
