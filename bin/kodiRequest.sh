@@ -15,6 +15,7 @@ elif [ "$1" == "pause" ]; then
         curl -s --data-binary '{"jsonrpc": "2.0", "method": "Player.PlayPause", "params": { "playerid": 0 }, "id": 1}' -H 'content-type: application/json;' http://192.168.1.24:8080/jsonrpc
 	exit 0
 fi
+curl -s --data-binary '{"jsonrpc": "2.0", "method": "AudioLibrary.Scan", "id": 1}' -H 'content-type: application/json;' http://192.168.1.24:8080/jsonrpc >/dev/null
 
 echo
 echo "Usage: kodiRequest.sh <play|pause>"
