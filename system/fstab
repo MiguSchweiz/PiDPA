@@ -1,0 +1,6 @@
+proc            /proc           proc    defaults          0       0
+/dev/mmcblk0p1  /boot           vfat    defaults          0       2
+/dev/mmcblk0p2  /               ext4    defaults,noatime  0       1
+# a swapfile is not a swap partition, so no using swapon|off from here on, use  dphys-swapfile swap[on|off]  for that
+UUID=DA22-C828 /mnt/usb0 vfat defaults,auto,umask=000,users,rw 0 0
+
