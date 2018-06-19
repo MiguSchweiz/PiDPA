@@ -2,7 +2,8 @@
 cd "$(dirname "$0")"
 hd=`pwd`
 
-#sudo apt-get install apache2 php7.0 bs2b-ladspa vlc kodi
+#sudo apt-get install apache2 php7.0 bs2b-ladspa vlc kodi eyed3 libid3-tools
+#sudo pip install mutagen
 
 echo "### check for latest cirrus driver in /boot/config.txt: "
 egrep "rpi-cirrus-wm5102$" /boot/config.txt 
