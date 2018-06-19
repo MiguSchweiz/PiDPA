@@ -1,0 +1,5 @@
+git clone -b 'master' --single-branch --depth 1 https://github.com/MiguSchweiz/PiDPA.git
+git config credential.helper store
+git add <file>
+git commit -m ""
+git push origin master
