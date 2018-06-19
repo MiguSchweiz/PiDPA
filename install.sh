@@ -2,7 +2,7 @@
 cd "$(dirname "$0")"
 hd=`pwd`
 
-#sudo apt-get install apache2 php7.0 bs2b-ladspa vlc
+#sudo apt-get install apache2 php7.0 bs2b-ladspa vlc kodi
 
 echo "### check for latest cirrus driver in /boot/config.txt: "
 egrep "rpi-cirrus-wm5102$" /boot/config.txt 
@@ -50,8 +50,11 @@ if [ $? -eq 1 ];then
 	sudo mount /mnt/usb0
 fi
 
-
+echo
+echo "### start kodi and do:"
+echo "cp system/kodi.userdata.advancedsettings.xml ~/.kodi/userdata/advancedsettings.xml"
 
 echo "### Add line to /etc/sudoers: "
 echo "%pi ALL=(ALL) NOPASSWD: ALL"
+echo
 echo "### reboot !!!"
