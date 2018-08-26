@@ -47,6 +47,7 @@
 .statC {
 	margin-left: 10px;
 	margin-right: 10px;
+	cursor: default;
 }
 
 .stat {
@@ -58,7 +59,7 @@
 	line-height: 45px;
 	width: 100%;
 	overflow: hidden;
-
+	cursor: default;
 }
 .tsrc {
 	padding-top: 0px;
@@ -75,6 +76,7 @@
 	border-style: solid;
 	border-color: #FA9127;
 	border-width: 1px;
+	cursor: default;
 }
 
 .tradio {
@@ -94,6 +96,7 @@
 	color: #FA9127;
 	margin: auto;
 	padding-top: 20px;
+	cursor: default;
 }
 
 .tvol {
