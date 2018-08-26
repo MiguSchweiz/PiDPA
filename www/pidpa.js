@@ -223,7 +223,9 @@ function mouseListeners(){
 		$.post( "pidpa.php?cmd=eq_off" );
 	});
 	$( "#stat" ).mousedown(function() {
-		$.post( "pidpa.php?cmd=playPause" );
+		if (actSrc.localeCompare("#a_5")==0){
+			$.post( "pidpa.php?cmd=playPause" );
+		}
 	});
 }
 
