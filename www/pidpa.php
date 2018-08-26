@@ -51,6 +51,8 @@ if ($cmd=="s1"){
 	exec("sudo -u pi ".$dir."eq.sh on");
 }else if ($cmd=="state"){
 	print shell_exec("sudo -u pi ".$dir."getstate.sh");
+}else if ($cmd=="playPause"){
+	shell_exec("sudo -u pi ".$dir."kodiRequest.sh");
 }
 
 ?>

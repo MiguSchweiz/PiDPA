@@ -222,6 +222,9 @@ function mouseListeners(){
 		selectEQButton("#eq_off");
 		$.post( "pidpa.php?cmd=eq_off" );
 	});
+	$( "#stat" ).mousedown(function() {
+		$.post( "pidpa.php?cmd=playPause" );
+	});
 }
 
 
