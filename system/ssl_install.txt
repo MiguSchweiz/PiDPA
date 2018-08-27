@@ -1,0 +1,18 @@
+openssl genrsa -des3 -out myCA.key 2048
+openssl req -x509 -new -nodes -key myCA.key -sha256 -days 1825 -out myCA.pem
+# iimport myCA.pem 
+openssl genrsa -out pidpa.key 2048
+openssl req -new -key pidpa.key -out pidpa.csr
+
+vi pidpa.ext
+authorityKeyIdentifier=keyid,issuer
+basicConstraints=CA:FALSE
+keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = pidpa
+DNS.2 = 192.168.1.24
+
+openssl x509 -req -in pidpa.csr -CA myCA.pem -CAkey myCA.key -CAcreateserial -out pidpa.crt -days 1825 -sha256 -extfile pidpa.ext
+

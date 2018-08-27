@@ -1,6 +1,7 @@
 var resizing=false;
 var smute=false;
 var hmute=false;
+var eq1=false;
 var restat=true;
 var rstime=2000;
 var sync=false;
@@ -52,11 +53,7 @@ function stat(){
 		}
 		eq=stats[1];
 		//console.log("eq:"+eq)
-		if (eq==0){
-			selectEQButton("#eq_nb");
-		}else{
-			selectEQButton("#eq_off");
-		}
+		selectEQ1Button(eq);
 		/*t=stats[3];
 		$( "#stat" ).html(t);*/
 		sync=false;	
@@ -80,7 +77,7 @@ function getTitle(){
 			$( "#stat" ).html(t);
 			$( "#measCurrent" ).css("width","auto");
 			$( "#measCurrent" ).html(t);
-			
+			notifyMe();
 			$("#stat").css("text-indent","0px");
 			tScroll=false;
 			//scrollCurrentTitle(0,0,-1);
@@ -215,12 +212,13 @@ function mouseListeners(){
 	});
 	// EQ
 	$( "#eq_nb" ).mousedown(function() {
-		selectEQButton("#eq_nb");
-		$.post( "pidpa.php?cmd=eq_nb" );
-	});
-	$( "#eq_off" ).mousedown(function() {
-		selectEQButton("#eq_off");
-		$.post( "pidpa.php?cmd=eq_off" );
+		if (!eq1){
+			selectEQ1Button(0);
+			$.post( "pidpa.php?cmd=eq_nb" );
+		}else{
+			selectEQ1Button(1);
+			$.post( "pidpa.php?cmd=eq_off" );
+		}
 	});
 	$( "#stat" ).mousedown(function() {
 		if (actSrc.localeCompare("#a_5")==0){
@@ -259,11 +257,16 @@ function selectButton(id){
 	//$( id ).css("color","#ffffff");
 }
 
-function selectEQButton(id){
-	$( "#eq_nb" ).css("border-color","#FA9127");
-	$( "#eq_off" ).css("border-color","#FA9127");
+function selectEQ1Button(state){
+	if ( state==0 ){
+		$( "#eq_nb" ).css("border-color","#7D4914");
+		eq1=true;
+	}else{
+		$( "#eq_nb" ).css("border-color","#FA9127");
+		eq1=false;
+	}	
 	checkSync();
-	$( id ).css("border-color","#7D4914");
+	//$( id ).css("border-color","#7D4914");
 	$("#titspk" ).text("Speakers");
 	$("#tithp" ).text("Headphones");
 	//$( id ).css("color","#ffffff");
@@ -334,6 +337,31 @@ $(window).resize(function(){
 function rstat(){
 	stat();
 	setTimeout(function(){rstat();},rstime);
+}
+
+// request permission on page load
+document.addEventListener('DOMContentLoaded', function () {
+  if (!Notification) {
+    alert('Desktop notifications not available in your browser. Try Chromium.'); 
+    return;
+  }
+
+  if (Notification.permission !== "granted")
+    Notification.requestPermission();
+});
+
+function notifyMe() {
+  if (Notification.permission !== "granted")
+    Notification.requestPermission();
+  else {
+    var notification = new Notification(lastTitle);
+
+    notification.onclick = function () {
+      window.open("http://stackoverflow.com/a/13328397/1269037");      
+    };
+
+  }
+
 }
 
 $(document).ready(function() {
