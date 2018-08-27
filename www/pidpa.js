@@ -351,16 +351,17 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function notifyMe() {
-  if (Notification.permission !== "granted")
-    Notification.requestPermission();
-  else {
-    var notification = new Notification(lastTitle);
-
-    notification.onclick = function () {
-      window.open("http://stackoverflow.com/a/13328397/1269037");      
-    };
-
-  }
+	
+	if ( lastTitle.length > 4 ){
+		navigator.serviceWorker.register('sw.js');
+		Notification.requestPermission(function(result) {
+		  if (result === 'granted') {
+			navigator.serviceWorker.ready.then(function(registration) {
+			  registration.showNotification(lastTitle,{"icon": "img/raspberry-pi.png"});
+			});
+		  }
+		});
+	}
 
 }
 
