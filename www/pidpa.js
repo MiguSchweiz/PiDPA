@@ -7,6 +7,7 @@ var rstime=2000;
 var sync=false;
 var tScroll=false;
 var lastTitle="";
+var lastNotif="";
 var srun=false;
 var actSrc="";
 var fallbackSrc="";
@@ -352,12 +353,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function notifyMe() {
 	
-	if ( lastTitle.length > 4 ){
+	if ( lastTitle.length > 7 && lastTitle.localeCompare(lastNotif)!=0 && !lastTitle.match(/instagram/) ){
 		navigator.serviceWorker.register('sw.js');
 		Notification.requestPermission(function(result) {
 		  if (result === 'granted') {
 			navigator.serviceWorker.ready.then(function(registration) {
-			  registration.showNotification(lastTitle,{"icon": "img/raspberry-pi.png"});
+			  registration.showNotification("PiDPA",{"icon": "img/raspberry-pi.png",body: lastTitle});
+			  lastNotif=lastTitle;
 			});
 		  }
 		});
