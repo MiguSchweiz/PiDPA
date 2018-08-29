@@ -1,5 +1,5 @@
 # general
-sudo apt-get install apache2 php7.0 bs2b-ladspa vlc kodi eyed3 libid3-tools
+sudo apt-get install apache2 php7.0 bs2b-ladspa vlc kodi eyed3 libid3-tools swh-plugins
 
 # ladspa-dsp for digital room correction
 git clone -b 'master' --single-branch --depth 1 https://github.com/bmc0/dsp
