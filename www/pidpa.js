@@ -68,7 +68,7 @@ function checkSync(){
 	}
 }
 function getTitle(){
-	jQuery.get("title.htm", function(dat) {
+	jQuery.get("title.htm", { "_": $.now() },function(dat) {
 		//console.log("gettitle");
 		//s=dat.toString().split(";");
 		t=dat //s[4];
