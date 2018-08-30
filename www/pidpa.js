@@ -358,8 +358,13 @@ function notifyMe() {
 		Notification.requestPermission(function(result) {
 		  if (result === 'granted') {
 			navigator.serviceWorker.ready.then(function(registration) {
-			  registration.showNotification("PiDPA",{"icon": "img/raspberry-pi.png",body: lastTitle});
-			  lastNotif=lastTitle;
+				if ( lastTitle.match(/ - /) ){
+					var lt=lastTitle.split(" - ");
+					registration.showNotification(lt[0],{"icon": "img/raspberry-pi.png",body: lt[1]});
+				}else{	
+					registration.showNotification("PiDPA",{"icon": "img/raspberry-pi.png",body: lastTitle});
+				}
+				lastNotif=lastTitle;
 			});
 		  }
 		});
