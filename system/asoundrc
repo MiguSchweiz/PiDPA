@@ -1,8 +1,11 @@
 pcm.!default {
     type plug
-    #slave.pcm "crossfeed";	
-    slave.pcm "dmixer";
-    #slave.pcm "hw:0,0";
+    slave.pcm "hw:1,1,0";
+}
+
+ctl.!default {
+        type hw
+        card 1
 }
 
 pcm.!cf {
@@ -11,82 +14,205 @@ pcm.!cf {
 }
 
 
-pcm.!dmixer  {
+pcm.!dmixer {
  	type dmix
- 	ipc_key 1024
+    	ipc_key 10240
+    	ipc_perm 0666
+
  	slave {
 		#pcm "crossfeed";
+		#pcm "ladcomp";
 		pcm "hw:0,0";
-		period_time 0
-		period_size 1024
-		buffer_size 4096
-		rate 48000
-	}
-	bindings {
-		0 0
-		1 1
+		channels 2;
+		period_time 0;
+		period_size 1024;
+		buffer_size 4096;
+		rate 44100
 	}
 }
 
+pcm.!aldmixer  {
+        type dmix
+        ipc_key 10241
+        slave {
+                pcm "hw:1,1,0";
+                channels 2;
+                #period_time 0;
+                #period_size 1024;
+                #buffer_size 4096;
+                rate 48000
+        }
+}
 ctl.!dmixer {
-	type hw
-	card 0
+        type hw
+        card 0
 }
 
-pcm.!ladcomp_eq {
+ctl.!aldmixer {
+        type hw
+        card 1
+}
 
-    type ladspa
-    #slave.pcm "ladcomp_se4";
-    slave.pcm "crossfeed";	
+pcm.quad {
+    type multi
+    slaves.a.pcm "out"
+    slaves.a.channels 4
+    slaves.b.pcm "dmix:1,0"
+    slaves.b.channels 4
+    bindings.0 { slave a; channel 0; }
+    bindings.1 { slave a; channel 1; }
+    bindings.2 { slave a; channel 0; }
+    bindings.3 { slave a; channel 1; }
+    bindings.4 { slave b; channel 0; }
+    bindings.5 { slave b; channel 1; }
+    bindings.6 { slave b; channel 0; }
+    bindings.7 { slave b; channel 1; }
+}
+ctl.quad {
+    type hw;
+    card 0;
+}
 
-    path "/usr/lib/ladspa";
-    plugins [{
-        label dj_eq
-        input {
-	# "Lo gain (dB)" input, control, -70 to 6, default 0
-        # "Mid gain (dB)" input, control, -70 to 6, default 0
-        # "Hi gain (dB)" input, control, -70 to 6, default 0
-	controls [0 0 0]
+pcm.ttable {
+    type route;
+    slave.pcm "quad";
+    ttable.0.0 1;
+    ttable.1.1 1;
+    ttable.0.2 1;
+    ttable.1.3 1;
+    ttable.0.4 1;
+    ttable.1.5 1;
+    ttable.0.6 1;
+    ttable.1.7 1;
+}
+
+ctl.ttable {
+    type hw;
+    card 0;
+}
+
+pcm.!both {
+  type route;
+  slave.pcm {
+      type multi;
+      slaves.a.pcm "out";
+      slaves.b.pcm "norm";
+      slaves.a.channels 2;
+      slaves.b.channels 2;
+      bindings.0.slave a;
+      bindings.0.channel 0;
+      bindings.1.slave a;
+      bindings.1.channel 1;
+
+      bindings.2.slave b;
+      bindings.2.channel 0;
+      bindings.3.slave b;
+      bindings.3.channel 1;
+      #bindings.4.slave b;
+      #bindings.4.channel 2;
+      #bindings.5.slave b;
+      #bindings.5.channel 3;
+  }
+
+  ttable.0.0 1;
+  ttable.1.1 1;
+
+  ttable.0.2 1; # front left
+  ttable.1.3 1; # front right
+  #ttable.0.4 1; # copy front left to rear left
+  #ttable.1.5 1; # copy front right to rear right
+}
+
+pcm.!play {
+        type plug
+        slave {
+                pcm both
         }
-    }]
-
 }
 
-pcm.!ladcomp_se4{
 
-    type ladspa
-    slave.pcm "ladcomp_limiter";
-    path "/usr/lib/ladspa";
-    plugins [{
-        label sc1
-        input {
-        # "Attack time (ms)" input, control, 2 to 400, default 101.5
-        # "Release time (ms)" input, control, 2 to 800, default 401
-        # "Threshold level (dB)" input, control, -30 to 0, default 0
-        # "Ratio (1:n)" input, control, 1 to 10, default 1
-        # "Knee radius (dB)" input, control, 1 to 10, default 3.25
-        # "Makeup gain (dB)" input, control, 0 to 24, default 0
+ctl.!both {
+  type hw;
+  card 0;
+}
 
-        # controls [0 1.5 800 -30 20 3.25 0 12 24]
-	controls  [1.5 800 -30 20 3.25 3 ]	
+
+
+pcm.!out {
+	type plug
+	slave{
+		pcm "dmix:1,0,0"
+		channels 2 
+	}
+}	
+
+ctl.!out {
+        type dmix
+        card 0
+}
+
+pcm.!out1 {
+        type plug
+	slave{
+                pcm "dmix:1,0,1"
+                channels 2
         }
-    }]
-
 }
 
 
+ctl.!out1 {
+        type dmix
+        card 1
+}
+
+
+pcm.norm {
+	type plug;
+	slave.pcm "ladcomp";
+
+}
+
+pcm.!ladcomp {
+    type plug
+    slave.pcm "ladcomp_compressor";
+}
+
+ctl.!ladcomp {
+        type hw
+        card 0
+}
+
+
+pcm.!ladcomp_compressor {
+  type ladspa
+  slave.pcm "ladcomp_limiter";
+  #slave.pcm "plughw:0,0";
+  #slave.pcm "dmixer";
+  path "/usr/lib/ladspa";
+  plugins [
+      {
+          label dysonCompress
+          input {
+              #peak limit, release time, fast ratio, ratio
+              controls [0 1 0.5 0.99]
+          }
+      }
+  ]
+}
 pcm.!ladcomp_limiter {
-    type ladspa
-    slave.pcm "plughw:0,0";
-    #slave.pcm "dmixer";
-    path "/usr/lib/ladspa";
-    plugins [{
-        label fastLookaheadLimiter
-        input {
-            #InputGain(Db) -20 -> +20 ; Limit (db) -20 -> 0 ; Release time (s) 0.01 -> 2
-            controls [ 20 0 0.8  ]
-        }
-    }]
+	type ladspa
+	slave.pcm "out1";
+	path "/usr/lib/ladspa";
+	plugins [
+      	{
+        	label fastLookaheadLimiter
+        	input {
+        	#InputGain(Db) -20 -> +20 ; Limit (db) -20 -> 0 ; Release time (s) 0.01 -> 2
+        	#also possible... 20 0 0.8
+        	controls [ 10 0 2  ]
+         	}
+      	}
+ 	]
 }
 
 pcm.!crossfeed {

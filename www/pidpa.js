@@ -353,7 +353,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function notifyMe() {
 	
-	if ( lastTitle.length > 7 && lastTitle.localeCompare(lastNotif)!=0 && !lastTitle.match(/instagram/) ){
+	if ( lastTitle.length > 7 && lastTitle.localeCompare(lastNotif)!=0 && !lastTitle.match(/SRF/) ){
 		navigator.serviceWorker.register('sw.js');
 		Notification.requestPermission(function(result) {
 		  if (result === 'granted') {

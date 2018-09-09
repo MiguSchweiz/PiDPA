@@ -10,3 +10,17 @@ cd dsp
 ./configure
 make &&make install
 
+# carla ladspa host
+#
+
+# as root
+git clone https://github.com/falkTX/Carla.git
+cd Carla
+
+vi sources/Makefile.mk
+BASE_OPTS  = -O3 -ffast-math -mtune=arm7 -fdata-sections -ffunction-sections
+
+export HOSTTYPE=arm7
+
+make
+make install
