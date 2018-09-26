@@ -1,11 +1,11 @@
 pcm.!default {
     type plug
-    slave.pcm "hw:1,1,0";
+    slave.pcm "hw:hw";
 }
 
 ctl.!default {
         type hw
-        card 1
+        card 0
 }
 
 pcm.!cf {
@@ -31,67 +31,12 @@ pcm.!dmixer {
 	}
 }
 
-pcm.!aldmixer  {
-        type dmix
-        ipc_key 10241
-        slave {
-                pcm "hw:1,1,0";
-                channels 2;
-                #period_time 0;
-                #period_size 1024;
-                #buffer_size 4096;
-                rate 48000
-        }
-}
 ctl.!dmixer {
         type hw
         card 0
 }
 
-ctl.!aldmixer {
-        type hw
-        card 1
-}
-
-pcm.quad {
-    type multi
-    slaves.a.pcm "out"
-    slaves.a.channels 4
-    slaves.b.pcm "dmix:1,0"
-    slaves.b.channels 4
-    bindings.0 { slave a; channel 0; }
-    bindings.1 { slave a; channel 1; }
-    bindings.2 { slave a; channel 0; }
-    bindings.3 { slave a; channel 1; }
-    bindings.4 { slave b; channel 0; }
-    bindings.5 { slave b; channel 1; }
-    bindings.6 { slave b; channel 0; }
-    bindings.7 { slave b; channel 1; }
-}
-ctl.quad {
-    type hw;
-    card 0;
-}
-
-pcm.ttable {
-    type route;
-    slave.pcm "quad";
-    ttable.0.0 1;
-    ttable.1.1 1;
-    ttable.0.2 1;
-    ttable.1.3 1;
-    ttable.0.4 1;
-    ttable.1.5 1;
-    ttable.0.6 1;
-    ttable.1.7 1;
-}
-
-ctl.ttable {
-    type hw;
-    card 0;
-}
-
-pcm.!both {
+pcm.!multi {
   type route;
   slave.pcm {
       type multi;
@@ -126,17 +71,9 @@ pcm.!both {
 pcm.!play {
         type plug
         slave {
-                pcm both
+                pcm multi
         }
 }
-
-
-ctl.!both {
-  type hw;
-  card 0;
-}
-
-
 
 pcm.!out {
 	type plug
@@ -148,7 +85,7 @@ pcm.!out {
 
 ctl.!out {
         type dmix
-        card 0
+        card 1
 }
 
 pcm.!out1 {
@@ -186,8 +123,6 @@ ctl.!ladcomp {
 pcm.!ladcomp_compressor {
   type ladspa
   slave.pcm "ladcomp_limiter";
-  #slave.pcm "plughw:0,0";
-  #slave.pcm "dmixer";
   path "/usr/lib/ladspa";
   plugins [
       {
