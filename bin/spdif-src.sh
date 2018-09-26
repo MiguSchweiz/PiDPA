@@ -64,10 +64,8 @@ done </dev/ttyACM0
 # check for ALSA restore
 cat www/status|grep s_ >/dev/null
 if [ $? -eq 1 ];then
-	# kill running players defined in conf/alsa_clients.conf
-	while read p; do
-		sudo pkill $p
-	done <conf/alsa_clients.conf
+	# kill running players
+	ps -ef|grep dmixer|grep -v grep|awk -F' ' '{print $2}'|xargs kill
 
 	# set SPDIF input to EQ
         amixer -q -Dhw:RPiCirrus cset name='EQ1 Input 1' AIF2RX1

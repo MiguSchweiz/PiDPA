@@ -16,10 +16,8 @@ fi
 
 [ -z $1 ] && in=0 || in=$1
 
-# kill running players defined in conf/alsa_clients.conf
-while read p; do
-  sudo pkill $p
-done <conf/alsa_clients.conf
+# kill running players
+ps -ef|grep dmixer|grep -v grep|awk -F' ' '{print $2}'|xargs kill
 
 # check for ALSA restore
 cat www/status|grep a_ >/dev/null
