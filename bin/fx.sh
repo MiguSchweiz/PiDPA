@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+#set -x
 # set homedir
 cd "$(dirname "$0")"
 cd ..

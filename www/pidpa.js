@@ -2,6 +2,9 @@ var resizing=false;
 var smute=false;
 var hmute=false;
 var eq1=false;
+var fx={};
+fx['1']=false;
+fx['2']=false;
 var restat=true;
 var rstime=2000;
 var sync=false;
@@ -11,6 +14,7 @@ var lastNotif="";
 var srun=false;
 var actSrc="";
 var fallbackSrc="";
+
 
 function stat(){
 	if (restat==false){
@@ -25,14 +29,14 @@ function stat(){
 			return;
 		}
 		//console.log("stat:");
-		//console.log(d);
+		console.log(d);
 		stats=d.toString().split(";");
 		s=stats[0];
-		h="#";
+		x="#";
 		if ( s.match(/s/g)){
-			selectButton(h.concat(s));
+			selectButton(x.concat(s));
 		}else{
-			selectStation(h.concat(s));
+			selectStation(x.concat(s));
 		}
 		//console.log();
 		showEQ(true);
@@ -52,11 +56,9 @@ function stat(){
 			$("#ihmute").attr("src","img/speaker_off.png");
 			hmute=false;
 		}
-		eq=stats[1];
-		//console.log("eq:"+eq)
-		selectEQ1Button(eq);
-		/*t=stats[3];
-		$( "#stat" ).html(t);*/
+		selectEQ1Button(stats[1]);
+		selectFXButton("#fx1",JSON.parse(stats[4]));
+		selectFXButton("#fx2",JSON.parse(stats[5]));
 		sync=false;	
 		$("#titspk" ).text("Speakers");
 		$("#tithp" ).text("Headphones");
@@ -221,6 +223,26 @@ function mouseListeners(){
 			$.post( "pidpa.php?cmd=eq_off" );
 		}
 	});
+	//FX
+	$( "#fx1" ).mousedown(function() {
+		console.log(fx['1']);
+		if (!fx['1']){
+			selectFXButton("#fx1",true);
+			$.post( "pidpa.php?cmd=fx1_on" );
+		}else{
+			selectFXButton("#fx1",false);
+			$.post( "pidpa.php?cmd=fx1_off" );
+		}
+	});
+	$( "#fx2" ).mousedown(function() {
+		if (!fx['2']){
+			selectFXButton("#fx2",true);
+			$.post( "pidpa.php?cmd=fx2_on" );
+		}else{
+			selectFXButton("#fx2",false);
+			$.post( "pidpa.php?cmd=fx2_off" );
+		}
+	});
 	$( "#stat" ).mousedown(function() {
 		if (actSrc.localeCompare("#a_5")==0){
 			$.post( "pidpa.php?cmd=playPause" );
@@ -230,6 +252,7 @@ function mouseListeners(){
 
 
 function selectStation(id){
+	console.log(id);
 	checkSync();
 	var re = new RegExp(actSrc, 'g');
 	if (! id.match(re)){
@@ -245,7 +268,7 @@ function selectStation(id){
 }
 
 function selectButton(id){
-	console.log(id);
+	//console.log(id);
 	var re = new RegExp(actSrc, 'g');
 	if (! id.match(re)){
 		resetButtons();
@@ -272,6 +295,17 @@ function selectEQ1Button(state){
 	$("#tithp" ).text("Headphones");
 	//$( id ).css("color","#ffffff");
 }
+
+function selectFXButton(id,state){
+	fxnr=id.substr(3,1);
+	if ( state==true ){
+		$( id ).css("border-color","#7D4914");
+	}else{
+		$( id ).css("border-color","#FA9127");
+	}
+	fx[fxnr]=state;
+}
+
 
 function showEQ(enable){
 	if (enable){

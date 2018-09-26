@@ -49,6 +49,14 @@ if ($cmd=="s1"){
 	exec("sudo -u pi ".$dir."eq.sh off");
 }else if ($cmd=="eq_nb"){
 	exec("sudo -u pi ".$dir."eq.sh on");
+}else if ($cmd=="fx1_on"){
+	exec("sudo -u pi ".$dir."fx.sh norm on");
+}else if ($cmd=="fx1_off"){
+	exec("sudo -u pi ".$dir."fx.sh norm off");
+}else if ($cmd=="fx2_on"){
+	exec("sudo -u pi ".$dir."fx.sh cf on");
+}else if ($cmd=="fx2_off"){
+	exec("sudo -u pi ".$dir."fx.sh cf off");
 }else if ($cmd=="state"){
 	print shell_exec("sudo -u pi ".$dir."getstate.sh");
 }else if ($cmd=="playPause"){
