@@ -8,6 +8,14 @@ cd ..
 
 fx=`cat .fx`
 
+if [ "$1" == "init" ]; then
+	ps -ef|grep -v grep|grep 'alsa://plughw:1,1'>/dev/null
+	[ $? -eq 0 ] && exit
+	exec >/dev/null
+	cvlc alsa://plughw:1,1 -A alsa --alsa-audio-device $fx 2>&1 &
+	exit
+fi
+
 if [ "$fx" != "norm_cf" ];then
 	if ([ "$1" != "$fx" ] && [ "$2" == "off" ]) || ([ "$1" == "$fx" ] && [ "$2" == "on" ]);then
 		exit

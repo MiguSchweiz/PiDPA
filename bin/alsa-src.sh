@@ -1,5 +1,5 @@
 #!/bin/bash
-#set -x
+set -x
 # set homedir
 cd "$(dirname "$0")"
 cd ..
@@ -17,15 +17,15 @@ fi
 [ -z $1 ] && in=0 || in=$1
 
 # kill running players
-ps -ef|grep dmixer|grep -v grep|awk -F' ' '{print $2}'|xargs kill
+ps -ef|grep dmixer|grep -v grep|grep -v default|awk -F' ' '{print $2}'|xargs kill
 pkill kodiTitle.sh
 
 # check for ALSA restore
 cat www/status|grep a_ >/dev/null
 if [ $? -eq 1 ];then
-        # set ALSA to EQ input
-        amixer -q -Dhw:RPiCirrus cset name='EQ1 Input 1' AIF1RX1
-        amixer -q -Dhw:RPiCirrus cset name='EQ2 Input 1' AIF1RX2
+        # remove spdif capture
+        amixer -q -Dhw:RPiCirrus cset name='AIF1TX1 Input 1' None
+        amixer -q -Dhw:RPiCirrus cset name='AIF1TX2 Input 1' None
 fi
 
 # set source state
@@ -50,3 +50,7 @@ echo $s|grep kodi >/dev/null &&
 # execute media
 $s 2>&1 &
 
+# check if routes are set
+sleep 3
+./bin/fx.sh init
+./bin/routeSpdif.sh

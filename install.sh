@@ -38,7 +38,8 @@ if [ "$a" == "y" ];then
 fi
 
 echo "### install alsa config"
-cp system/asoundrc $HOME/.asoundrc
+ln -s PiDPA/system/asoundrc $HOME/.asoundrc
+#cp system/asoundrc $HOME/.asoundrc
 
 echo  "### init alsa"
 ./bin/init-alsa.sh
