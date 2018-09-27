@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+#set -x
 # set homedir
 cd "$(dirname "$0")"
 cd ..
@@ -18,6 +18,7 @@ fi
 
 # kill running players
 ps -ef|grep dmixer|grep -v grep|awk -F' ' '{print $2}'|xargs kill
+pkill kodiTitle.sh
 
 # check for ALSA restore
 cat www/status|grep a_ >/dev/null
