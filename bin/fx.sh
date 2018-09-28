@@ -12,7 +12,7 @@ if [ "$1" == "init" ]; then
 	ps -ef|grep -v grep|grep 'alsa://plughw:1,1'>/dev/null
 	[ $? -eq 0 ] && exit
 	exec >/dev/null
-	cvlc alsa://plughw:1,1 -A alsa --alsa-audio-device $fx 2>&1 &
+	cvlc alsa://plughw:1,1 --file-caching=0 --sout-mux-caching=0 -A alsa --alsa-audio-device $fx 2>&1 &
 	exit
 fi
 
@@ -59,5 +59,5 @@ echo $target
 
 exec >/dev/null
 
-cvlc alsa://plughw:1,1 -A alsa --alsa-audio-device $target 2>&1 &
+cvlc alsa://plughw:1,1 --file-caching=0 --sout-mux-caching=0 -A alsa --alsa-audio-device $target 2>&1 &
 

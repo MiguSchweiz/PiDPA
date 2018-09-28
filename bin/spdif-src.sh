@@ -69,10 +69,11 @@ if [ $? -eq 1 ];then
 	pkill kodiTitle.sh
 
 	# set SPDIF input to EQ
-        #amixer -q -Dhw:RPiCirrus cset name='EQ1 Input 1' AIF2RX1
-        #amixer -q -Dhw:RPiCirrus cset name='EQ2 Input 1' AIF2RX2
-	amixer -q -Dhw:RPiCirrus cset name='AIF1TX1 Input 1' AIF2RX1
-        amixer -q -Dhw:RPiCirrus cset name='AIF1TX2 Input 1' AIF2RX2
+        amixer -q -Dhw:RPiCirrus cset name='EQ1 Input 1' AIF2RX1
+        amixer -q -Dhw:RPiCirrus cset name='EQ2 Input 1' AIF2RX2
+	# fx mode
+	#amixer -q -Dhw:RPiCirrus cset name='AIF1TX1 Input 1' AIF2RX1
+        #amixer -q -Dhw:RPiCirrus cset name='AIF1TX2 Input 1' AIF2RX2
 fi
 
 # set source state

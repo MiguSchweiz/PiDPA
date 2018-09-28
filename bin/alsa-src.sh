@@ -24,8 +24,11 @@ pkill kodiTitle.sh
 cat www/status|grep a_ >/dev/null
 if [ $? -eq 1 ];then
         # remove spdif capture
-        amixer -q -Dhw:RPiCirrus cset name='AIF1TX1 Input 1' None
-        amixer -q -Dhw:RPiCirrus cset name='AIF1TX2 Input 1' None
+        #amixer -q -Dhw:RPiCirrus cset name='AIF1TX1 Input 1' None
+        #amixer -q -Dhw:RPiCirrus cset name='AIF1TX2 Input 1' None
+	#set alsa to eq
+	amixer -q -Dhw:RPiCirrus cset name='EQ1 Input 1' AIF1RX1
+	amixer -q -Dhw:RPiCirrus cset name='EQ2 Input 1' AIF1RX2
 fi
 
 # set source state
@@ -53,4 +56,4 @@ $s 2>&1 &
 # check if routes are set
 sleep 3
 ./bin/fx.sh init
-./bin/routeSpdif.sh
+#./bin/routeSpdif.sh
