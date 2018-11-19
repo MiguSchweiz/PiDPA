@@ -60,8 +60,8 @@ function stat(){
 		selectFXButton("#fx1",JSON.parse(stats[4]));
 		selectFXButton("#fx2",JSON.parse(stats[5]));
 		sync=false;	
-		$("#titspk" ).text("Speakers");
-		$("#tithp" ).text("Headphones");
+		$("#titspk" ).text("Speakers / Headphones DacMagic");
+		$("#tithp" ).text("Headphones Rpi");
 	});
 }
 function checkSync(){
@@ -262,8 +262,8 @@ function selectStation(id){
 		fallbackSrc=actSrc;
 	}
 	actSrc=id;
-	$("#titspk" ).text("Speakers");
-	$("#tithp" ).text("Headphones");
+	$("#titspk" ).text("Speakers / Headphones DacMagic");
+	$("#tithp" ).text("Headphones Rpi");
 	$( id ).css("border-bottom-color","#FA9127");
 }
 
@@ -276,8 +276,8 @@ function selectButton(id){
 	checkSync();
 	actSrc=id;
 	$( id ).css("border-color","#7D4914");
-	$("#titspk" ).text("Speakers");
-	$("#tithp" ).text("Headphones");
+	$("#titspk" ).text("Speakers / Headphones DacMagic");
+	$("#tithp" ).text("Headphones Rpi");
 	//$( id ).css("color","#ffffff");
 }
 
@@ -291,8 +291,8 @@ function selectEQ1Button(state){
 	}	
 	checkSync();
 	//$( id ).css("border-color","#7D4914");
-	$("#titspk" ).text("Speakers");
-	$("#tithp" ).text("Headphones");
+	$("#titspk" ).text("Speakers / Headphones DacMagic");
+	$("#tithp" ).text("Headphones Rpi");
 	//$( id ).css("color","#ffffff");
 }
 
