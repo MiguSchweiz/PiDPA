@@ -45,16 +45,21 @@ if [ $a == "h" ];then
 		echo $nv
 	fi
 elif [ $a == "s" ];then
-	        if [ "$b" == "m" ];then
-                amixer  -Dhw:RPiCirrus cget name='AIF2TX1 Input 1'|grep values=0 2>&1 >/dev/null
-                if [ $? -eq 1 ];then
+	if [ "$b" == "m" ];then
+                # amixer  -Dhw:RPiCirrus cget name='AIF2TX1 Input 1'|grep values=0 2>&1 >/dev/null
+		ls .smute 2>&1 >/dev/null
+                if [ $? -eq 2 ];then
 			touch .smute && smute=1
-                        amixer -q  -Dhw:RPiCirrus cset name='AIF2TX1 Input 1' None
-                        amixer -q  -Dhw:RPiCirrus cset name='AIF2TX2 Input 1' None
+                        # amixer -q  -Dhw:RPiCirrus cset name='AIF2TX1 Input 1' None
+                        # amixer -q  -Dhw:RPiCirrus cset name='AIF2TX2 Input 1' None
+			# switch on headhones on dacmagic
+			echo -n -e '\xA0\x01\x01\xA2'>/dev/ttyUSB0
                 else
 			rm .smute 2>/dev/null
-                        amixer -q  -Dhw:RPiCirrus cset name='AIF2TX1 Input 1' EQ1
-                        amixer -q  -Dhw:RPiCirrus cset name='AIF2TX2 Input 1' EQ2
+                        # amixer -q  -Dhw:RPiCirrus cset name='AIF2TX1 Input 1' EQ1
+                        # amixer -q  -Dhw:RPiCirrus cset name='AIF2TX2 Input 1' EQ2
+			# switch off headhones on dacmagic
+			echo -n -e '\xA0\x01\x00\xA1'>/dev/ttyUSB0
                 fi
         else
 		vol=`amixer -Dhw:RPiCirrus cget name='AIF2TX1 Input 1 Volume'| grep ": values"|awk -F'=' '{print $2}'`
