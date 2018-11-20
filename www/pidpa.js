@@ -45,7 +45,7 @@ function stat(){
 			$("#ismute").attr("src","img/speaker_on.png");
 			smute=true;
 		}else{
-			$("#ismute").attr("src","img/speaker_off.png");
+			$("#ismute").attr("src","img/headphones.jpg");
 			smute=false;
 		}
 		hm=stats[3];
@@ -183,7 +183,7 @@ function mouseListeners(){
 			smute=true;
 		}else{
 			$.post( "pidpa.php?cmd=sunmute" );
-			$("#ismute").attr("src","img/speaker_off.png");
+			$("#ismute").attr("src","img/headphones.jpg");
 			smute=false;
 		}
 	});	
