@@ -2,7 +2,7 @@
 cd "$(dirname "$0")"
 hd=`pwd`
 
-#sudo apt-get install apache2 php7.0 bs2b-ladspa vlc kodi eyed3 libid3-tools ladspa-sdk libtool libfftw3-dev fftw3
+sudo apt-get install apache2 php7.0 bs2b-ladspa vlc kodi eyed3 libid3-tools ladspa-sdk libtool libfftw3-dev fftw3
 #sudo pip install mutagen
 
 echo "### check for latest cirrus driver in /boot/config.txt: "
@@ -51,6 +51,10 @@ if [ $? -eq 1 ];then
 	sudo echo "UUID=DA22-C828 /mnt/usb0 vfat defaults,auto,umask=000,users,rw 0 0" >>/etc/fstab
 	sudo mount /mnt/usb0
 fi
+
+echo "### create raveloxmidi startup script"
+sudo cp system/raveloxmidi.service /etc/systemd/system/raveloxmidi.service
+sudo systemctl start raveloxmidi.service
 
 echo
 echo "### start kodi and do:"
