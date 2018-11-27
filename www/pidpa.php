@@ -47,6 +47,8 @@ if ($cmd=="s1"){
 	exec("sudo -u pi ".$dir."setvol.sh h m");
 }else if ($cmd=="eq_off"){
 	exec("sudo -u pi ".$dir."eq.sh off");
+}else if ($cmd=="tg_amp"){
+	exec("sudo -u pi ".$dir."midiToggleAmp.py");
 }else if ($cmd=="eq_nb"){
 	exec("sudo -u pi ".$dir."eq.sh on");
 }else if ($cmd=="fx1_on"){

@@ -1,5 +1,5 @@
 # general
-sudo apt-get install apache2 php7.0 bs2b-ladspa vlc kodi eyed3 libid3-tools swh-plugins
+sudo apt-get install apache2 php7.0 bs2b-ladspa vlc kodi eyed3 libid3-tools swh-plugins avahi-daemon avahi-utils libavahi-glib-dev libavahi-client-dev libavahi-client3
 
 # ladspa-dsp for digital room correction
 git clone -b 'master' --single-branch --depth 1 https://github.com/bmc0/dsp
@@ -24,3 +24,13 @@ export HOSTTYPE=arm7
 
 make
 make install
+
+# pimidi rtp-midi
+git clone https://github.com/ravelox/pimidi.git
+cd pimidi/raveloxmidi
+./autogen.sh
+./configure
+make
+make install
+
+

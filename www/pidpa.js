@@ -223,7 +223,12 @@ function mouseListeners(){
 			$.post( "pidpa.php?cmd=eq_off" );
 		}
 	});
+	
 	//FX
+	$( "#tg_amp" ).mousedown(function() {
+		clickVol("#tg_amp");
+		$.post( "pidpa.php?cmd=tg_amp" );
+	});
 	$( "#fx1" ).mousedown(function() {
 		console.log(fx['1']);
 		if (!fx['1']){
