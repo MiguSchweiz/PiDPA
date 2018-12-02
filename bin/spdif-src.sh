@@ -39,6 +39,7 @@ in='$I'$1"\r\n"
 echo -e "$in" >> $SPDIF_TTY
 lost=0
 while read p; do
+	echo $p
 	echo $p | egrep "lost|0x60">/dev/null && lost=1
 	if [ $lost -eq 1 ];then
 		echo $cs|grep a_>/dev/null
@@ -54,7 +55,7 @@ while read p; do
 			exit 1	
 		fi
 	else
-		echo $p | grep "0x20">/dev/null
+		echo $p | egrep '0x20|0x24'>/dev/null
 		if [ $? -eq 0 ]; then
 			break
 		fi

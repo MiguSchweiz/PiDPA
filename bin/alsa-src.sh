@@ -54,6 +54,6 @@ echo $s|grep kodi >/dev/null &&
 $s 2>&1 &
 
 # check if routes are set
-sleep 3
-./bin/fx.sh init
+#sleep 3
+#./bin/fx.sh init
 #./bin/routeSpdif.sh

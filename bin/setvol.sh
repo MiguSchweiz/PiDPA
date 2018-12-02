@@ -64,7 +64,7 @@ elif [ $a == "s" ];then
         else
 		vol=`amixer -Dhw:RPiCirrus cget name='AIF2TX1 Input 1 Volume'| grep ": values"|awk -F'=' '{print $2}'`
 		nv=`expr $vol $b 2`
-		[ $nv -ge 0 ] &&
+		[ $nv -lt 0 ] && nv=0
 		amixer -q -Dhw:RPiCirrus cset name='AIF2TX1 Input 1 Volume' $nv
 		amixer -q -Dhw:RPiCirrus cset name='AIF2TX2 Input 1 Volume' $nv
 		echo $nv
