@@ -1,6 +1,9 @@
 pcm.!default {
         type plug
         slave{
+		format S32_LE
+		#rate 44100
+		#pcm "dsp"
                 pcm "hw:0,0"
                 channels 2
         }
@@ -13,9 +16,83 @@ ctl.!default {
 
 pcm.!dmixer {
         type plug
-        slave{
-                pcm "dmix:1,0"
+        slave.pcm "clear"
+}
+
+pcm.!splitout {
+    type plug
+    slave.pcm {
+        type multi
+        slaves {
+            a { channels 2 pcm "clear" }
+            b { channels 2 pcm "dsp" }
+        }
+        bindings {
+            0 { slave a channel 0 }
+            1 { slave a channel 1 }
+            2 { slave b channel 0 }
+            3 { slave b channel 1 }
+        }
+
+    }
+    ttable [
+        [ 1 0 1 0 ]
+        [ 0 1 0 1 ]
+    ]
+}
+
+pcm.!clear {
+	type plug
+	slave{
+		pcm "dmix:1,0,0"
+		channels 2
+	}
+}
+
+pcm.!norm_drc {
+	type plug
+	slave {
+		format FLOAT
+		rate 48000
+		channels 2
+		pcm {
+			type ladspa
+			path "/usr/lib/ladspa"
+			playback_plugins [{
+				label "ladspa_dsp:norm_drc"
+			}]
+			slave.pcm {
+				type plug
+				slave {
+					pcm "hw:0,0"
+					rate 48000
+					channels 2
+				}
+			}
+		}
+	}
+}
+pcm.!drc {
+        type plug
+        slave {
+                format FLOAT
+                rate 48000
                 channels 2
+                pcm {
+                        type ladspa
+                        path "/usr/lib/ladspa"
+                        playback_plugins [{
+                                label "ladspa_dsp:drc"
+                        }]
+                        slave.pcm {
+                                type plug
+                                slave {
+                                        pcm "hw:0,0"
+                                        rate 48000
+                                        channels 2
+                                }
+                        }
+                }
         }
 }
 
@@ -27,6 +104,8 @@ pcm.norm {
 pcm.!ladnorm {
 	type ladspa
 	slave.pcm "plughw:0,0";
+	#slave.pcm "default"
+	#slave.pcm "dmixr"
 	path "/usr/lib/ladspa";
 	plugins [
       	{

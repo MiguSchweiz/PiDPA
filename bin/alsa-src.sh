@@ -17,7 +17,7 @@ fi
 [ -z $1 ] && in=0 || in=$1
 
 # kill running players
-ps -ef|grep dmixer|grep -v grep|grep -v default|awk -F' ' '{print $2}'|xargs kill
+ps -ef|grep dmixer|grep -v grep|grep -v default|awk -F' ' '{print $2}'|xargs kill -9
 pkill kodiTitle.sh
 
 # check for ALSA restore

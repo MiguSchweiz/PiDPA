@@ -3,7 +3,7 @@ sudo apt-get install apache2 php7.0 bs2b-ladspa vlc kodi eyed3 libid3-tools swh-
 
 # ladspa-dsp for digital room correction
 git clone -b 'master' --single-branch --depth 1 https://github.com/bmc0/dsp
-apt-get install libtool ladspa-sdk libfftw3-dev 
+apt-get install libtool ladspa-sdk libfftw3-dev libsndfile-dev
 wget http://http.us.debian.org/debian/pool/main/z/zita-convolver/libzita-convolver-dev_3.1.0-4_armhf.deb
 dpkg -i libzita-convolver-dev_3.1.0-4_armhf.deb
 cd dsp

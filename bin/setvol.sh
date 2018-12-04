@@ -61,6 +61,7 @@ elif [ $a == "s" ];then
 			# switch off headhones on dacmagic
 			echo -n -e '\xA0\x01\x00\xA1'>/dev/ttyUSB0
                 fi
+		./bin/fx.sh checkdrc
         else
 		vol=`amixer -Dhw:RPiCirrus cget name='AIF2TX1 Input 1 Volume'| grep ": values"|awk -F'=' '{print $2}'`
 		nv=`expr $vol $b 2`

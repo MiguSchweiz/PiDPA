@@ -16,6 +16,17 @@ if [ "$1" == "init" ]; then
 	sleep 1
 	cvlc alsa://plughw:1,1 --file-caching=0 --sout-mux-caching=0 -A alsa --alsa-audio-device $fx 2>&1 &
 	exit
+else if [ "$1" == "checkdrc" ]; then
+	target=$fx
+	if [ ! -f ./.smute ]; then
+ 	        [ "$target" = "norm" ] && target="norm_drc"
+        	[ "$target" = "default" ] && target="drc"
+	fi
+	ps -ef|grep plughw|grep -v grep|awk -F' ' '{print $2}'|xargs kill 2>/dev/null
+	cvlc alsa://plughw:1,1 --file-caching=0 --sout-mux-caching=0 -A alsa --alsa-audio-device $target 2>&1 &
+        exit
+fi
+	
 fi
 
 if [ "$fx" != "norm_cf" ];then
@@ -36,9 +47,7 @@ if [ "$1" != "" ];then
 else
 	exit
 fi
-echo 1
 [ -z "$2" ] && exit
-echo 2
 
 if [ "$2" == "on" ];then
 	if [ "$fx" == "default" ] || [ "$fx" == "" ]; then
@@ -58,6 +67,12 @@ fi
 
 echo $target > .fx
 echo $target
+
+# check for headphones active and use no DRC
+if [ ! -f ./.smute ]; then
+	[ "$target" = "norm" ] && target="norm_drc"
+	[ "$target" = "default" ] && target="drc"
+fi
 
 exec >/dev/null
 
