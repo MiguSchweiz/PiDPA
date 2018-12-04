@@ -53,13 +53,19 @@ if [ $? -eq 1 ];then
 	sudo mount /mnt/usb0
 fi
 
-echo "### create raveloxmidi startup script"
-sudo cp system/raveloxmidi.service /etc/systemd/system/raveloxmidi.service
-sudo systemctl start raveloxmidi.service
+echo "### create startup script"
+sudo cp system/pidpastartup.service /etc/systemd/system/pidpastartup.service
+sudo systemctl enable pidpastartup.service
+sudo systemctl start pidpastartup.service
+
+echo
+echo "### install ladspa dsp config:"
+mkdir -p /home/pi/.config/ladspa_dsp
+cp system/dsp/* /home/pi/.config/ladspa_dsp/
+
 
 echo
 echo "### start kodi and do:"
-echo "cp system/kodi.userdata.advancedsettings.xml ~/.kodi/userdata/advancedsettings.xml"
 
 echo "### Add line to /etc/sudoers: "
 echo "%pi ALL=(ALL) NOPASSWD: ALL"
