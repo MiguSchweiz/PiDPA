@@ -1,0 +1,5 @@
+# This is a comment
+input_channels=2
+output_channels=2
+LC_NUMERIC=C
+effects_chain=zita_convolver 4096 8192 ~/convolver/Stereo48000ERB.wav
