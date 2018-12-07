@@ -113,7 +113,7 @@ pcm.!ladnorm {
           	input {
               	#peak limit, release time, fast ratio, ratio
               	#controls [0 1 1 1]
-		controls [0 1 0.5 0.99]
+		controls [-6 1 0.5 0.99]
           	}
       	}
       	#{

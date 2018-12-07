@@ -33,4 +33,10 @@ cd pimidi/raveloxmidi
 make
 make install
 
+# ladspa multiband comp
+git clone https://github.com/logiconcepts819/ladspa-mbandcomp.git
+cd ladspa-mbandcomp
+make -f Makefile.unix
+cp mbandcomp.so /usr/lib/ladspa/
+
 
