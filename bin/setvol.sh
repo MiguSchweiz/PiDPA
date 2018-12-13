@@ -7,9 +7,12 @@ a=$1
 b=$2
 smute=0
 hmute=0
+hp=0
+
+echo "$a $b" >>/tmp/vol.log
 
 echo $a | egrep "^h$|^s$" >/dev/null || a="-h"
-echo $b | egrep "^m$|^\+$|^-$" >/dev/null || a="-h"
+echo $b | egrep "^m$|^\+$|^-$|^hp$" >/dev/null || a="-h"
 
 # Help
 if [ "$a" == "-h" ];then
@@ -45,23 +48,29 @@ if [ $a == "h" ];then
 		echo $nv
 	fi
 elif [ $a == "s" ];then
-	if [ "$b" == "m" ];then
-                # amixer  -Dhw:RPiCirrus cget name='AIF2TX1 Input 1'|grep values=0 2>&1 >/dev/null
-		ls .smute 2>&1 >/dev/null
-                if [ $? -eq 2 ];then
+	if [ "$b" = "m" ];then
+                amixer  -Dhw:RPiCirrus cget name='AIF2TX1 Input 1'|grep values=0 2>&1 >/dev/null
+                if [ $? -eq 1 ];then
 			touch .smute && smute=1
-                        # amixer -q  -Dhw:RPiCirrus cset name='AIF2TX1 Input 1' None
-                        # amixer -q  -Dhw:RPiCirrus cset name='AIF2TX2 Input 1' None
-			# switch on headhones on dacmagic
-			echo -n -e '\xA0\x01\x01\xA2'>/dev/ttyUSB0
+                        amixer -q  -Dhw:RPiCirrus cset name='AIF2TX1 Input 1' None
+                        amixer -q  -Dhw:RPiCirrus cset name='AIF2TX2 Input 1' None
                 else
 			rm .smute 2>/dev/null
-                        # amixer -q  -Dhw:RPiCirrus cset name='AIF2TX1 Input 1' EQ1
-                        # amixer -q  -Dhw:RPiCirrus cset name='AIF2TX2 Input 1' EQ2
-			# switch off headhones on dacmagic
-			echo -n -e '\xA0\x01\x00\xA1'>/dev/ttyUSB0
+                        amixer -q  -Dhw:RPiCirrus cset name='AIF2TX1 Input 1' EQ1
+                        amixer -q  -Dhw:RPiCirrus cset name='AIF2TX2 Input 1' EQ2
                 fi
-		./bin/fx.sh checkdrc
+		exit 1
+	elif [ "$b" = "hp" ];then
+                ls .hp 2>&1 >/dev/null
+                if [ $? -eq 2 ];then
+                        touch .hp && hp=1
+                        # switch on headhones on dacmagic
+                        echo -n -e '\xA0\x01\x01\xA2'>/dev/ttyUSB0
+                else
+                        rm .hp 2>/dev/null
+                        echo -n -e '\xA0\x01\x00\xA1'>/dev/ttyUSB0
+                fi
+                ./bin/fx.sh checkdrc
         else
 		vol=`amixer -Dhw:RPiCirrus cget name='AIF2TX1 Input 1 Volume'| grep ": values"|awk -F'=' '{print $2}'`
 		nv=`expr $vol $b 2`
@@ -91,6 +100,8 @@ if [ $a == "s" ] && [ $b == "m" ];then
 	sm=$smute
 elif [ $a == "h" ] && [ $b == "m" ];then
 	hm=$hmute
+elif [ $a == "s" ] && [ $b == "hp" ];then
+        sm=$hp
 elif [ $a == "s" ];then
 	sv=$nv
 elif [ $a == "h" ];then

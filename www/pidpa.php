@@ -34,9 +34,9 @@ if ($cmd=="s1"){
 }else if ($cmd=="sminus"){
 	print shell_exec("sudo -u pi ".$dir."setvol.sh s -");
 }else if ($cmd=="smute"){
-	exec("sudo -u pi ".$dir."setvol.sh s m");
+	exec("sudo -u pi ".$dir."setvol.sh s hp");
 }else if ($cmd=="sunmute"){
-	exec("sudo -u pi ".$dir."setvol.sh s m");
+	exec("sudo -u pi ".$dir."setvol.sh s hp");
 }else if ($cmd=="hplus"){
 	print shell_exec("sudo -u pi ".$dir."setvol.sh h +");
 }else if ($cmd=="hminus"){

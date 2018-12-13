@@ -35,7 +35,12 @@ function unmute(){
 
 # Switch SPDIF input
 cs=`cat  www/status`
-in='$I'$1"\r\n"
+if [ $1 -eq 1 ];then
+	s=7
+else
+	s=$1
+fi
+in='$I'$s"\r\n"
 echo -e "$in" >> $SPDIF_TTY
 lost=0
 while read p; do
@@ -50,9 +55,15 @@ while read p; do
 		fi
 		si=`echo $p | grep "Switch" | awk -F'(' '{print $2}'| sed -e "s/)//"`
 		if [ "$si" != "" ];then
-			echo "s_"$si
-			unmute
-			exit 1	
+			echo $si
+			if [ "$si" -eq $s ];then
+				echo ok	
+				break
+			else
+				echo "s_"$si
+				unmute
+				exit 1	
+			fi
 		fi
 	else
 		echo $p | egrep '0x20|0x24'>/dev/null

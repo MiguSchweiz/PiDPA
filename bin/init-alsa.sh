@@ -24,3 +24,5 @@ amixer -q -Dhw:RPiCirrus cset name='EQ2 Input 1' AIF1RX2
 # ALSA store 
 sudo alsactl store
 
+#switch off spdif switch leds
+echo -e '$CLI0\r\n' >/dev/ttyACM0
