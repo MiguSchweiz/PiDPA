@@ -18,6 +18,7 @@ fi
 
 # kill running players
 ps -ef|grep dmixer|grep -v grep|grep -v default|awk -F' ' '{print $2}'|xargs kill -1
+#pkill vlc
 while [ true ];do
         ps -ef|grep -v grep|grep dmixer 2>/dev/null
         [ $? -eq 1 ] && break

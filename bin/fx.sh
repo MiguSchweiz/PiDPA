@@ -12,8 +12,8 @@ if [ "$1" == "init" ]; then
 	ps -ef|grep -v grep|grep 'alsa://plughw:1,1'>/dev/null
 	[ $? -eq 0 ] && exit
 	exec >/dev/null
-	cvlc alsa://default --file-caching=0 --sout-mux-caching=0 -A alsa --alsa-audio-device dmixer 2>&1 &	
-	sleep 1
+	#cvlc alsa://default --file-caching=0 --sout-mux-caching=0 -A alsa --alsa-audio-device dmixer 2>&1 &	
+	#sleep 1
 	cvlc alsa://plughw:1,1 --file-caching=0 --sout-mux-caching=0 -A alsa --alsa-audio-device $fx 2>&1 &
 	exit
 elif [ "$1" == "checkdrc" ]; then

@@ -36,6 +36,8 @@ function unmute(){
 # Switch SPDIF input
 cs=`cat  www/status`
 if [ $1 -eq 1 ];then
+	s=5
+elif [ $1 -eq 4 ];then
 	s=7
 else
 	s=$1
