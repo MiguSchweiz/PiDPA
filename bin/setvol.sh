@@ -12,7 +12,7 @@ hp=0
 echo "$a $b" >>/tmp/vol.log
 
 echo $a | egrep "^h$|^s$" >/dev/null || a="-h"
-echo $b | egrep "^m$|^\+$|^-$|^hp$" >/dev/null || a="-h"
+echo $b | egrep "^m$|^\+$|^-$|^hp$|mt$|umt$" >/dev/null || a="-h"
 
 # Help
 if [ "$a" == "-h" ];then
@@ -71,6 +71,14 @@ elif [ $a == "s" ];then
                         echo -n -e '\xA0\x01\x00\xA1'>/dev/ttyUSB0
                 fi
                 #./bin/fx.sh checkdrc
+        elif [ "$b" = "mt" ];then
+                touch .smute && smute=1
+                amixer -q  -Dhw:RPiCirrus cset name='AIF2TX1 Input 1' None
+                amixer -q  -Dhw:RPiCirrus cset name='AIF2TX2 Input 1' None 
+        elif [ "$b" = "umt" ];then
+                rm .smute 2>/dev/null
+                amixer -q  -Dhw:RPiCirrus cset name='AIF2TX1 Input 1' EQ1
+                amixer -q  -Dhw:RPiCirrus cset name='AIF2TX2 Input 1' EQ2
         else
 		vol=`amixer -Dhw:RPiCirrus cget name='AIF2TX1 Input 1 Volume'| grep ": values"|awk -F'=' '{print $2}'`
 		nv=`expr $vol $b 2`
