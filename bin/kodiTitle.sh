@@ -1,4 +1,5 @@
 #!/bin/bash
+exec 2>&1 >/dev/null
 cd "$(dirname "$0")"
 cd ..
 

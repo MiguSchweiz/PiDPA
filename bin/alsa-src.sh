@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+#set -x
 # set homedir
 cd "$(dirname "$0")"
 cd ..
@@ -17,13 +17,13 @@ fi
 [ -z $1 ] && in=0 || in=$1
 
 # kill running players
-ps -ef|grep dmixer|grep -v grep|grep -v default|awk -F' ' '{print $2}'|xargs kill -1
+ps -ef|grep dmixer|grep -v grep|grep -v default|awk -F' ' '{print $2}'|xargs kill -1 2>/dev/null
 #pkill vlc
 while [ true ];do
         ps -ef|grep -v grep|grep dmixer 2>/dev/null
         [ $? -eq 1 ] && break
 done
-pkill kodiTitle.sh
+pkill kodiTitle.sh 2>/dev/null
 
 # check for ALSA restore
 cat www/status|grep a_ >/dev/null

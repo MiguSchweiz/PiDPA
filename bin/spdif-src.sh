@@ -46,7 +46,7 @@ in='$I'$s"\r\n"
 echo -e "$in" >> $SPDIF_TTY
 lost=0
 while read p; do
-	echo $p
+	#echo $p
 	echo $p | egrep "lost|0x60">/dev/null && lost=1
 	if [ $lost -eq 1 ];then
 		echo $cs|grep a_>/dev/null
@@ -79,7 +79,7 @@ done </dev/ttyACM0
 cat www/status|grep s_ >/dev/null
 if [ $? -eq 1 ];then
 	# kill running players
-	ps -ef|grep dmixer|grep -v grep| grep -v default|awk -F' ' '{print $2}'|xargs kill
+	ps -ef|grep dmixer|grep -v grep| grep -v default|awk -F' ' '{print $2}'|xargs kill 2>/dev/null
 	pkill kodiTitle.sh
 
 	# set SPDIF input to EQ
