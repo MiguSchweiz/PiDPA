@@ -6,3 +6,10 @@ git config --global user.name "MiguSchweiz"
 git add <file>
 git commit -m ""
 git push origin master
+
+
+# to stage changes
+git add -u :/
+git commit -m ""
+
+git push origin master
