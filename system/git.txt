@@ -7,9 +7,6 @@ git add <file>
 git commit -m ""
 git push origin master
 
+# in .bashrc
+alias ci='git commit  -a -m "-";git push origin master'
 
-# to stage changes
-git add -u :/
-git commit -m ""
-
-git push origin master
