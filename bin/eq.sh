@@ -18,13 +18,13 @@ fi
 if [ "$1" == "on" ]; then
         touch .eq
         amixer -q -Dhw:RPiCirrus cset name='EQ1 B1 Volume' 0
-        amixer -q -Dhw:RPiCirrus cset name='EQ1 B2 Volume' 5
+        amixer -q -Dhw:RPiCirrus cset name='EQ1 B2 Volume' 12 
         amixer -q -Dhw:RPiCirrus cset name='EQ1 B3 Volume' 12
         amixer -q -Dhw:RPiCirrus cset name='EQ1 B4 Volume' 12
         amixer -q -Dhw:RPiCirrus cset name='EQ1 B5 Volume' 12
 
         amixer -q -Dhw:RPiCirrus cset name='EQ2 B1 Volume' 0
-        amixer -q -Dhw:RPiCirrus cset name='EQ2 B2 Volume' 5
+        amixer -q -Dhw:RPiCirrus cset name='EQ2 B2 Volume' 12
         amixer -q -Dhw:RPiCirrus cset name='EQ2 B3 Volume' 12
         amixer -q -Dhw:RPiCirrus cset name='EQ2 B4 Volume' 12
         amixer -q -Dhw:RPiCirrus cset name='EQ2 B5 Volume' 12
