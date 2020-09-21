@@ -1,0 +1,12 @@
+[Unit]
+Description=pidpastartup
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/pi
+ExecStart=/home/pi/PiDPA/bin/startup.sh
+RemainAfterExit=true
+User=pi
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,17 @@
+[Unit]
+Description=SqueezeLite
+
+
+## make sure we only start the service after network is up
+Wants=network-online.target
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/pi
+ExecStart=/home/pi/PiDPA/system/sl.sh
+User=pi
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
