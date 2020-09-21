@@ -3,8 +3,8 @@ pcm.!default {
         slave{
 		#format S32_LE
 		#rate 44100
-		pcm "dmixer"
-                #pcm "hw:0,0"
+		#pcm "dmixer"
+                pcm "dmix:0,0"
                 channels 2
         }
 }
