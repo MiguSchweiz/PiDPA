@@ -148,6 +148,10 @@ function mouseListeners(){
 		selectButton("#s_4");
 		setSource( "pidpa.php?cmd=s4" );
 	});
+	$( "#a_6" ).mousedown(function() {
+		selectButton("#a_6");
+		setSource( "pidpa.php?cmd=a6" );
+	});
 	$( "#a_1" ).mousedown(function() {
 		selectStation("#a_1")
 		setSource( "pidpa.php?cmd=a1" );
@@ -328,11 +332,13 @@ function resetButtons(){
 	$( "#s_2" ).css("border-color","#FA9127");
 	$( "#s_3" ).css("border-color","#FA9127");
 	$( "#s_4" ).css("border-color","#FA9127");
+	$( "#a_6" ).css("border-color","#FA9127");
 	$( "#a_1" ).css("border-bottom-color","#ffffff");
 	$( "#a_2" ).css("border-bottom-color","#ffffff");
 	$( "#a_3" ).css("border-bottom-color","#ffffff");
 	$( "#a_4" ).css("border-bottom-color","#ffffff");
 	$( "#a_5" ).css("border-bottom-color","#ffffff");
+	
 }
 
 function clickVol(id){

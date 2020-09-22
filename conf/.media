@@ -3,3 +3,4 @@ cvlc -vv -A alsa --alsa-audio-device dmixer http://stream.srg-ssr.ch/m/drsvirus/
 cvlc -vv -A alsa --alsa-audio-device dmixer http://www.tm-radio.com:8000/tribalmixes
 cvlc -vv -A alsa --alsa-audio-device dmixer http://live.protonradio.com/
 /home/pi/PiDPA/bin/kodi.sh
+sudo systemctl restart SqueezeLite
