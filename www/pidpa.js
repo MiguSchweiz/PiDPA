@@ -36,7 +36,12 @@ function stat(){
 		if ( s.match(/s/g)){
 			selectButton(x.concat(s));
 		}else{
-			selectStation(x.concat(s));
+			if (s.match(/a_6/g)){
+				selectButton(x.concat(s));
+			}else{
+				selectStation(x.concat(s));
+			}
+			
 		}
 		//console.log();
 		showEQ(true);
