@@ -1,0 +1,17 @@
+[Unit]
+Description=itroxs-roon
+
+
+## make sure we only start the service after network is up
+Wants=network-online.target
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/pi/itroxs/roon-extension-itroxs
+ExecStart=/home/pi/itroxs/roon-extension-itroxs/run.sh
+User=pi
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
