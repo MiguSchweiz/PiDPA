@@ -1,1 +1,15 @@
+sudo apt-get install npm
+
+
+cd /home/pi
+git clone https://github.com/bsc101/roon-extension-itroxs.git
+cd roon-extension-itroxs.git
 git config --global url."https://github.com/".insteadOf git@github.com:github:
+# in package.json add .git at the end of reponames
+npm install
+
+cd /home/pi/PiDPA/system/
+sudo cp itroxs.service /etc/systemd/system/
+sudo systemctl enable itroxs.service
+sudo systemctl start itroxs.service
+
