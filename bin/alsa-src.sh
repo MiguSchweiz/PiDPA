@@ -55,6 +55,13 @@ s=`sed "${in}q;d" conf/.media 2>/dev/null` &&
 echo $s|grep kodi >/dev/null &&
 [ $? -eq 0 ] && ./bin/kodiRequest.sh play
 
+# pause play roon
+if [ $in -eq 6 ]; then
+    curl -s http://localhost:3001/roonAPI/play?zoneId=160192ad814fa767e59fe9d44f6b10931e6d 
+else
+    curl -s http://localhost:3001/roonAPI/pause?zoneId=160192ad814fa767e59fe9d44f6b10931e6d
+fi
+
 # execute media
 $s 2>&1 &
 
