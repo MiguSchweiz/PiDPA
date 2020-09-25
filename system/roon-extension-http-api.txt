@@ -5,7 +5,7 @@ cd /home/pi
 git clone https://github.com/bsc101/roon-extension-http-api.git
 cd roon-extension-http-api
 npm install
-
+# copy run.shfrom itroxs to roon-extension-http-api/
 cd /home/pi/PiDPA/system/
 sudo cp roon-http-api.service /etc/systemd/system/
 sudo systemctl enable roon-http-api.service
