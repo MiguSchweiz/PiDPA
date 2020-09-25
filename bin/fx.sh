@@ -39,7 +39,7 @@ if [ $? -eq 0 ] && [ "$2" == "on" ];then
 	exit
 fi
 
-ps -ef|grep plughw|grep -v grep|awk -F' ' '{print $2}'|xargs kill -1 2>/dev/null
+ps -ef|grep "plughw:1,1"|grep -v grep|awk -F' ' '{print $2}'|xargs kill -1 2>/dev/null
 while [ true ];do
 	ps -ef|grep -v grep|grep pughw 2>/dev/null
 	[ $? -eq 1 ] && break
@@ -82,4 +82,3 @@ echo $target
 
 #cvlc alsa://plughw:1,1 --file-caching=0 --sout-mux-caching=0 -A alsa --alsa-audio-device $target 2>&1 &
 cvlc alsa://plughw:1,1 -A alsa --alsa-audio-device $target 2>&1 &
-
