@@ -24,6 +24,7 @@ while [ true ];do
         [ $? -eq 1 ] && break
 done
 pkill kodiTitle.sh 2>/dev/null
+pkill roonTitle.sh 2>/dev/null
 
 # check for ALSA restore
 cat www/status|grep a_ >/dev/null
