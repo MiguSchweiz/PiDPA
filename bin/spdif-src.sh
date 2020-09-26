@@ -96,6 +96,8 @@ echo "s_$1"
 
 #pause kodi
 ./bin/kodiRequest.sh pause
+# pause roon
+curl -s http://localhost:3001/roonAPI/pause?zoneId=16013ea295456ef9d39b850af763a0cccc27
 
 ./bin/setvlevels.sh
 unmute
