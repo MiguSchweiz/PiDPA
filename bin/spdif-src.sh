@@ -82,7 +82,6 @@ if [ $? -eq 1 ];then
 	# kill running players
 	ps -ef|grep dmixer|grep -v grep| grep -v default|awk -F' ' '{print $2}'|xargs kill 2>/dev/null
 	pkill kodiTitle.sh
-        pkill roonTitle.sh
 
 	# set SPDIF input to EQ
         amixer -q -Dhw:RPiCirrus cset name='EQ1 Input 1' AIF2RX1
