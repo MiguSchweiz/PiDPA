@@ -21,6 +21,9 @@ elif [ "$par" == "title" ]; then
             echo -
         fi
         exit 0
+else
+        curl -s http://localhost:3001/roonAPI/play_pause?zoneId=$zoneid
+        exit 0
 fi
 
 echo
