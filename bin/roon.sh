@@ -6,4 +6,5 @@ cd "$(dirname "$0")"
 
 # Squeezelite
 sudo systemctl restart SqueezeLite
+sleep 3
 ./roonTitle.sh &
