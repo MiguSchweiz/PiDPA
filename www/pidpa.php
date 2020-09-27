@@ -66,6 +66,8 @@ if ($cmd=="s1"){
 	print shell_exec("sudo -u pi ".$dir."getstate.sh");
 }else if ($cmd=="playPause"){
 	shell_exec("sudo -u pi ".$dir."kodiRequest.sh");
+}else if ($cmd=="roonPlayPause"){
+	shell_exec("sudo -u pi ".$dir."roonRequest.sh");
 }
 
 ?>
