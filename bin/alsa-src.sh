@@ -62,9 +62,9 @@ $s 2>&1 &
 # pause play roon
 if [ $in -eq 6 ]; then
     sleep 1
-    curl -s http://localhost:3001/roonAPI/play?zoneId=16013ea295456ef9d39b850af763a0cccc27
+    ./bin/roonRequest.sh play
 else
-    curl -s http://localhost:3001/roonAPI/pause?zoneId=16013ea295456ef9d39b850af763a0cccc27
+    ./bin/roonRequest.sh pause
 fi
 
 # check if routes are set
