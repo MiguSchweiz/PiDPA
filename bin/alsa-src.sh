@@ -61,7 +61,7 @@ $s 2>&1 &
 
 # pause play roon
 if [ $in -eq 6 ]; then
-    sleep 1
+    sleep 2
     ./bin/roonRequest.sh play
 else
     ./bin/roonRequest.sh pause
