@@ -40,14 +40,8 @@ if ($cmd=="s1"){
 	exec("sudo -u pi ".$dir."setvol.sh m");
 }else if ($cmd=="unmute"){
 	exec("sudo -u pi ".$dir."setvol.sh um");
-}else if ($cmd=="hplus"){
-	print shell_exec("sudo -u pi ".$dir."setvol.sh +");
-}else if ($cmd=="hminus"){
-	print shell_exec("sudo -u pi ".$dir."setvol.sh -");
-}else if ($cmd=="hmute"){
-	exec("sudo -u pi ".$dir."setvol.sh h m");
-}else if ($cmd=="hunmute"){
-	exec("sudo -u pi ".$dir."setvol.sh h m");
+}else if ($cmd=="hp"){
+	exec("sudo -u pi ".$dir."setvol.sh hp");
 }else if ($cmd=="eq_off"){
 	exec("sudo -u pi ".$dir."eq.sh off");
 }else if ($cmd=="tg_amp"){

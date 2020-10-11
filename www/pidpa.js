@@ -1,5 +1,6 @@
 var resizing=false;
 var smute=false;
+var enhp=false;
 var eq1=false;
 var fx={};
 fx['1']=false;
@@ -47,6 +48,14 @@ function stat(){
 			$("#mute").attr("src","img/speaker_off.png");
 			smute=false;
 		}
+		hp=stats[3];
+		if (hp==1){
+			enhp=true;
+			$("#ihp").attr("src","img/speaker_on.png");
+		}else{
+			enhp=false;
+			$("#ihp").attr("src","img/headphones.jpg");
+		}
 		selectEQ1Button(stats[1]);
 		selectFXButton("#fx1",JSON.parse(stats[4]));
 		selectFXButton("#fx2",JSON.parse(stats[5]));
@@ -61,7 +70,7 @@ function checkSync(){
 }
 function getTitle(){
 	jQuery.get("title.htm", { "_": $.now() },function(dat) {
-		//console.log("gettitle");
+		console.log("gettitle");
 		//s=dat.toString().split(";");
 		t=dat //s[4];
 		if ( t != lastTitle){
@@ -70,7 +79,7 @@ function getTitle(){
 			$( "#stat" ).html(t);
 			$( "#measCurrent" ).css("width","auto");
 			$( "#measCurrent" ).html(t);
-			notifyMe();
+			//notifyMe();
 			$("#stat").css("text-indent","0px");
 			tScroll=false;
 			//scrollCurrentTitle(0,0,-1);
@@ -180,6 +189,17 @@ function mouseListeners(){
 		clickVol("#sminus");
 		setVolume( "pidpa.php?cmd=vminus" );
 	});
+
+	$( "#hp" ).mousedown(function() {
+		clickVol("#sminus");
+		$.post( "pidpa.php?cmd=hp" );
+		if (enhp==false){
+			$("#ihp").attr("src","img/speaker_on.png");
+		}else{
+			$("#ihp").attr("src","img/headphones.jpg");
+		}
+	});
+
 	
 	// EQ
 	$( "#eq_nb" ).mousedown(function() {

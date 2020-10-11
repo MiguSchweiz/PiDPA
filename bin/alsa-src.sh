@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+#set -x
 # set homedir
 cd "$(dirname "$0")"
 cd ..
@@ -55,7 +55,7 @@ $s 2>&1 &
 # pause play roon
 echo $s|grep roon >/dev/null
 if [ $? -eq 0 ]; then
-    sleep 2
+    sleep 1
     ./bin/roonRequest.sh play
 fi
 
