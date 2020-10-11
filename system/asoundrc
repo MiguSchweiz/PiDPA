@@ -16,7 +16,8 @@ ctl.!default {
 
 pcm.!dmixer {
         type plug
-        slave.pcm "clear"
+        #slave.pcm "clear"
+        slave.pcm "dmix:0,0"
 }
 
 pcm.!splitout {

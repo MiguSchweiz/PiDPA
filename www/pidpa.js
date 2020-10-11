@@ -1,6 +1,5 @@
 var resizing=false;
 var smute=false;
-var hmute=false;
 var eq1=false;
 var fx={};
 fx['1']=false;
@@ -36,37 +35,23 @@ function stat(){
 		if ( s.match(/s/g)){
 			selectButton(x.concat(s));
 		}else{
-			if (s.match(/a_6/g)){
-				selectButton(x.concat(s));
-			}else{
-				selectStation(x.concat(s));
-			}
-			
+			selectStation(x.concat(s));
 		}
 		//console.log();
 		showEQ(true);
 		sm=stats[2];
 		if (sm==0){
-			$("#ismute").attr("src","img/speaker_on.png");
+			$("#mute").attr("src","img/speaker_on.png");
 			smute=true;
 		}else{
-			$("#ismute").attr("src","img/headphones.jpg");
+			$("#mute").attr("src","img/speaker_off.png");
 			smute=false;
-		}
-		hm=stats[3];
-		if (hm==0){
-			$("#ihmute").attr("src","img/speaker_on.png");
-			hmute=true;
-		}else{
-			$("#ihmute").attr("src","img/speaker_off.png");
-			hmute=false;
 		}
 		selectEQ1Button(stats[1]);
 		selectFXButton("#fx1",JSON.parse(stats[4]));
 		selectFXButton("#fx2",JSON.parse(stats[5]));
 		sync=false;	
-		$("#titspk" ).text("Speakers / Headphones DacMagic");
-		$("#tithp" ).text("Headphones Rpi");
+		$("#titspk" ).text("Volume");
 	});
 }
 function checkSync(){
@@ -119,11 +104,7 @@ function setSource(src){
 
 function setVolume(src){
 		jQuery.get(src, function(data) {
-			if (src.match(/cmd=s/g)){
-				$("#titspk" ).text(data);
-			}else{
-				$("#tithp" ).text(data);
-			}
+			$("#titspk" ).text(data);
 		});
 }
 
@@ -153,10 +134,6 @@ function mouseListeners(){
 		selectButton("#s_4");
 		setSource( "pidpa.php?cmd=s4" );
 	});
-	$( "#a_6" ).mousedown(function() {
-		selectButton("#a_6");
-		setSource( "pidpa.php?cmd=a6" );
-	});
 	$( "#a_1" ).mousedown(function() {
 		selectStation("#a_1")
 		setSource( "pidpa.php?cmd=a1" );
@@ -177,51 +154,33 @@ function mouseListeners(){
 		selectStation("#a_5")	
 		setSource( "pidpa.php?cmd=a5" );	
 	});
-
-	// speaker buttons
-	$( "#splus" ).mousedown(function() {
+	$( "#a_6" ).mousedown(function() {
+		selectStation("#a_6");
+		setSource( "pidpa.php?cmd=a6" );
+	});
+	//volume buttons
+	$( "#vplus" ).mousedown(function() {
 		clickVol("#splus");
-		setVolume( "pidpa.php?cmd=splus" );
+		setVolume( "pidpa.php?cmd=vplus" );
 		//$("#ismute").attr("src","img/speaker_off.png");
 	});
-	$( "#smute" ).mousedown(function() {
-		clickVol("#smute");
+	$( "#vmute" ).mousedown(function() {
+		clickVol("#mute");
 		if (smute==false){
-			$.post( "pidpa.php?cmd=smute" );
-			$("#ismute").attr("src","img/speaker_on.png");
+			$.post( "pidpa.php?cmd=mute" );
+			$("#imute").attr("src","img/speaker_on.png");
 			smute=true;
 		}else{
-			$.post( "pidpa.php?cmd=sunmute" );
-			$("#ismute").attr("src","img/headphones.jpg");
+			$.post( "pidpa.php?cmd=unmute" );
+			$("#imute").attr("src","img/speaker_off.png");
 			smute=false;
 		}
 	});	
-	$( "#sminus" ).mousedown(function() {
+	$( "#vminus" ).mousedown(function() {
 		clickVol("#sminus");
-		setVolume( "pidpa.php?cmd=sminus" );
+		setVolume( "pidpa.php?cmd=vminus" );
 	});
-	// headphone buttons
-	$( "#hplus" ).mousedown(function() {
-		clickVol("#hplus");
-		setVolume( "pidpa.php?cmd=hplus" );
-		//$("#ihmute").attr("src","img/speaker_off.png");
-	});
-	$( "#hmute" ).mousedown(function() {
-		clickVol("#hmute")
-		if (hmute==false){
-			$.post( "pidpa.php?cmd=hmute" );
-			$("#ihmute").attr("src","img/speaker_on.png");
-			hmute=true;
-		}else{
-			$.post( "pidpa.php?cmd=hunmute" );
-			$("#ihmute").attr("src","img/speaker_off.png");
-			hmute=false;	
-		}
-	});	
-	$( "#hminus" ).mousedown(function() {
-		clickVol("#hminus");
-		setVolume( "pidpa.php?cmd=hminus" );
-	});
+	
 	// EQ
 	$( "#eq_nb" ).mousedown(function() {
 		if (!eq1){
@@ -279,7 +238,7 @@ function selectStation(id){
 		fallbackSrc=actSrc;
 	}
 	actSrc=id;
-	$("#titspk" ).text("Speakers / Headphones DacMagic");
+	$("#titspk" ).text("Volume");
 	$("#tithp" ).text("Headphones Rpi");
 	$( id ).css("border-bottom-color","#FA9127");
 }
@@ -293,8 +252,7 @@ function selectButton(id){
 	checkSync();
 	actSrc=id;
 	$( id ).css("border-color","#7D4914");
-	$("#titspk" ).text("Speakers / Headphones DacMagic");
-	$("#tithp" ).text("Headphones Rpi");
+	$("#titspk" ).text("Volume");
 	//$( id ).css("color","#ffffff");
 }
 
@@ -308,8 +266,7 @@ function selectEQ1Button(state){
 	}	
 	checkSync();
 	//$( id ).css("border-color","#7D4914");
-	$("#titspk" ).text("Speakers / Headphones DacMagic");
-	$("#tithp" ).text("Headphones Rpi");
+	$("#titspk" ).text("Volume");
 	//$( id ).css("color","#ffffff");
 }
 
@@ -340,13 +297,12 @@ function resetButtons(){
 	$( "#s_2" ).css("border-color","#FA9127");
 	$( "#s_3" ).css("border-color","#FA9127");
 	$( "#s_4" ).css("border-color","#FA9127");
-	$( "#a_6" ).css("border-color","#FA9127");
 	$( "#a_1" ).css("border-bottom-color","#ffffff");
 	$( "#a_2" ).css("border-bottom-color","#ffffff");
 	$( "#a_3" ).css("border-bottom-color","#ffffff");
 	$( "#a_4" ).css("border-bottom-color","#ffffff");
 	$( "#a_5" ).css("border-bottom-color","#ffffff");
-	
+	$( "#a_6" ).css("border-bottom-color","#ffffff");	
 }
 
 function clickVol(id){

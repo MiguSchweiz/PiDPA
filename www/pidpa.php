@@ -32,18 +32,18 @@ if ($cmd=="s1"){
 }else if ($cmd=="a6"){
 	exec("sudo -u pi ".$dir."alsa-src.sh 6");
 	#print shell_exec("echo p |sudo /home/pi/printvlevels.sh");
-}else if ($cmd=="splus"){
-	print shell_exec("sudo -u pi ".$dir."setvol.sh s +");
-}else if ($cmd=="sminus"){
-	print shell_exec("sudo -u pi ".$dir."setvol.sh s -");
-}else if ($cmd=="smute"){
-	exec("sudo -u pi ".$dir."setvol.sh s hp");
-}else if ($cmd=="sunmute"){
-	exec("sudo -u pi ".$dir."setvol.sh s hp");
+}else if ($cmd=="vplus"){
+	print shell_exec("sudo -u pi ".$dir."setvol.sh +");
+}else if ($cmd=="vminus"){
+	print shell_exec("sudo -u pi ".$dir."setvol.sh -");
+}else if ($cmd=="mute"){
+	exec("sudo -u pi ".$dir."setvol.sh m");
+}else if ($cmd=="unmute"){
+	exec("sudo -u pi ".$dir."setvol.sh um");
 }else if ($cmd=="hplus"){
-	print shell_exec("sudo -u pi ".$dir."setvol.sh h +");
+	print shell_exec("sudo -u pi ".$dir."setvol.sh +");
 }else if ($cmd=="hminus"){
-	print shell_exec("sudo -u pi ".$dir."setvol.sh h -");
+	print shell_exec("sudo -u pi ".$dir."setvol.sh -");
 }else if ($cmd=="hmute"){
 	exec("sudo -u pi ".$dir."setvol.sh h m");
 }else if ($cmd=="hunmute"){
@@ -69,5 +69,4 @@ if ($cmd=="s1"){
 }else if ($cmd=="roonPlayPause"){
 	shell_exec("sudo -u pi ".$dir."roonRequest.sh");
 }
-
 ?>

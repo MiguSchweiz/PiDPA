@@ -8,8 +8,8 @@ After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/home/pi/itroxs/roon-extension-itroxs
-ExecStart=/home/pi/itroxs/roon-extension-itroxs/run.sh
+WorkingDirectory=/home/pi/roon-extension-itroxs
+ExecStart=/home/pi/roon-extension-itroxs/run.sh
 User=pi
 Restart=on-abort
 

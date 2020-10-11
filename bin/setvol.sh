@@ -2,122 +2,88 @@
 # set homedir
 cd "$(dirname "$0")"
 cd ..
+# volume limit
+vl="3dB"
 
+exec 2>/dev/null
 a=$1
-b=$2
-smute=0
-hmute=0
 hp=0
+mute=0
 
-echo "$a $b" >>/tmp/vol.log
-
-echo $a | egrep "^h$|^s$" >/dev/null || a="-h"
-echo $b | egrep "^m$|^\+$|^-$|^hp$|mt$|umt$" >/dev/null || a="-h"
+echo $a | egrep "+$|-|m|um|hp" >/dev/null || a="-h"
 
 # Help
 if [ "$a" == "-h" ];then
         echo
-        echo "Usage: setvol.sh <h|s> <+|-|m>"
-	echo "Options:"
-        echo "   h	set headphones volume"
-        echo "   s	set speaker volume (SPDIF out)"
-	echo "   +	increase volume"	 
-        echo "   -	decrease volume"
-        echo "   m	toggle mute volume"
+        echo "Usage: setvol.sh <+|-|m|um|hp> "
+        echo "Options:"
+        echo "   +      increase volume"
+        echo "   -      decrease volume"
+        echo "   m      mute volume"
+        echo "   um     unmute volume"
+        echo "   hp     toggle headphones/speaker"
         echo
         exit 0
 fi
 
-if [ $a == "h" ];then
-	if [ "$b" == "m" ];then
-		amixer  -Dhw:RPiCirrus cget name='HPOUT1L Input 1'|grep values=0 2>&1 >/dev/null
-		if [ $? -eq 1 ];then
-			touch .hmute && hmute=1
-	        	amixer -q  -Dhw:RPiCirrus cset name='HPOUT1L Input 1' None
-       			amixer -q  -Dhw:RPiCirrus cset name='HPOUT1R Input 1' None
-		else
-			rm .hmute 2>/dev/null
-			amixer -q  -Dhw:RPiCirrus cset name='HPOUT1L Input 1' EQ1
-			amixer -q  -Dhw:RPiCirrus cset name='HPOUT1R Input 1' EQ2
-		fi
-	else
-		vol=`amixer -Dhw:RPiCirrus cget name='HPOUT1 Digital Volume'| grep ": values"|awk -F'=' '{print $2}'|awk -F',' '{print $1}'`
-		nv=`expr $vol $b 4`
-		[ $nv -ge 0 ] &&
-		amixer -q -Dhw:RPiCirrus cset name='HPOUT1 Digital Volume' $nv
-		echo $nv
-	fi
-elif [ $a == "s" ];then
-	if [ "$b" = "m" ];then
-                amixer  -Dhw:RPiCirrus cget name='AIF2TX1 Input 1'|grep values=0 2>&1 >/dev/null
-                if [ $? -eq 1 ];then
-			touch .smute && smute=1
-                        amixer -q  -Dhw:RPiCirrus cset name='AIF2TX1 Input 1' None
-                        amixer -q  -Dhw:RPiCirrus cset name='AIF2TX2 Input 1' None
-                else
-			rm .smute 2>/dev/null
-                        amixer -q  -Dhw:RPiCirrus cset name='AIF2TX1 Input 1' EQ1
-                        amixer -q  -Dhw:RPiCirrus cset name='AIF2TX2 Input 1' EQ2
-                fi
-		exit 1
-	elif [ "$b" = "hp" ];then
-                ls .hp 2>&1 >/dev/null
-                if [ $? -eq 2 ];then
-                        touch .hp && hp=1
-                        # switch on headhones on dacmagic
-                        echo -n -e '\xA0\x01\x01\xA2'>/dev/ttyUSB0
-                else
-                        rm .hp 2>/dev/null
-                        echo -n -e '\xA0\x01\x00\xA1'>/dev/ttyUSB0
-                fi
-                #./bin/fx.sh checkdrc
-        elif [ "$b" = "mt" ];then
-                touch .smute && smute=1
-                amixer -q  -Dhw:RPiCirrus cset name='AIF2TX1 Input 1' None
-                amixer -q  -Dhw:RPiCirrus cset name='AIF2TX2 Input 1' None 
-        elif [ "$b" = "umt" ];then
-                rm .smute 2>/dev/null
-                amixer -q  -Dhw:RPiCirrus cset name='AIF2TX1 Input 1' EQ1
-                amixer -q  -Dhw:RPiCirrus cset name='AIF2TX2 Input 1' EQ2
-        else
-		vol=`amixer -Dhw:RPiCirrus cget name='AIF2TX1 Input 1 Volume'| grep ": values"|awk -F'=' '{print $2}'`
-		nv=`expr $vol $b 2`
-		[ $nv -lt 0 ] && nv=0
-		amixer -q -Dhw:RPiCirrus cset name='AIF2TX1 Input 1 Volume' $nv
-		amixer -q -Dhw:RPiCirrus cset name='AIF2TX2 Input 1 Volume' $nv
-		echo $nv
-	fi
+if [ $a == "+" ]; then
+    vol=`amixer  -Dhw:sndrpihifiberry cget name='DSPVolume'| grep ": values"|awk -F'=' '{print $2}'|awk -F',' '{print $1}'`   
+    
+    if [ $vol -lt 255 ]; then
+        nv=`expr $vol + 10`
+    elif [ $vol -ge 255 ]; then
+        nv=250
+    fi
+    [ $nv -ge 255 ] && nv=100
+    amixer  -Dhw:sndrpihifiberry cset name='DSPVolume' $nv >/dev/null
+elif [ $a == "-" ]; then
+    vol=`amixer  -Dhw:sndrpihifiberry cget name='DSPVolume'| grep ": values"|awk -F'=' '{print $2}'|awk -F',' '{print $1}'`
+    if [ $vol -gt 0 ]; then
+        nv=`expr $vol - 10`
+    elif [ $vol -le 0 ]; then
+        nv=0
+    fi
+    [ $nv -le 0 ] && nv=0
+    amixer  -Dhw:sndrpihifiberry cset name='DSPVolume' $nv >/dev/null
+elif [ $a == "m" ]; then
+    dsptoolkit set-limit 0% >/dev/null
+    touch .mute && mute=1
+elif [ $a == "um" ]; then
+    dsptoolkit set-limit 3dB >/dev/null
+    rm .mute 2>/dev/null
+elif [ $a == "hp" ]; then
+    ls .hp >/dev/null
+    if [ $? -eq 2 ];then
+        touch .hp && hp=1
+        # switch on headhones on dacmagic
+        echo -n -e '\xA0\x01\x01\xA2'>/dev/ttyUSB0
+    else
+        rm .hp >/dev/null
+        echo -n -e '\xA0\x01\x00\xA1'>/dev/ttyUSB0
+    fi
 fi
 
 # set .vlevels
+ls .hp >/dev/null && hp=1
+ls .mute >/dev/null && mute=1
+
 src=`cat www/status`
 ls .vlevels 2>&1>/dev/null && vl=`cat .vlevels | grep $src`
 echo $vl|egrep "s_|a_" >/dev/null
 if [ $? -eq 1 ];then
-	sm=0
-	hm=1
-	sv=15
-	hv=80
+        sv=50
+        hv=100
 else
-	sm=`echo $vl | awk -F';' '{ print $2 }'`
-	hm=`echo $vl | awk -F';' '{ print $3 }'`
-	sv=`echo $vl | awk -F';' '{ print $4 }'`
-	hv=`echo $vl | awk -F';' '{ print $5 }'`
+        # <src>;<svol>;<hvol>;<mute>;<hp>
+        sv=`echo $vl | awk -F';' '{ print $2 }'`
+        hv=`echo $vl | awk -F';' '{ print $3 }'`
 fi
-if [ $a == "s" ] && [ $b == "m" ];then
-	sm=$smute
-elif [ $a == "h" ] && [ $b == "m" ];then
-	hm=$hmute
-elif [ $a == "s" ] && [ $b == "hp" ];then
-        sm=$hp
-elif [ $a == "s" ];then
-	sv=$nv
-elif [ $a == "h" ];then
-	hv=$nv
+if [ $a == "+" ]||[ $a == "-" ]; then
+    [ $hp -eq 0 ] && sv=$nv
+    [ $hp -eq 1 ] && hv=$nv
+    echo $nv
 fi
+    
 cat .vlevels|grep -v $src";" > .vlevels.sav
-echo $src";"$sm";"$hm";"$sv";"$hv >> .vlevels.sav
+echo $src";"$sv";"$hv";"$mute";"$hp >> .vlevels.sav
 mv .vlevels.sav .vlevels
-
-
-

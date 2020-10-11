@@ -9,7 +9,7 @@ After=network.target
 [Service]
 Type=simple
 WorkingDirectory=/home/pi
-ExecStart=/home/pi/PiDPA/system/sl.sh
+ExecStart=/home/pi/PiDPA/bin/sl.sh
 User=pi
 Restart=on-abort
 
