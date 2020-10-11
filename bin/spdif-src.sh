@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # specify SPDIF switch tty
 SPDIF_TTY=/dev/ttyACM0
 
@@ -21,7 +21,6 @@ fi
 if [ ! -f .mute ];then
 	./bin/setvol.sh m
 	m=1
-fi
 fi
 
 function unmute(){

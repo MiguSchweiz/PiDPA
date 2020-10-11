@@ -34,7 +34,7 @@ if [ $a == "+" ]; then
     elif [ $vol -ge 255 ]; then
         nv=250
     fi
-    [ $nv -ge 255 ] && nv=100
+    [ $nv -ge 255 ] && nv=255
     amixer  -Dhw:sndrpihifiberry cset name='DSPVolume' $nv >/dev/null
 elif [ $a == "-" ]; then
     vol=`amixer  -Dhw:sndrpihifiberry cget name='DSPVolume'| grep ": values"|awk -F'=' '{print $2}'|awk -F',' '{print $1}'`
