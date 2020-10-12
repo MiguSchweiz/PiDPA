@@ -50,12 +50,12 @@ function stat(){
 		}
 		hp=stats[3];
 		if (hp==1){
-			enhp=true;
 			$("#ihp").attr("src","img/speaker_on.png");
+			enhp=true;
 		}else{
-			enhp=false;
 			$("#ihp").attr("src","img/headphones.jpg");
-		}
+			enhp=false;
+			}
 		selectEQ1Button(stats[1]);
 		selectFXButton("#fx1",JSON.parse(stats[4]));
 		selectFXButton("#fx2",JSON.parse(stats[5]));
@@ -195,8 +195,10 @@ function mouseListeners(){
 		$.post( "pidpa.php?cmd=hp" );
 		if (enhp==false){
 			$("#ihp").attr("src","img/speaker_on.png");
+			enho=true;
 		}else{
 			$("#ihp").attr("src","img/headphones.jpg");
+			enhp=false;
 		}
 	});
 

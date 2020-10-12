@@ -87,3 +87,6 @@ fi
 cat .vlevels|grep -v $src";" > .vlevels.sav
 echo $src";"$sv";"$hv";"$mute";"$hp >> .vlevels.sav
 mv .vlevels.sav .vlevels
+if [ $a == "hp" ]; then
+    bin/setvlevels.sh
+fi
