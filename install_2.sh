@@ -57,6 +57,10 @@ cd /home/pi
 git clone https://github.com/nicokaiser/rpi-audio-receiver.git
 cd rpi-audio-receiver/
 ./install-bluetooth.sh
+cd ..
+cp PiDPA/system/asoundrc /root/.asoundrc
+cp PiDPA/system/bluealsa-aplay.service /etc/systemd/system/
+systemctl daemon-reload
 systemctl start bt-agent
 systemctl start bluealsa-aplay
 
