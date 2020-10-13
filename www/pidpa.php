@@ -32,6 +32,9 @@ if ($cmd=="s1"){
 }else if ($cmd=="a6"){
 	exec("sudo -u pi ".$dir."alsa-src.sh 6");
 	#print shell_exec("echo p |sudo /home/pi/printvlevels.sh");
+}else if ($cmd=="a7"){
+	exec("sudo -u pi ".$dir."alsa-src.sh 7");
+	#print shell_exec("echo p |sudo /home/pi/printvlevels.sh");
 }else if ($cmd=="vplus"){
 	print shell_exec("sudo -u pi ".$dir."setvol.sh +");
 }else if ($cmd=="vminus"){

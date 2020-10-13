@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+#set -x
 # specify SPDIF switch tty
 SPDIF_TTY=/dev/ttyACM0
 
@@ -28,7 +28,8 @@ function unmute(){
 	[ ! -z $m ] && ./bin/setvol.sh um
 }
 
-# Switch SPDIF input
+# Switch HDMI input
+irsend SEND_ONCE HDMISwitch KEY_$1
 
 # check for ALSA restore
 pkill roonTitle.sh

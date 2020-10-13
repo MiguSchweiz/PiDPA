@@ -1,7 +1,7 @@
 pcm.!default {
         type plug
         slave{
-		#format S32_LE
+		format S32_LE
 		#rate 44100
 		#pcm "dmixer"
                 pcm "dmix:0,0"

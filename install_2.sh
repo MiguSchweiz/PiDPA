@@ -52,6 +52,14 @@ cp SqueezeLite.service /etc/systemd/system/
 systemctl enable SqueezeLite
 systemctl start SqueezeLite
 
+echo "### install bluetooth receiver"
+cd /home/pi
+git clone https://github.com/nicokaiser/rpi-audio-receiver.git
+cd rpi-audio-receiver/
+./install-bluetooth.sh
+systemctl start bt-agent
+systemctl start bluealsa-aplay
+
 echo "### check for hifiberry  driver in /boot/config.txt: "
 egrep "hifiberry-dacplusdsp$" /boot/config.txt 
 if [ $? -eq 1 ];then
@@ -63,6 +71,13 @@ if [ $? -eq 1 ];then
 fi
 
 echo "### install irdroid lirc"
+cd /home/pi/PiDPA/system/
+systemctl stop lircd
+systemctl disable lircd
+cp HDMISwitch.conf /etc/lirc/lircd.conf.d/
+cp Lircd.service /etc/systemd/system/
+systemctl enable Lircd
+systemctl start Lircd
 
 echo "### set file permissions"
 cd /home/pi/PiDPA/
@@ -97,6 +112,10 @@ su pu -c "ln -s PiDPA/system/asoundrc $HOME/.asoundrc"
 echo
 echo "### start kodi and do:"
 
+
+echo
+echo "### Add line: /home/pi/PiDPA/bin/startup.sh to /etc/rc.local"
+echo
 echo "### Add line to /etc/sudoers: "
 echo "%pi ALL=(ALL) NOPASSWD: ALL"
 echo

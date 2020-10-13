@@ -168,6 +168,11 @@ function mouseListeners(){
 		selectStation("#a_6");
 		setSource( "pidpa.php?cmd=a6" );
 	});
+	$( "#a_7" ).mousedown(function() {
+		selectStation("#a_7");
+		setSource( "pidpa.php?cmd=a7" );
+	});
+
 	//volume buttons
 	$( "#vplus" ).mousedown(function() {
 		clickVol("#splus");
@@ -326,6 +331,7 @@ function resetButtons(){
 	$( "#a_4" ).css("border-bottom-color","#ffffff");
 	$( "#a_5" ).css("border-bottom-color","#ffffff");
 	$( "#a_6" ).css("border-bottom-color","#ffffff");	
+	$( "#a_7" ).css("border-bottom-color","#ffffff");	
 }
 
 function clickVol(id){
