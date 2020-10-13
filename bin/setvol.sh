@@ -32,7 +32,7 @@ if [ $a == "+" ]; then
     if [ $vol -lt 255 ]; then
         nv=`expr $vol + 10`
     elif [ $vol -ge 255 ]; then
-        nv=250
+        nv=255
     fi
     [ $nv -ge 255 ] && nv=255
     amixer  -Dhw:sndrpihifiberry cset name='DSPVolume' $nv >/dev/null

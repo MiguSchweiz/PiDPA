@@ -10,7 +10,7 @@ fi
 cd "$(dirname "$0")"
 hd=`pwd`
 
-sudo apt-get install apache2 php7.0 libapache2-mod-php vlc kodi libasound2-plugin-equal vim squeezelite npm jq
+sudo apt-get install apache2 php7.0 libapache2-mod-php vlc kodi libasound2-plugin-equal vim squeezelite npm jq lirc
 
 echo "### install dsptoolkit"
 cd /home/pi
@@ -61,6 +61,8 @@ if [ $? -eq 1 ];then
         echo "dtoverlay=disable-wifi" >>/tmp/config.txt
 	cp /tmp/config.txt /boot/config.txt
 fi
+
+echo "### install irdroid lirc"
 
 echo "### set file permissions"
 cd /home/pi/PiDPA/

@@ -113,7 +113,8 @@ function setSource(src){
 
 function setVolume(src){
 		jQuery.get(src, function(data) {
-			$("#titspk" ).text(data);
+			perc=data*100/255
+			$("#titspk" ).text(perc.toFixed(0));
 		});
 }
 

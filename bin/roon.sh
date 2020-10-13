@@ -5,6 +5,6 @@ cd "$(dirname "$0")"
 #cvlc alsa://plughw:1,0 -A alsa --alsa-audio-device dmixer &
 
 # Squeezelite
-sudo systemctl restart SqueezeLite
-sleep 2
+#sudo systemctl restart SqueezeLite
+#sleep 2
 ./roonTitle.sh &
