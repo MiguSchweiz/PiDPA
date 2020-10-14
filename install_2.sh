@@ -44,13 +44,21 @@ cp roon-http-api.service /etc/systemd/system/
 systemctl enable roon-http-api
 systemctl start roon-http-api
 
-echo "### install squeezelite service"
-systemctl stop squeezelite
-systemctl disable squeezelite
-cd /home/pi/PiDPA/system/
-cp SqueezeLite.service /etc/systemd/system/
-systemctl enable SqueezeLite
-systemctl start SqueezeLite
+#echo "### install squeezelite service"
+#systemctl stop squeezelite
+#systemctl disable squeezelite
+#cd /home/pi/PiDPA/system/
+#cp SqueezeLite.service /etc/systemd/system/
+#systemctl enable SqueezeLite
+#systemctl start SqueezeLite
+
+echo "### install roonbridge"
+cd /home/pi
+mkdir roon
+cd roon
+wget http://download.roonlabs.com/builds/roonbridge-installer-linuxarmv7hf.sh
+chmod 755 roonbridge-installer-linuxarmv7hf.sh
+./roonbridge-installer-linuxarmv7hf.sh
 
 echo "### install bluetooth receiver"
 cd /home/pi
@@ -119,6 +127,7 @@ echo "### start kodi and do:"
 
 echo
 echo "### Add line: /home/pi/PiDPA/bin/startup.sh to /etc/rc.local"
+echo "### Add line: modprobe snd-aloop to /etc/rc.local"
 echo
 echo "### Add line to /etc/sudoers: "
 echo "%pi ALL=(ALL) NOPASSWD: ALL"
