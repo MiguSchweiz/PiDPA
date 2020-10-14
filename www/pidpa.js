@@ -197,7 +197,7 @@ function mouseListeners(){
 	});
 
 	$( "#hp" ).mousedown(function() {
-		clickVol("#sminus");
+		clickVol("#hp");
 		$.post( "pidpa.php?cmd=hp" );
 		if (enhp==false){
 			$("#ihp").attr("src","img/speaker_on.png");
@@ -206,6 +206,10 @@ function mouseListeners(){
 			$("#ihp").attr("src","img/headphones.jpg");
 			enhp=false;
 		}
+	});
+	$( "#pwr" ).mousedown(function() {
+		clickVol("#pwr");
+		$.post( "pidpa.php?cmd=pwr" );
 	});
 
 	

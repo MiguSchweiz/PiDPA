@@ -1,0 +1,1 @@
+irrecord -H irtoy -d /dev/ttyACM0 XXX.lircd.conf
