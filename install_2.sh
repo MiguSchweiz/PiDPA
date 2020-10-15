@@ -79,6 +79,7 @@ if [ $? -eq 1 ];then
 	echo "dtoverlay=hifiberry-dacplusdsp" >>/tmp/config.txt
         echo "dtparam=spi=on" >>/tmp/config.txt
         echo "dtoverlay=disable-wifi" >>/tmp/config.txt
+        echo "hdmi_force_hotplug=1" >>/tmp/config.txt
 	cp /tmp/config.txt /boot/config.txt
 fi
 

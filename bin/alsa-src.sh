@@ -58,7 +58,7 @@ $s 2>&1 &
 # pause play roon
 echo $s|grep roon >/dev/null
 if [ $? -eq 0 ]; then
-    #sleep 0.5
+    sleep 0.5
     ./bin/roonRequest.sh play
     #irsend SEND_ONCE HDMISwitch KEY_2
 fi
