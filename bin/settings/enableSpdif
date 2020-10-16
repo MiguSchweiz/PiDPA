@@ -1,2 +1,3 @@
 volumeLimitSPDIFRegister: 6dB
 volumeLimitPiRegister: 0%
+muteSPDIFRegister: 1
