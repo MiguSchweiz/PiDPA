@@ -27,6 +27,7 @@ cd /home/pi
 git clone https://github.com/bsc101/roon-extension-itroxs.git
 cd roon-extension-itroxs
 npm install
+chown pi:pi .
 cd /home/pi/PiDPA/system/
 cp itroxs.service /etc/systemd/system/
 systemctl enable itroxs
@@ -39,6 +40,7 @@ git clone https://github.com/st0g1e/roon-extension-http-api.git
 cd roon-extension-http-api
 cp /home/pi/roon-extension-itroxs/run.sh .
 npm install
+chown pi:pi .
 cd /home/pi/PiDPA/system/
 cp roon-http-api.service /etc/systemd/system/
 systemctl enable roon-http-api
