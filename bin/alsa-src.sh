@@ -34,7 +34,7 @@ echo "a_$in" >www/status
 
 #pause kodi and roon
 ./bin/kodiRequest.sh pause
-./bin/roonRequest.sh pause
+./bin/roonRequest.sh stop
 
 ./bin/setvlevels.sh
 cat /dev/null >www/title.htm
