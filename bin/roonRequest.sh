@@ -6,10 +6,10 @@ zoneid=160124012dec84d7e2d2d2f9cde0b924ce36
 
 par=$1
 if [ "$par" == "play" ]; then
-	curl -s http://localhost:3001/roonAPI/play?zoneId=$zoneid
+	curl -s http://localhost:3001/roonAPI/play_pause?zoneId=$zoneid
 	exit 0
 elif [ "$par" == "pause" ]; then
-        curl -s http://localhost:3001/roonAPI/pause?zoneId=$zoneid
+        curl -s http://localhost:3001/roonAPI/play_pause?zoneId=$zoneid
 	exit 0
 elif [ "$par" == "title" ]; then
         curl -s http://localhost:3001/roonAPI/getZone?zoneId=$zoneid|jq '.zone.state'| grep stopped >/dev/null
