@@ -16,6 +16,18 @@ fi
 
 [ -z $1 ] && in=0 || in=$1
 
+# mute channels
+if [ ! -f .mute ];then
+        ./bin/setvol.sh m
+        m=1
+fi
+
+function unmute(){
+        # restore muted channels
+        [ ! -z $m ] && ./bin/setvol.sh um
+}
+
+
 # kill running players
 ps -ef|grep vlc|grep dmixer|grep -v grep|grep -v default|awk -F' ' '{print $2}'|xargs kill -1 2>/dev/null
 #pkill vlc
@@ -38,7 +50,7 @@ echo "a_$in" >www/status
 
 ./bin/setvlevels.sh
 cat /dev/null >www/title.htm
-
+unmute
 
 # start client if any
 echo $in | egrep "[1-9]" &&
@@ -58,7 +70,7 @@ $s 2>&1 &
 # pause play roon
 echo $s|grep roon >/dev/null
 if [ $? -eq 0 ]; then
-    sleep 0.5
+    sleep 1
     ./bin/roonRequest.sh play
     #irsend SEND_ONCE HDMISwitch KEY_2
 fi
