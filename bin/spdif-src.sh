@@ -48,7 +48,7 @@ echo "s_$1"
 #pause kodi
 ./bin/kodiRequest.sh pause
 # pause roon
-./bin/roonRequest.sh pause
+./bin/roonRequest.sh stop
 
 ./bin/setvlevels.sh
 unmute
