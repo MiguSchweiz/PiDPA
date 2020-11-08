@@ -9,7 +9,7 @@ if [ "$par" == "playPause" ]; then
 	curl -s http://localhost:3001/roonAPI/play_pause?zoneId=$zoneid
 	exit 0
 elif [ "$par" == "stop" ]; then
-        curl -s http://localhost:3001/roonAPI/stop?zoneId=$zoneid
+        curl -s http://localhost:3001/roonAPI/pause?zoneId=$zoneid
 	exit 0
 elif [ "$par" == "play" ]; then
         curl -s http://localhost:3001/roonAPI/play?zoneId=$zoneid
