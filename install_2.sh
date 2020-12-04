@@ -97,6 +97,14 @@ cp Lircd.service /etc/systemd/system/
 systemctl enable Lircd
 systemctl start Lircd
 
+echo "### install raspotify"
+cd /home/pi/
+curl -sL https://dtcooper.github.io/raspotify/install.sh | sh
+cd /home/pi/PiDPA/system/
+cp asoundrc /etc/asound.conf
+cp raspotify /etc/default/
+systemctl restart raspotify
+
 echo "### set file permissions"
 cd /home/pi/PiDPA/
 sudo chown -R pi:pi .

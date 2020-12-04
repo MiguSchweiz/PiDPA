@@ -49,7 +49,7 @@ elif [ $a == "m" ]; then
     dsptoolkit set-limit 0% >/dev/null
     touch .mute && mute=1
 elif [ $a == "um" ]; then
-    dsptoolkit set-limit 3dB >/dev/null
+    dsptoolkit set-limit 9dB >/dev/null
     rm .mute 2>/dev/null
 elif [ $a == "hp" ]; then
     ls .hp >/dev/null

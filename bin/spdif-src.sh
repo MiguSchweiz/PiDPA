@@ -38,6 +38,7 @@ if [ $? -eq 1 ];then
 	# kill running players
 	ps -ef|grep dmixer|grep vlc|grep -v grep| grep -v default|awk -F' ' '{print $2}'|xargs kill 2>/dev/null
 	pkill kodiTitle.sh
+        pkill mplayer
         dsptoolkit apply-settings bin/settings/enableSpdif
 fi
 
