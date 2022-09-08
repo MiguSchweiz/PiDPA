@@ -10,7 +10,7 @@ fi
 cd "$(dirname "$0")"
 hd=`pwd`
 
-sudo apt-get install apache2 php7.0 libapache2-mod-php vlc kodi libasound2-plugin-equal vim squeezelite npm jq lirc
+sudo apt-get install apache2 php7.0 libapache2-mod-php vlc libasound2-plugin-equal vim squeezelite npm jq lirc python3-pip
 
 echo "### install dsptoolkit"
 cd /home/pi
@@ -19,20 +19,20 @@ chmod 755 ./hifiberry-dsp/install-dsptoolkit
 ./hifiberry-dsp/install-dsptoolkit
 mkdir /home/pi/.dsptoolkit
 chown pi:pi /home/pi/.dsptoolkit
-cd hifiberry-dsp/sample_files/xml
-su pi -c "dsptoolkit install-profile dacdsp-default.xml"
+cd PiDPA/system/
+su pi -c "dsptoolkit install-profile migu96.xml"
 
-echo "### install roon-extension-itroxs"
-cd /home/pi
-git clone https://github.com/bsc101/roon-extension-itroxs.git
-cd roon-extension-itroxs
-npm install
-chown pi:pi .
-cp /home/pi/PiDPA/system/run.sh .
-cd /home/pi/PiDPA/system/
-cp itroxs.service /etc/systemd/system/
-systemctl enable itroxs
-systemctl start itroxs
+#echo "### install roon-extension-itroxs"
+#cd /home/pi
+#git clone https://github.com/bsc101/roon-extension-itroxs.git
+#cd roon-extension-itroxs
+#npm install
+#chown pi:pi .
+#cp /home/pi/PiDPA/system/run.sh .
+#cd /home/pi/PiDPA/system/
+#cp itroxs.service /etc/systemd/system/
+#systemctl enable itroxs
+#systemctl start itroxs
 
 
 echo "### install roon-http-api"
@@ -97,13 +97,13 @@ cp Lircd.service /etc/systemd/system/
 systemctl enable Lircd
 systemctl start Lircd
 
-echo "### install raspotify"
-cd /home/pi/
-curl -sL https://dtcooper.github.io/raspotify/install.sh | sh
-cd /home/pi/PiDPA/system/
-cp asoundrc /etc/asound.conf
-cp raspotify /etc/default/
-systemctl restart raspotify
+#echo "### install raspotify"
+#cd /home/pi/
+#curl -sL https://dtcooper.github.io/raspotify/install.sh | sh
+#cd /home/pi/PiDPA/system/
+#cp asoundrc /etc/asound.conf
+#cp raspotify /etc/default/
+#systemctl restart raspotify
 
 echo "### set file permissions"
 cd /home/pi/PiDPA/
@@ -128,7 +128,7 @@ fi
 
 echo "### install alsa config"
 cd /home/pi/
-su pu -c "ln -s PiDPA/system/asoundrc $HOME/.asoundrc"
+su pi -c "ln -s PiDPA/system/asoundrc $HOME/.asoundrc"
 #cp system/asoundrc $HOME/.asoundrc
 
 

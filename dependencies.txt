@@ -39,4 +39,9 @@ cd ladspa-mbandcomp
 make -f Makefile.unix
 cp mbandcomp.so /usr/lib/ladspa/
 
+####### build tools bluealsa
 
+pt-get install dh-autoreconf libdssialsacompat-dev libglib2.0-dev libsbc-dev libmp3lame-dev libopenaptx-dev libspandsp-dev libdbus-1-dev libldacbt-abr-dev libldacbt-enc-dev libasound2-dev libbluetooth-dev
+
+
+../configure --enable-ldac --with-libopenaptx --enable-mp3lame --enable-aptx --enable-msbc
