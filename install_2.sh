@@ -53,6 +53,7 @@ systemctl stop squeezelite
 systemctl disable squeezelite
 cd /home/pi/PiDPA/system/
 cp SqueezeLite.service /etc/systemd/system/
+systemctl daemon-reload
 systemctl enable SqueezeLite
 systemctl start SqueezeLite
 
@@ -128,7 +129,7 @@ fi
 
 echo "### install alsa config"
 cd /home/pi/
-su pi -c "ln -s PiDPA/system/asoundrc $HOME/.asoundrc"
+su pi -c "ln -s PiDPA/system/asoundrc /home/pi/.asoundrc"
 #cp system/asoundrc $HOME/.asoundrc
 
 
