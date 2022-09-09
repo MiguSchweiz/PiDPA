@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+#set -x
 # set homedir
 cd "$(dirname "$0")"
 cd ..
@@ -31,10 +31,10 @@ function unmute(){
 # kill running players
 ps -ef|grep vlc|grep dmixer|grep -v grep|grep -v default|awk -F' ' '{print $2}'|xargs kill -1 2>/dev/null
 pkill mplayer
-while [ true ];do
-        ps -ef|grep -v grep|grep dmixer 2>/dev/null
-        [ $? -eq 1 ] && break
-done
+#while [ true ];do
+#        ps -ef|grep -v grep|grep dmixer 2>/dev/null
+#        [ $? -eq 1 ] && break
+#done
 pkill kodiTitle.sh 2>/dev/null
 pkill roonTitle.sh 2>/dev/null
 
