@@ -72,10 +72,9 @@ cd rpi-audio-receiver/
 ./install-bluetooth.sh
 cd ..
 cp PiDPA/system/asoundrc /root/.asoundrc
-cp PiDPA/system/bluealsa-aplay.service /etc/systemd/system/
-systemctl daemon-reload
-systemctl start bt-agent
-systemctl start bluealsa-aplay
+echo "load-module module-alsa-sink device=dmixer" >> /etc/pulse/system.pa
+echo "load-module module-alsa-sink device=dmixer" >> /etc/pulse/default.pa
+
 
 echo "### check for hifiberry  driver in /boot/config.txt: "
 egrep "hifiberry-dacplusdsp$" /boot/config.txt 
