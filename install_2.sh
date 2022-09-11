@@ -48,14 +48,14 @@ cp roon-http-api.service /etc/systemd/system/
 systemctl enable roon-http-api
 systemctl start roon-http-api
 
-#echo "### install squeezelite service"
-#systemctl stop squeezelite
-#systemctl disable squeezelite
-#cd /home/pi/PiDPA/system/
-#cp SqueezeLite.service /etc/systemd/system/
-#systemctl daemon-reload
-#systemctl enable SqueezeLite
-#systemctl start SqueezeLite
+echo "### install squeezelite service"
+systemctl stop squeezelite
+systemctl disable squeezelite
+cd /home/pi/PiDPA/system/
+cp SqueezeLite.service /etc/systemd/system/
+systemctl daemon-reload
+systemctl enable SqueezeLite
+systemctl start SqueezeLite
 
 #echo "### install roonbridge"
 cd /home/pi
