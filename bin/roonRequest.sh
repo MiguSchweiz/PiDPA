@@ -2,8 +2,9 @@
 
 #set -x
 # curl -s http://localhost:3001/roonAPI/listZones |jq
-zoneid=160124012dec84d7e2d2d2f9cde0b924ce36
+#zoneid=160124012dec84d7e2d2d2f9cde0b924ce36
 #zoneid=1601528c8e6cd4a3c6598999a0e9df15ad32
+zoneid=1601526965c282c32a4066f30db7d3b583bf
 
 par=$1
 if [ "$par" == "playPause" ]; then
