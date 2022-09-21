@@ -1,6 +1,6 @@
 cvlc -vv -A alsa --alsa-audio-device dmixer http://stream.srg-ssr.ch/m/drs3/mp3_128
 cvlc -vv -A alsa --alsa-audio-device dmixer http://stream.srg-ssr.ch/m/drsvirus/mp3_128
 cvlc -vv -A alsa --alsa-audio-device dmixer http://www.tm-radio.com:8000/tribalmixes
-mplayer -cache 512 https://shoutcast.protonradio.com/
+cvlc -vv -A alsa --alsa-audio-device dmixer http://shoutcast.protonradio.com:7000/stream
 /home/pi/PiDPA/bin/kodi.sh
 /home/pi/PiDPA/bin/roon.sh

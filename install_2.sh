@@ -34,6 +34,9 @@ su pi -c "dsptoolkit install-profile migu96.xml"
 #systemctl enable itroxs
 #systemctl start itroxs
 
+echo "### install chromecast-cli"
+npm install -g chromecast-cli
+
 
 echo "### install roon-http-api"
 cd /home/pi

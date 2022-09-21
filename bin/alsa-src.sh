@@ -41,12 +41,15 @@ pkill roonTitle.sh 2>/dev/null
 # unmute pi
 dsptoolkit apply-settings bin/settings/enablePi
 
-# set source state
-echo "a_$in" >www/status
 
 #pause kodi and roon
 ./bin/kodiRequest.sh pause
 ./bin/roonRequest.sh stop
+cat www/status |grep a_6 >/dev/null
+[ $? -eq 0 ] && sleep 4
+
+# set source state
+echo "a_$in" >www/status
 
 ./bin/setvlevels.sh
 cat /dev/null >www/title.htm
