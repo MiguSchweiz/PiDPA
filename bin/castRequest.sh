@@ -14,7 +14,7 @@ elif [ "$par" == "play" ]; then
         exit 0
 elif [ "$par" == "title" ]; then
         [ $state -eq 0 ] && echo "-" && exit 0
-        chromecast -H $ip sessions|jq '.[] .statusText'|sed -e s/Streamen\:.//
+        chromecast -H $ip sessions|jq '.[] .statusText'|sed -e s/Streamen\:.//|sed -e s/\"//g
         exit 0
 fi
 

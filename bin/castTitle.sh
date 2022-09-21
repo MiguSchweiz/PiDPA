@@ -4,7 +4,7 @@ cd "$(dirname "$0")"
 cd ..
 
 while [ true ]; do
-	./bin/roonRequest.sh title >/tmp/title
+	./bin/castRequest.sh title >/tmp/title
         cat /tmp/title >www/title.htm
 	sleep 5
 done
