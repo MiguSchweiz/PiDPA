@@ -37,6 +37,7 @@ pkill mplayer
 #done
 pkill kodiTitle.sh 2>/dev/null
 pkill roonTitle.sh 2>/dev/null
+pkill castTitle.sh 2>/dev/null
 
 # unmute pi
 dsptoolkit apply-settings bin/settings/enablePi
@@ -45,6 +46,7 @@ dsptoolkit apply-settings bin/settings/enablePi
 #pause kodi and roon
 ./bin/kodiRequest.sh pause
 ./bin/roonRequest.sh stop
+./bin/castRequest.sh stop
 cat www/status |grep a_6 >/dev/null
 [ $? -eq 0 ] && sleep 4
 

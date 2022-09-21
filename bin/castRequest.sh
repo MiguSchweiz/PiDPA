@@ -6,7 +6,17 @@ ip="192.168.1.103"
 par=$1
 chromecast -H $ip sessions|grep isIdle|grep true >/dev/null
 state=$?
-if [ "$par" == "stop" ]; then
+if [ "$par" == "playPause" ]; then
+        if [ $state -eq 1 ];then
+            chromecast -H $ip sessionDetails|grep playerState|grep PAUSED >/dev/null            
+            if [ $? -eq 0 ];then
+                chromecast -H $ip unpause
+            else
+                chromecast -H $ip pause
+            fi
+        fi
+        exit 0
+elif [ "$par" == "stop" ]; then
         [ $state -eq 1 ] && chromecast -H $ip pause 
 	exit 0
 elif [ "$par" == "play" ]; then

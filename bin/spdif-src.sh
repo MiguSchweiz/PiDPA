@@ -1,7 +1,5 @@
 #!/bin/bash
 #set -x
-# specify SPDIF switch tty
-SPDIF_TTY=/dev/ttyACM0
 
 # set homedir
 cd "$(dirname "$0")"
@@ -31,7 +29,8 @@ function unmute(){
 # Switch HDMI input
 irsend SEND_ONCE HDMISwitch KEY_$1
 
-# check for ALSA restore
+# stop players
+pkill castTitle.sh
 pkill roonTitle.sh
 cat www/status|grep s_ >/dev/null
 if [ $? -eq 1 ];then
@@ -42,6 +41,13 @@ if [ $? -eq 1 ];then
         dsptoolkit apply-settings bin/settings/enableSpdif
 fi
 
+#start cast title
+if [ $1 -eq 2 ];then
+    ./bin/castRequest.sh play
+    ./bin/castTitle.sh &
+else
+    ./bin/castRequest.sh stop
+fi
 # set source state
 echo "s_$1" >www/status
 echo "s_$1"

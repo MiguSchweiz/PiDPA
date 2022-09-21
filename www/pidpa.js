@@ -255,6 +255,9 @@ function mouseListeners(){
 		if (actSrc.localeCompare("#a_6")==0){
 			$.post( "pidpa.php?cmd=roonPlayPause" );
 		}
+                if (actSrc.localeCompare("#s_2")==0){
+                        $.post( "pidpa.php?cmd=castPlayPause" );
+                }
 	});
 }
 
