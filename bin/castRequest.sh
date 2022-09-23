@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #set -x
-ip="192.168.1.103"
+ip="192.168.1.138"
 
 par=$1
 chromecast -H $ip sessions|grep isIdle|grep true >/dev/null
