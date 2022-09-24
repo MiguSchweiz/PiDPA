@@ -48,7 +48,7 @@ dsptoolkit apply-settings bin/settings/enablePi
 ./bin/roonRequest.sh stop
 ./bin/castRequest.sh stop
 cat www/status |grep a_6 >/dev/null
-[ $? -eq 0 ] && sleep 4
+#[ $? -eq 0 ] && sleep 4
 
 # set source state
 echo "a_$in" >www/status

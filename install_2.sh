@@ -79,6 +79,7 @@ chmod 755 roonbridge-installer-linuxarmv7hf.sh
 #echo "load-module module-alsa-sink device=dmixer" >> /etc/pulse/default.pa
 
 echo "### install pipewire aptx bluetooth receiver"
+# from github:pw_wp_bluetooth_rpi_speaker
 cd /home/pi
 echo 'APT::Default-Release "stable";' | sudo tee /etc/apt/apt.conf.d/99defaultrelease
 echo "deb http://ftp.de.debian.org/debian/ testing main contrib non-free" | sudo tee /etc/apt/sources.list.d/testing.list
