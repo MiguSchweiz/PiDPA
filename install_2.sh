@@ -68,15 +68,27 @@ wget http://download.roonlabs.com/builds/roonbridge-installer-linuxarmv7hf.sh
 chmod 755 roonbridge-installer-linuxarmv7hf.sh
 ./roonbridge-installer-linuxarmv7hf.sh
 
-echo "### install bluetooth receiver"
+#echo "### install bluetooth receiver"
+#cd /home/pi
+#git clone https://github.com/nicokaiser/rpi-audio-receiver.git
+#cd rpi-audio-receiver/
+#./install-bluetooth.sh
+#cd ..
+#cp PiDPA/system/asoundrc /root/.asoundrc
+#echo "load-module module-alsa-sink device=dmixer" >> /etc/pulse/system.pa
+#echo "load-module module-alsa-sink device=dmixer" >> /etc/pulse/default.pa
+
+echo "### install pipewire aptx bluetooth receiver"
 cd /home/pi
-git clone https://github.com/nicokaiser/rpi-audio-receiver.git
-cd rpi-audio-receiver/
-./install-bluetooth.sh
-cd ..
-cp PiDPA/system/asoundrc /root/.asoundrc
-echo "load-module module-alsa-sink device=dmixer" >> /etc/pulse/system.pa
-echo "load-module module-alsa-sink device=dmixer" >> /etc/pulse/default.pa
+echo 'APT::Default-Release "stable";' | sudo tee /etc/apt/apt.conf.d/99defaultrelease
+echo "deb http://ftp.de.debian.org/debian/ testing main contrib non-free" | sudo tee /etc/apt/sources.list.d/testing.list
+apt update
+apt -t testing install pipewire wireplumber libspa-0.2-bluetooth
+apt install python3-dbus
+sudo -u pi "mkdir -p /home/pi/.config/systemd/user"
+sudo -u pi "cp /home/pi/PiDPA/system/speaker-agent.service /home/pi/.config/systemd/user"
+sudo -u pi "systemctl --user enable speaker-agent.service"
+sed -i 's/#JustWorksRepairing.*/JustWorksRepairing = always/' /etc/bluetooth/main.conf
 
 
 echo "### check for hifiberry  driver in /boot/config.txt: "
