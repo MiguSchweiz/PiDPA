@@ -1,1 +1,2 @@
 irrecord -H irtoy -d /dev/ttyACM0 XXX.lircd.conf
+irrecord -H default -d /dev/lirc0 XXX.lircd.conf
