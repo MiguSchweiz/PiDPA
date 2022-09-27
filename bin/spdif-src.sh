@@ -15,6 +15,10 @@ if [ "$1" == "-h" ];then
         exit 0
 fi
 
+cat www/status|grep s_ >/dev/null
+last=$?
+echo "s_$1" >www/status
+
 # mute channels
 if [ ! -f .mute ];then
 	./bin/setvol.sh m
@@ -40,8 +44,8 @@ irsend SEND_ONCE Lindy KEY_$nr
 # stop players
 pkill castTitle.sh
 pkill roonTitle.sh
-cat www/status|grep s_ >/dev/null
-if [ $? -eq 1 ];then
+#cat www/status|grep s_ >/dev/null
+if [ $last -eq 1 ];then
 	# kill running players
 	ps -ef|grep dmixer|grep vlc|grep -v grep| grep -v default|awk -F' ' '{print $2}'|xargs kill 2>/dev/null
 	pkill kodiTitle.sh
@@ -57,7 +61,7 @@ else
     ./bin/castRequest.sh stop
 fi
 # set source state
-echo "s_$1" >www/status
+#echo "s_$1" >www/status
 echo "s_$1"
 
 #pause kodi
