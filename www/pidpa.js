@@ -14,7 +14,7 @@ var lastNotif="";
 var srun=false;
 var actSrc="";
 var fallbackSrc="";
-
+var sel=false
 
 function stat(){
 	if (restat==false){
@@ -22,6 +22,10 @@ function stat(){
 		restat=true;
 		return;
 	}
+        if (res){
+            res=false;
+            return;
+        }
 	sync=true;
 	rstime=2000;
 	jQuery.get("pidpa.php?cmd=state", function(d) {
@@ -128,11 +132,14 @@ function setTitleLines(){
 
 
 function mouseListeners(){
+        res=true;
 	$( "#s_1" ).mousedown(function() {
+                res=true;
 		selectButton("#s_1");
 		setSource( "pidpa.php?cmd=s1" );
 	});
 	$( "#s_2" ).mousedown(function() {
+                res=true;
 		selectButton("#s_2");
 		setSource( "pidpa.php?cmd=s2" );
 	});

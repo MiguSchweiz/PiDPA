@@ -23,6 +23,9 @@ elif [ "$par" == "title" ]; then
         if [ $? -ne 0 ]; then
             tit=`curl -s http://localhost:3001/roonAPI/getZone?zoneId=$zoneid|jq '.zone.now_playing.two_line.line1'| sed -e 's/"//g'`
             art=`curl -s http://localhost:3001/roonAPI/getZone?zoneId=$zoneid|jq '.zone.now_playing.two_line.line2'| sed -e 's/"//g'`
+            if [ "$art" == "" ];then
+                art=`curl -s http://localhost:3001/roonAPI/getZone?zoneId=$zoneid|jq '.zone.now_playing.three_line.line3'| sed -e 's/"//g'`
+            fi
             echo $art" - "$tit
         else
             echo -
