@@ -27,7 +27,7 @@ function unmute(){
 }
 
 # Switch HDMI input
-irsend SEND_ONCE HDMISwitch KEY_$1
+irsend SEND_ONCE Lindy KEY_$1
 
 # stop players
 pkill castTitle.sh

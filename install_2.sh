@@ -108,7 +108,7 @@ echo "### install irdroid lirc"
 cd /home/pi/PiDPA/system/
 systemctl stop lircd
 systemctl disable lircd
-cp HDMISwitch.conf /etc/lirc/lircd.conf.d/
+cp Lindy.lircd.conf /etc/lirc/lircd.conf.d/
 cp TV.lircd.conf /etc/lirc/lircd.conf.d/
 cp Lircd.service /etc/systemd/system/
 systemctl enable Lircd
