@@ -280,9 +280,9 @@ function selectStation(id){
 	if (! id.match(re)){
 		resetButtons();
 	}
-	if (actSrc.match(/a_/)){
-		fallbackSrc=actSrc;
-	}
+	//if (actSrc.match(/a_/)){
+//		fallbackSrc=actSrc;
+//	}
 	actSrc=id;
 	$("#titspk" ).text("Volume");
 	$("#tithp" ).text("Headphones Rpi");
