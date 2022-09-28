@@ -32,7 +32,7 @@ function unmute(){
 
 # Switch HDMI input
 irsend SEND_ONCE Lindy KEY_$1
-sleep 1
+sleep 0.5
 if [ $1 -eq 4 ]; then
     nr=0
 else

@@ -4,6 +4,7 @@
 cd "$(dirname "$0")"
 cd ..
 
+
 # Help
 if [ "$1" == "-h" ];then
 	echo
@@ -13,6 +14,8 @@ if [ "$1" == "-h" ];then
 	echo
 	exit 0
 fi
+
+echo "a_$1" >www/status
 
 [ -z $1 ] && in=0 || in=$1
 
@@ -47,11 +50,11 @@ dsptoolkit apply-settings bin/settings/enablePi
 ./bin/kodiRequest.sh pause
 ./bin/roonRequest.sh stop
 ./bin/castRequest.sh stop
-cat www/status |grep a_6 >/dev/null
+#cat www/status |grep a_6 >/dev/null
 #[ $? -eq 0 ] && sleep 4
 
 # set source state
-echo "a_$in" >www/status
+#echo "a_$in" >www/status
 
 ./bin/setvlevels.sh
 cat /dev/null >www/title.htm

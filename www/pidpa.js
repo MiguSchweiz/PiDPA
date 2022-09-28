@@ -18,7 +18,7 @@ var sel=false
 
 function stat(){
 	if (restat==false){
-		rstime=4000;
+		rstime=2000;
 		restat=true;
 		return;
 	}
@@ -29,7 +29,7 @@ function stat(){
 	sync=true;
 	rstime=2000;
 	jQuery.get("pidpa.php?cmd=state", function(d) {
-		if (restat==false){
+		if (restat==false || res){
 			return;
 		}
 		//console.log("stat:");
@@ -37,6 +37,10 @@ function stat(){
 		stats=d.toString().split(";");
 		s=stats[0];
 		x="#";
+                nr=s.replace(/._/s,"");
+                if ( parseInt(nr)==NaN){
+                    return;
+                }
 		if ( s.match(/s/g)){
 			selectButton(x.concat(s));
 		}else{
@@ -134,12 +138,10 @@ function setTitleLines(){
 function mouseListeners(){
         res=true;
 	$( "#s_1" ).mousedown(function() {
-                res=true;
 		selectButton("#s_1");
 		setSource( "pidpa.php?cmd=s1" );
 	});
 	$( "#s_2" ).mousedown(function() {
-                res=true;
 		selectButton("#s_2");
 		setSource( "pidpa.php?cmd=s2" );
 	});
