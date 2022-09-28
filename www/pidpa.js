@@ -43,9 +43,11 @@ function stat(){
                 }
 		if ( s.match(/s/g)){
 			selectButton(x.concat(s));
-		}else{
+		}else if ( s.match(/a/g) ){
 			selectStation(x.concat(s));
-		}
+		}else{
+                    return;
+                }
 		//console.log();
 		showEQ(true);
 		sm=stats[2];
