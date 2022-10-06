@@ -222,6 +222,10 @@ function mouseListeners(){
 		clickVol("#pwr");
 		$.post( "pidpa.php?cmd=pwr" );
 	});
+        $( "#pwr2" ).mousedown(function() {
+                clickVol("#pwr2");
+                $.post( "pidpa.php?cmd=pwr2" );
+        });
 
 	
 	// EQ

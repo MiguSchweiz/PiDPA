@@ -46,8 +46,11 @@ if ($cmd=="s1"){
 }else if ($cmd=="hp"){
 	exec("sudo -u pi ".$dir."setvol.sh hp");
 }else if ($cmd=="pwr"){
-	exec("sudo -u pi /usr/bin/irsend SEND_ONCE TV KEY_POWER KEY_POWER");
-}else if ($cmd=="eq_off"){
+	exec("sudo -u pi /usr/bin/irsend SEND_ONCE TV KEY_POWER");
+}else if ($cmd=="pwr2"){
+        exec("sudo -u pi /usr/bin/irsend SEND_ONCE Lindy KEY_POWER");
+}
+else if ($cmd=="eq_off"){
 	exec("sudo -u pi ".$dir."eq.sh off");
 }else if ($cmd=="tg_amp"){
 	exec("sudo -u pi ".$dir."midiToggleAmp.py");
