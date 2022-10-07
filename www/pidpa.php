@@ -49,6 +49,10 @@ if ($cmd=="s1"){
 	exec("sudo -u pi /usr/bin/irsend SEND_ONCE TV KEY_POWER KEY_POWER");
 }else if ($cmd=="pwr2"){
         exec("sudo -u pi /usr/bin/irsend SEND_ONCE Lindy KEY_POWER");
+}else if ($cmd=="ron"){
+        exec("sudo -u pi /usr/bin/wakeonlan -i 192.168.1.27 54:B2:03:9B:E9:45");
+}else if ($cmd=="roff"){
+        exec("sudo -u pi /usr/bin/wget http://192.168.1.27/1/poweroff &");
 }
 else if ($cmd=="eq_off"){
 	exec("sudo -u pi ".$dir."eq.sh off");

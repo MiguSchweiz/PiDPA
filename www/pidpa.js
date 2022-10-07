@@ -227,6 +227,16 @@ function mouseListeners(){
                 $.post( "pidpa.php?cmd=pwr2" );
         });
 
+        // ROCK
+        $( "#ron" ).mousedown(function() {
+                clickVol("#ron");
+                $.post( "pidpa.php?cmd=ron" );
+        });
+        $( "#roff" ).mousedown(function() {
+                clickVol("#roff");
+                $.post( "pidpa.php?cmd=roff" );
+        });
+
 	
 	// EQ
 	$( "#eq_nb" ).mousedown(function() {

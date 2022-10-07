@@ -10,7 +10,7 @@ fi
 cd "$(dirname "$0")"
 hd=`pwd`
 
-sudo apt-get install apache2 php7.0 libapache2-mod-php vlc libasound2-plugin-equal vim npm jq lirc python3-pip
+sudo apt-get install apache2 php7.0 libapache2-mod-php vlc libasound2-plugin-equal vim npm jq lirc python3-pip wakeonlan
 
 echo "### install dsptoolkit"
 cd /home/pi
