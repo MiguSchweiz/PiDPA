@@ -31,15 +31,14 @@ function unmute(){
 }
 
 # Switch HDMI input
-irsend SEND_ONCE Lindy KEY_$1
-sleep 0.5
+#irsend SEND_ONCE Lindy KEY_$1
 if [ $1 -eq 4 ]; then
     nr=0
 else
     input=$1
     nr=$(( input + 6 ))
 fi 
-irsend SEND_ONCE Lindy KEY_$nr
+irsend SEND_ONCE Lindy KEY_$nr KEY_$1
 
 # stop players
 pkill castTitle.sh
