@@ -82,7 +82,7 @@ echo "### install pipewire aptx bluetooth receiver"
 # from github:pw_wp_bluetooth_rpi_speaker
 cd /home/pi
 echo 'APT::Default-Release "stable";' | sudo tee /etc/apt/apt.conf.d/99defaultrelease
-echo "deb http://ftp.de.debian.org/debian/ testing main contrib non-free" | .udo tee /etc/apt/sources.list.d/testing.list
+echo "deb http://ftp.de.debian.org/debian/ testing main contrib non-free" | sudo tee /etc/apt/sources.list.d/testing.list
 apt update
 # add missing keys:  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8B48AD6246925553
 apt -t testing install pipewire wireplumber libspa-0.2-bluetooth
